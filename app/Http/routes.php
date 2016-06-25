@@ -93,8 +93,10 @@ use App\Http\Controllers\HomeController;
 
 	//微博
 	Route::get('/weibo', 'WeiboController@index');
+	Route::get('/weibo/hot', 'WeiboController@hotWeibo');
 	Route::get('/weibo/create', 'WeiboController@createWeibo');
 	Route::post('/weibo/create', 'WeiboController@postNewWeibo');
+	Route::get('/weibo/confirmcollect/{id}', 'WeiboController@confirmCollect');
 
 
 	

@@ -8,6 +8,6 @@ class Label extends Model
 {
     public function weibos()
     {
-        return $this->belongsToMany('App\Weibo','weibo_id');
+        return $this->belongsToMany('App\Weibo','weibo_id')->withTimestamps();
     }
 }

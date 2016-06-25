@@ -113,10 +113,11 @@
                         <label for="inputTitle" class="col-sm-1 control-label">标签</label>
 
                         <div class="col-sm-8 col-md-8 col-lg-8">
-                            <select name="label" class="form-control js-example-basic-multiple"
+                            <select name="label_list[]" class="form-control js-example-basic-multiple"
                                     id="inputLabel" multiple="multiple">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
+                                @foreach($labels as $l)
+                                <option value="<?php echo $l->id ?>"><?php echo $l->name ?></option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
