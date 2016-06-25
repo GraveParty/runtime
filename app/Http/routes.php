@@ -89,5 +89,13 @@ use App\Http\Controllers\HomeController;
 	Route::get('/admin/activity', 'AdminController@adminActivity');
 	Route::get('/admin/activity/modify/{user}', 'AdminController@getActivityModify');
 	Route::post('/admin/activity/modify', 'AdminController@postActivityModify');
+
+
+	//微博
+	Route::get('/weibo', 'WeiboController@index');
+	Route::get('/weibo/create', 'WeiboController@createWeibo');
+	Route::post('/weibo/create', 'WeiboController@postNewWeibo');
+
+
 	
 	
