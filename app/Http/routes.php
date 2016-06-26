@@ -97,10 +97,7 @@ use App\Http\Controllers\HomeController;
 	Route::get('/weibo/create', 'WeiboController@createWeibo');
 	Route::post('/weibo/create', 'WeiboController@postNewWeibo');
 	Route::get('/weibo/confirmcollect/{id}', 'WeiboController@confirmCollect');
-	Route::get('/weibo/cancelcollect/{id}', 'WeiboController@cancelCollect');
-	Route::get('/weibo/confirmfollow/{id}', 'WeiboController@confirmFollow');
-	Route::get('/weibo/cancelfollow/{id}', 'WeiboController@cancelFollow');
-	Route::get('/weibo/follow', 'WeiboController@myFollow');
-	Route::get('/weibo/collect', 'WeiboController@myCollect');
+
+
 	
 	

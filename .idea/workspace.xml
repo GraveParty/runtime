@@ -25,21 +25,22 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0535715">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state vertical-scroll-proportion="-2.4285715">
+              <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="weibo.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="weibo.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/weibo/weibo.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="213" column="31" selection-start-line="213" selection-start-column="31" selection-end-line="213" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.74041814">
+              <caret line="227" column="92" selection-start-line="227" selection-start-column="92" selection-end-line="227" selection-end-column="92" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,8 +49,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/activity/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="97" column="56" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="95" column="76" selection-start-line="95" selection-start-column="76" selection-end-line="95" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -59,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/public/js/weibo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -70,64 +71,18 @@
       <file leaf-file-name="WeiboController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WeiboController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-46.923077">
-              <caret line="185" column="91" selection-start-line="185" selection-start-column="91" selection-end-line="185" selection-end-column="91" />
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="108" column="86" selection-start-line="108" selection-start-column="78" selection-end-line="108" selection-end-column="86" />
               <folding>
-                <element signature="e#40#59#0#PHP" expanded="true" />
-                <marker date="1466926262720" expanded="true" signature="803:843" placeholder="select nickn..users..." />
-                <marker date="1466926262720" expanded="true" signature="1117:1186" placeholder="select * fro..weibo_collects..." />
-                <marker date="1466926262720" expanded="true" signature="1555:1621" placeholder="select * fro..user_follows..." />
-                <marker date="1466926262720" expanded="true" signature="2401:2441" placeholder="select nickn..users..." />
-                <marker date="1466926262720" expanded="true" signature="2715:2784" placeholder="select * fro..weibo_collects..." />
-                <marker date="1466926262720" expanded="true" signature="3153:3219" placeholder="select * fro..user_follows..." />
-                <marker date="1466926262720" expanded="true" signature="3729:3895" placeholder="select avg(h..." />
-                <marker date="1466926262720" expanded="true" signature="4222:4262" placeholder="select nickn..users..." />
-                <marker date="1466926262720" expanded="true" signature="4536:4605" placeholder="select * fro..weibo_collects..." />
-                <marker date="1466926262720" expanded="true" signature="4974:5040" placeholder="select * fro..user_follows..." />
-                <marker date="1466926262720" expanded="true" signature="5549:5715" placeholder="select weibo..weibos..." />
-                <marker date="1466926262720" expanded="true" signature="6042:6082" placeholder="select nickn..users..." />
-                <marker date="1466926262720" expanded="true" signature="6356:6425" placeholder="select * fro..weibo_collects..." />
-                <marker date="1466926262720" expanded="true" signature="6794:6860" placeholder="select * fro..user_follows..." />
-                <marker date="1466926262720" expanded="true" signature="7445:7507" placeholder="update weibo..." />
-                <marker date="1466926262720" expanded="true" signature="7543:7589" placeholder="select colle..weibos..." />
-                <marker date="1466926262720" expanded="true" signature="7732:7798" placeholder="delete from ..." />
-                <marker date="1466926262720" expanded="true" signature="7847:7909" placeholder="update weibo..." />
-                <marker date="1466926262720" expanded="true" signature="7945:7991" placeholder="select colle..weibos..." />
-                <marker date="1466926262720" expanded="true" signature="8329:8392" placeholder="delete from ..." />
-                <marker date="1466926262720" expanded="true" signature="8505:8525" placeholder="select * fro..labels..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="suggestion.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/exercise/suggestion.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExerciseController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExerciseController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68118465">
-              <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
-              <folding>
-                <marker date="1449296765652" expanded="true" signature="392:428" placeholder="select * fro..goals..." />
-                <marker date="1449296765652" expanded="true" signature="492:534" placeholder="update goals..." />
-                <marker date="1449296765652" expanded="true" signature="810:846" placeholder="select * fro..goals..." />
-                <marker date="1449296765652" expanded="true" signature="1209:1247" placeholder="delete from ..." />
-                <marker date="1449296765652" expanded="true" signature="1555:1711" placeholder="select coach..coach_advices..." />
-                <marker date="1449296765652" expanded="true" signature="1764:1805" placeholder="select * fro..coach_asks..." />
-                <marker date="1449296765652" expanded="true" signature="2178:2230" placeholder="select * fro..moves..." />
-                <marker date="1449296765652" expanded="true" signature="2661:2803" placeholder="select ifnul..moves..." />
-                <marker date="1449296765652" expanded="true" signature="2878:3019" placeholder="select ifnul..moves..." />
-                <marker date="1449296765652" expanded="true" signature="3600:3636" placeholder="select * fro..goals..." />
-                <marker date="1449296765652" expanded="true" signature="3828:3914" placeholder="select ifnul..moves..." />
-                <marker date="1449296765652" expanded="true" signature="4079:4213" placeholder="select count..moves..." />
+                <element signature="e#40#61#0#PHP" expanded="true" />
+                <marker date="1466874622897" expanded="true" signature="620:627" placeholder="select * fro..weibos..." />
+                <marker date="1466874622897" expanded="true" signature="620:660" placeholder="select nickn..users..." />
+                <marker date="1466874622897" expanded="true" signature="926:995" placeholder="select nickn..weibo_collects..." />
+                <marker date="1466874622897" expanded="true" signature="1343:1409" placeholder="select count..user_follows..." />
+                <marker date="1466874622897" expanded="true" signature="1964:2004" placeholder="select nickn..users..." />
+                <marker date="1466874622897" expanded="true" signature="2270:2339" placeholder="select * fro..weibo_collects..." />
+                <marker date="1466874622897" expanded="true" signature="2687:2753" placeholder="select * fro..user_follows..." />
+                <marker date="1466874622897" expanded="true" signature="3504:3524" placeholder="select * fro..labels..." />
               </folding>
             </state>
           </provider>
@@ -136,8 +91,8 @@
       <file leaf-file-name="DoctorController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DoctorController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.538462">
-              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="39" selection-end-column="94" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <marker date="1449375261534" expanded="true" signature="436:461" placeholder="select * fro..doctor_asks..." />
                 <marker date="1449375261534" expanded="true" signature="616:792" placeholder="select users..users..." />
@@ -152,8 +107,8 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.269231">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="93" />
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
                 <marker date="1449113157265" expanded="true" signature="337:361" placeholder="select * fro..activities..." />
@@ -177,9 +132,23 @@
       <file leaf-file-name="Weibo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Weibo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-2.6153846">
               <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="31.384615">
+              <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+              <folding>
+                <marker date="1449374113519" expanded="true" signature="491:630" placeholder="select activ..activity_ins..." />
+                <marker date="1449374113519" expanded="true" signature="926:950" placeholder="select * fro..activities..." />
+                <marker date="1449374113519" expanded="true" signature="980:1119" placeholder="select activ..activity_ins..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,10 +183,10 @@
         <option value="$PROJECT_DIR$/resources/views/weibo/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_25_113014_create_weibo_collects_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_25_113108_create_user_follows_table.php" />
-        <option value="$PROJECT_DIR$/public/js/weibo.js" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/resources/views/weibo/weibo.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WeiboController.php" />
+        <option value="$PROJECT_DIR$/public/js/weibo.js" />
+        <option value="$PROJECT_DIR$/resources/views/weibo/weibo.blade.php" />
       </list>
     </option>
   </component>
@@ -266,7 +235,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -295,11 +263,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -313,15 +277,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
+              <option name="myItemId" value="phpunit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -335,7 +295,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -395,6 +373,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -456,27 +435,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2306003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1822504" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15739386" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -492,26 +471,37 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/js/weibo.js</url>
-          <line>56</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WeiboController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+          <folding>
+            <element signature="e#40#61#0#PHP" expanded="true" />
+            <marker date="1466874622897" expanded="true" signature="620:627" placeholder="select * fro..weibos..." />
+            <marker date="1466874622897" expanded="true" signature="620:660" placeholder="select nickn..users..." />
+            <marker date="1466874622897" expanded="true" signature="926:995" placeholder="select nickn..weibo_collects..." />
+            <marker date="1466874622897" expanded="true" signature="1343:1409" placeholder="select count..user_follows..." />
+            <marker date="1466874622897" expanded="true" signature="1964:2004" placeholder="select nickn..users..." />
+            <marker date="1466874622897" expanded="true" signature="2270:2339" placeholder="select * fro..weibo_collects..." />
+            <marker date="1466874622897" expanded="true" signature="2687:2753" placeholder="select * fro..user_follows..." />
+            <marker date="1466874622897" expanded="true" signature="3504:3524" placeholder="select * fro..labels..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="111" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="111" />
           <folding>
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select * fro..activities..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="491:630" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="926:950" placeholder="select * fro..activities..." />
+            <marker date="1449374113519" expanded="true" signature="980:1119" placeholder="select activ..activity_ins..." />
           </folding>
         </state>
       </provider>
@@ -560,9 +550,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select * fro..activities..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="491:630" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="926:950" placeholder="select * fro..activities..." />
+            <marker date="1449374113519" expanded="true" signature="980:1119" placeholder="select activ..activity_ins..." />
           </folding>
         </state>
       </provider>
@@ -571,6 +561,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -603,9 +594,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select * fro..activities..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="491:630" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="926:950" placeholder="select * fro..activities..." />
+            <marker date="1449374113519" expanded="true" signature="980:1119" placeholder="select activ..activity_ins..." />
           </folding>
         </state>
       </provider>
@@ -614,6 +605,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -636,6 +628,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29616725">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -690,6 +683,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769">
           <caret line="22" column="39" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -697,6 +691,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4738676">
           <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -720,6 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.769231">
           <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="21" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -727,6 +723,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.68118465">
           <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+          <folding>
+            <marker date="1449375390524" expanded="true" signature="-1:-1" placeholder="select * fro..coach_asks..." />
+            <marker date="1449375390524" expanded="true" signature="-1:-1" placeholder="select users..users..." />
+            <marker date="1449375390524" expanded="true" signature="-1:-1" placeholder="select avg(h..." />
+            <marker date="1449375390524" expanded="true" signature="-1:-1" placeholder="select nickn..users..." />
+            <marker date="1449375390524" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -734,6 +737,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20731707">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -741,6 +745,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.533101">
           <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -748,6 +753,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29616725">
           <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -791,10 +797,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/exercise/suggestion.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.5">
+          <caret line="145" column="79" selection-start-line="145" selection-start-column="52" selection-end-line="145" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_25_082830_create_weibo_labels_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.0">
           <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -802,6 +817,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46689895">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -809,17 +825,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5261324">
           <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="31.384615">
           <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
           <folding>
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select * fro..activities..." />
-            <marker date="1449374113519" expanded="true" signature="-1:-1" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="491:630" placeholder="select activ..activity_ins..." />
+            <marker date="1449374113519" expanded="true" signature="926:950" placeholder="select * fro..activities..." />
+            <marker date="1449374113519" expanded="true" signature="980:1119" placeholder="select activ..activity_ins..." />
           </folding>
         </state>
       </provider>
@@ -832,18 +849,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/activity/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="95" column="76" selection-start-line="95" selection-start-column="76" selection-end-line="95" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Weibo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-2.6153846">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DoctorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <marker date="1449375261534" expanded="true" signature="436:461" placeholder="select * fro..doctor_asks..." />
+            <marker date="1449375261534" expanded="true" signature="616:792" placeholder="select users..users..." />
+            <marker date="1449375261534" expanded="true" signature="967:1126" placeholder="select avg(h..." />
+            <marker date="1449375261534" expanded="true" signature="1206:1251" placeholder="select nickn..users..." />
+            <marker date="1449375261534" expanded="true" signature="2128:2168" placeholder="delete from ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4285715">
+          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.269231">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="93" />
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
             <marker date="1449113157265" expanded="true" signature="337:361" placeholder="select * fro..activities..." />
@@ -863,113 +910,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/activity/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="97" column="56" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/weibo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DoctorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.538462">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="39" selection-end-column="94" />
-          <folding>
-            <marker date="1449375261534" expanded="true" signature="436:461" placeholder="select * fro..doctor_asks..." />
-            <marker date="1449375261534" expanded="true" signature="616:792" placeholder="select users..users..." />
-            <marker date="1449375261534" expanded="true" signature="967:1126" placeholder="select avg(h..." />
-            <marker date="1449375261534" expanded="true" signature="1206:1251" placeholder="select nickn..users..." />
-            <marker date="1449375261534" expanded="true" signature="2128:2168" placeholder="delete from ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WeiboController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-46.923077">
-          <caret line="185" column="91" selection-start-line="185" selection-start-column="91" selection-end-line="185" selection-end-column="91" />
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="108" column="86" selection-start-line="108" selection-start-column="78" selection-end-line="108" selection-end-column="86" />
           <folding>
-            <element signature="e#40#59#0#PHP" expanded="true" />
-            <marker date="1466926262720" expanded="true" signature="803:843" placeholder="select nickn..users..." />
-            <marker date="1466926262720" expanded="true" signature="1117:1186" placeholder="select * fro..weibo_collects..." />
-            <marker date="1466926262720" expanded="true" signature="1555:1621" placeholder="select * fro..user_follows..." />
-            <marker date="1466926262720" expanded="true" signature="2401:2441" placeholder="select nickn..users..." />
-            <marker date="1466926262720" expanded="true" signature="2715:2784" placeholder="select * fro..weibo_collects..." />
-            <marker date="1466926262720" expanded="true" signature="3153:3219" placeholder="select * fro..user_follows..." />
-            <marker date="1466926262720" expanded="true" signature="3729:3895" placeholder="select avg(h..." />
-            <marker date="1466926262720" expanded="true" signature="4222:4262" placeholder="select nickn..users..." />
-            <marker date="1466926262720" expanded="true" signature="4536:4605" placeholder="select * fro..weibo_collects..." />
-            <marker date="1466926262720" expanded="true" signature="4974:5040" placeholder="select * fro..user_follows..." />
-            <marker date="1466926262720" expanded="true" signature="5549:5715" placeholder="select weibo..weibos..." />
-            <marker date="1466926262720" expanded="true" signature="6042:6082" placeholder="select nickn..users..." />
-            <marker date="1466926262720" expanded="true" signature="6356:6425" placeholder="select * fro..weibo_collects..." />
-            <marker date="1466926262720" expanded="true" signature="6794:6860" placeholder="select * fro..user_follows..." />
-            <marker date="1466926262720" expanded="true" signature="7445:7507" placeholder="update weibo..." />
-            <marker date="1466926262720" expanded="true" signature="7543:7589" placeholder="select colle..weibos..." />
-            <marker date="1466926262720" expanded="true" signature="7732:7798" placeholder="delete from ..." />
-            <marker date="1466926262720" expanded="true" signature="7847:7909" placeholder="update weibo..." />
-            <marker date="1466926262720" expanded="true" signature="7945:7991" placeholder="select colle..weibos..." />
-            <marker date="1466926262720" expanded="true" signature="8329:8392" placeholder="delete from ..." />
-            <marker date="1466926262720" expanded="true" signature="8505:8525" placeholder="select * fro..labels..." />
+            <element signature="e#40#61#0#PHP" expanded="true" />
+            <marker date="1466874622897" expanded="true" signature="620:627" placeholder="select * fro..weibos..." />
+            <marker date="1466874622897" expanded="true" signature="620:660" placeholder="select nickn..users..." />
+            <marker date="1466874622897" expanded="true" signature="926:995" placeholder="select nickn..weibo_collects..." />
+            <marker date="1466874622897" expanded="true" signature="1343:1409" placeholder="select count..user_follows..." />
+            <marker date="1466874622897" expanded="true" signature="1964:2004" placeholder="select nickn..users..." />
+            <marker date="1466874622897" expanded="true" signature="2270:2339" placeholder="select * fro..weibo_collects..." />
+            <marker date="1466874622897" expanded="true" signature="2687:2753" placeholder="select * fro..user_follows..." />
+            <marker date="1466874622897" expanded="true" signature="3504:3524" placeholder="select * fro..labels..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/weibo/weibo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="213" column="31" selection-start-line="213" selection-start-column="31" selection-end-line="213" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.74041814">
+          <caret line="227" column="92" selection-start-line="227" selection-start-column="92" selection-end-line="227" selection-end-column="92" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0535715">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/exercise/suggestion.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExerciseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68118465">
-          <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
-          <folding>
-            <marker date="1449296765652" expanded="true" signature="392:428" placeholder="select * fro..goals..." />
-            <marker date="1449296765652" expanded="true" signature="492:534" placeholder="update goals..." />
-            <marker date="1449296765652" expanded="true" signature="810:846" placeholder="select * fro..goals..." />
-            <marker date="1449296765652" expanded="true" signature="1209:1247" placeholder="delete from ..." />
-            <marker date="1449296765652" expanded="true" signature="1555:1711" placeholder="select coach..coach_advices..." />
-            <marker date="1449296765652" expanded="true" signature="1764:1805" placeholder="select * fro..coach_asks..." />
-            <marker date="1449296765652" expanded="true" signature="2178:2230" placeholder="select * fro..moves..." />
-            <marker date="1449296765652" expanded="true" signature="2661:2803" placeholder="select ifnul..moves..." />
-            <marker date="1449296765652" expanded="true" signature="2878:3019" placeholder="select ifnul..moves..." />
-            <marker date="1449296765652" expanded="true" signature="3600:3636" placeholder="select * fro..goals..." />
-            <marker date="1449296765652" expanded="true" signature="3828:3914" placeholder="select ifnul..moves..." />
-            <marker date="1449296765652" expanded="true" signature="4079:4213" placeholder="select count..moves..." />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#article#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
