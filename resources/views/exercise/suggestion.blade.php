@@ -31,6 +31,86 @@ body {
 
 <body>
 	<!-- fixed header -->
+	<div class="modal fade" id="mobal-suggestion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <!--  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">申请建议</h4>
+      </div> -->
+      <div class="modal-body" >
+				 <ul id="myTab" class="nav nav-tabs">
+				   <li class="active"><a href="#allhost" data-toggle="tab">
+				      全站申请</a>
+				   </li>
+				   <li><a href="#onecoach" data-toggle="tab">指定教练</a></li>
+				   <!-- <li class="dropdown">
+				      <a href="#" id="myTabDrop1" class="dropdown-toggle" 
+				         data-toggle="dropdown">Java <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+				         <li><a href="#jmeter" tabindex="-1" data-toggle="tab">
+				            jmeter</a>
+				         </li>
+				         <li><a href="#ejb" tabindex="-1" data-toggle="tab">
+				            ejb</a>
+				         </li>
+				      </ul>
+				   </li> -->
+				</ul>
+				<div id="myTabContent" class="tab-content">
+				   <div class="tab-pane fade in active" id="allhost">
+				      <div class="input-group" style="width: 100%">
+				      	<input type = "text" class="form-control" placeholder="标题" id="title">
+				      	<textarea class="form-control" placeholder="内容" id="content" rows="5"></textarea> 
+				      	
+				      </div>
+
+				       <div class="input-group">
+				      		<span class="input-group-addon">分类</span>
+							<select class="form-control" id="category">
+				      			<option>运动/健身</option>
+				      			<option>饮食</option>
+				      			<option>健康</option>	
+				      			</select>			      
+				      </div>
+				   </div>
+
+				   <div class="tab-pane fade" id="onecoach">
+				      <div class="input-group" style="width: 100%">
+				      	<input type = "text" class="form-control" placeholder="标题" id="title">
+				      	<textarea class="form-control" placeholder="内容" id="content" rows="5"></textarea> 
+				      	
+				      </div>
+				      <div class="input-group">
+				      		<span class="input-group-addon">分类</span>
+							<select class="form-control" id="category">
+				      			<option>运动/健身</option>
+				      			<option>饮食</option>
+				      			<option>健康</option>
+				      			</select>
+				      	<span class="input-group-addon">教练</span>
+				      		<select class="form-control" id="category">
+				      			<option>教练A</option>
+				      			<option>教练B</option>
+				      			<option>教练C</option>
+				      			</select>
+				      </div>
+				      
+				      
+				      
+				   </div>
+				   
+					</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="suggestion_confirm">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -84,8 +164,8 @@ body {
 				<div class="row">
 
 
-					@if($hasAsked==0) <a href="/exercise/suggestion/ask"
-						class="btn btn-large btn-success" role="button">&nbsp;申请建议&nbsp; <span
+					@if($hasAsked==0) <a
+						class="btn btn-large btn-success" type="button" data-target="#mobal-suggestion" data-toggle="modal">&nbsp;申请建议&nbsp; <span
 						class="glyphicon glyphicon glyphicon-chevron-right"
 						aria-hidden="true"></span>
 					</a> @else <a href="#" class="btn btn-large btn-success disabled"
