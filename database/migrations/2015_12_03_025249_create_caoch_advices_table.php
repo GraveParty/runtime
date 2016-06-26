@@ -17,6 +17,7 @@ class CreateCaochAdvicesTable extends Migration
 			$table->integer ( 'coachid' );
 			$table->integer ( 'userid' );
 			$table->string ( 'content' );
+            $table->integer ('askid');
 			$table->timestamps ();
 		} );
     }

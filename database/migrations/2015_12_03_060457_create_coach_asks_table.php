@@ -15,6 +15,11 @@ class CreateCoachAsksTable extends Migration
         Schema::create ( 'coach_asks', function (Blueprint $table) {
 			$table->increments ( 'id' );
 			$table->integer ( 'userid' );
+            $table->integer ('coachid');
+            $table->string('title');
+            $table->string('content');
+            $table->string('kind');
+            $table->integer('state');
 			$table->timestamps ();
 		} );
     }

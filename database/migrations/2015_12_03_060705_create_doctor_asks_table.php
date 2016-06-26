@@ -15,6 +15,11 @@ class CreateDoctorAsksTable extends Migration
     	Schema::create ( 'doctor_asks', function (Blueprint $table) {
     		$table->increments ( 'id' );
     		$table->integer ( 'userid' );
+            $table->integer ('doctorid');
+            $table->string('title');
+            $table->string('content');
+            $table->string('kind');
+            $table->integer('state');
     		$table->timestamps ();
     	} );
     }

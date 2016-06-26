@@ -169,7 +169,7 @@ body {
 						class="glyphicon glyphicon glyphicon-chevron-right"
 						aria-hidden="true"></span>
 					</a> @else <a href="#" class="btn btn-large btn-success disabled"
-						role="button">&nbsp;已申请建议&nbsp; <span
+						role="button">&nbsp;等待答复&nbsp; <span
 						class="glyphicon glyphicon glyphicon-chevron-right"
 						aria-hidden="true"></span>
 					</a> @endif <br> <br> @if(count($suggestions) > 0)
@@ -181,7 +181,7 @@ body {
 								<div class="panel panel-default">
 									<!-- Default panel contents -->
 									<div class="panel-heading">
-										<b><?php echo $su->id ?></b>
+										<b><?php echo $su->title ?></b>
 
 										<button type="button"
 											class="btn btn-default btn-xs btn-success pull-right"
@@ -217,6 +217,16 @@ body {
 
 									<div class="panel-body">
 										<!-- Table -->
+										<table class="table">
+											<tr>
+												<th>标题</th>
+												<th>内容</th>
+											</tr>
+											<tr>
+												<td><?php echo $su->title ?></td>
+												<td><?php echo $su->ask_content ?></td>
+											</tr>
+										</table>
 										<table class="table">
 											<tr>
 												<th>教练</th>

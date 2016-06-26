@@ -76,12 +76,12 @@ class ExerciseController extends Controller
 	
 	public function getSuggestion()
 	{
-		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content 
-				from coach_advices join users
-				on coach_advices.coachid = users.id
-				where userid = ?', [Auth::user()->id]);
+		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content,coach_advices.askid,coach_asks.title,coach_asks.content as ask_content,coach_asks.state
+				from coach_advices join users join coach_asks
+				on coach_advices.coachid = users.id and coach_advices.askid = coach_asks.id
+				where coach_advices.userid = ?', [Auth::user()->id]);
 		
-		$hasAsked = DB::select('select * from coach_asks where userid = ?', [Auth::user()->id]);
+		$hasAsked = DB::select('select * from coach_asks where userid = ? and state = 0', [Auth::user()->id]);
 		
 		return view('exercise.suggestion',['suggestions' => $results,'hasAsked' => count($hasAsked)]);
 	}
