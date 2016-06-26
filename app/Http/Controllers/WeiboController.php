@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\NewWeiboRequest;
 use App\Weibo;
+use App\User;
+use App\UserFollow;
 
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class WeiboController extends Controller
 {
@@ -24,54 +27,63 @@ class WeiboController extends Controller
     public function index()
     {
         $weibos = Weibo::latest()->get();
-
-
-        //作者名
         $author_name = [];
-        foreach($weibos as $w){
-            $id = $w->author_id;
-            $name = DB::select('select nickname from users  where id = ?', [$id]);
-            $author_name[] = $name[0]->nickname;
-        }
-        reset($author_name);
-
-        //收藏
         $collects = [];
-        foreach($weibos as $w){
-            $wid = $w->id;
-            $cid = Auth::user()->id;
-            $count = DB::select('select * from weibo_collects  where weibo_id = ? and collector_id = ?', [$wid,$cid]);
-            if(count($count) == 0){
-                $collects[] = 0; //未收藏
-            }else{
-                $collects[] = 1; //已收藏
-            }
-        }
-
-
-        //关注
         $follows = [];
-        foreach($weibos as $w){
-            $aid = $w->author_id;
-            $fid = Auth::user()->id;
-            $count = DB::select('select * from user_follows  where coach_id = ? and follower_id = ?', [$aid,$fid]);
-            if(count($count) == 0){
-                $follows[] = 0; //未收藏
-            }else{
-                $follows[] = 1; //已收藏
+        $haveWeibo = 1;
+
+        if(count($weibos)==0){
+            $haveWeibo = 0;
+        }else{
+            //作者名
+            foreach($weibos as $w){
+                $id = $w->author_id;
+                $name = DB::select('select nickname from users  where id = ?', [$id]);
+                $author_name[] = $name[0]->nickname;
+            }
+            reset($author_name);
+
+            //收藏
+            foreach($weibos as $w){
+                $wid = $w->id;
+                $cid = Auth::user()->id;
+                $count = DB::select('select * from weibo_collects  where weibo_id = ? and collector_id = ?', [$wid,$cid]);
+                if(count($count) == 0){
+                    $collects[] = 0; //未收藏
+                }else{
+                    $collects[] = 1; //已收藏
+                }
+            }
+
+
+            //关注
+            foreach($weibos as $w){
+                $aid = $w->author_id;
+                $fid = Auth::user()->id;
+                $count = DB::select('select * from user_follows  where coach_id = ? and follower_id = ?', [$aid,$fid]);
+                if(count($count) == 0){
+                    $follows[] = 0; //未收藏
+                }else{
+                    $follows[] = 1; //已收藏
+                }
             }
         }
 
-        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows]);
+        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows,'haveWeibo' => $haveWeibo]);
     }
 
 
     public function hotWeibo(){
-        $weibos = Weibo::orderBy('collect_count', 'desc')->latest()->get();
+    $weibos = Weibo::orderBy('collect_count', 'desc')->latest()->get();
+    $author_name = [];
+    $collects = [];
+    $follows = [];
+    $haveWeibo = 1;
 
-
+    if(count($weibos)==0){
+        $haveWeibo = 0;
+    }else{
         //作者名
-        $author_name = [];
         foreach($weibos as $w){
             $id = $w->author_id;
             $name = DB::select('select nickname from users  where id = ?', [$id]);
@@ -80,7 +92,6 @@ class WeiboController extends Controller
         reset($author_name);
 
         //收藏
-        $collects = [];
         foreach($weibos as $w){
             $wid = $w->id;
             $cid = Auth::user()->id;
@@ -94,7 +105,6 @@ class WeiboController extends Controller
 
 
         //关注
-        $follows = [];
         foreach($weibos as $w){
             $aid = $w->author_id;
             $fid = Auth::user()->id;
@@ -105,15 +115,185 @@ class WeiboController extends Controller
                 $follows[] = 1; //已收藏
             }
         }
+    }
 
-        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows]);
+    return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows,'haveWeibo' => $haveWeibo]);
+
+}
+
+
+
+    public function searchWeibo($keyword){
+        $weibos = Weibo::where('title','like','%'.$keyword.'%')->latest()->get();
+        $author_name = [];
+        $collects = [];
+        $follows = [];
+        $haveWeibo = 1;
+
+        if(count($weibos)==0){
+            $haveWeibo = 0;
+        }else{
+            //作者名
+            foreach($weibos as $w){
+                $id = $w->author_id;
+                $name = DB::select('select nickname from users  where id = ?', [$id]);
+                $author_name[] = $name[0]->nickname;
+            }
+            reset($author_name);
+
+            //收藏
+            foreach($weibos as $w){
+                $wid = $w->id;
+                $cid = Auth::user()->id;
+                $count = DB::select('select * from weibo_collects  where weibo_id = ? and collector_id = ?', [$wid,$cid]);
+                if(count($count) == 0){
+                    $collects[] = 0; //未收藏
+                }else{
+                    $collects[] = 1; //已收藏
+                }
+            }
+
+
+            //关注
+            foreach($weibos as $w){
+                $aid = $w->author_id;
+                $fid = Auth::user()->id;
+                $count = DB::select('select * from user_follows  where coach_id = ? and follower_id = ?', [$aid,$fid]);
+                if(count($count) == 0){
+                    $follows[] = 0; //未收藏
+                }else{
+                    $follows[] = 1; //已收藏
+                }
+            }
+        }
+
+        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows,'haveWeibo' => $haveWeibo]);
 
     }
 
-    public function confirmCollect($id){
+    public function myCollect(){
 
-//        if(Request::ajax()){
-//            $data = Input::get('weiboid');
+//        $weibos = DB::select('select weibos.*
+//					from weibos join weibo_collects on weibos.id=weibo_collects.weibo_id
+//					where weibo_collects.collector_id = ? order by weibos.published_at DESC',[Auth::user()->id]);
+
+        $weibos = User::find(Auth::user()->id)->collectWeibos;
+
+
+        $author_name = [];
+        $collects = [];
+        $follows = [];
+        $haveWeibo = 1;
+
+        if(count($weibos)==0){
+            $haveWeibo = 0;
+        }else{
+            //作者名
+            foreach($weibos as $w){
+                $id = $w->author_id;
+                $name = DB::select('select nickname from users  where id = ?', [$id]);
+                $author_name[] = $name[0]->nickname;
+            }
+            reset($author_name);
+
+            //收藏
+            foreach($weibos as $w){
+                $wid = $w->id;
+                $cid = Auth::user()->id;
+                $count = DB::select('select * from weibo_collects  where weibo_id = ? and collector_id = ?', [$wid,$cid]);
+                if(count($count) == 0){
+                    $collects[] = 0; //未收藏
+                }else{
+                    $collects[] = 1; //已收藏
+                }
+            }
+
+
+            //关注
+            foreach($weibos as $w){
+                $aid = $w->author_id;
+                $fid = Auth::user()->id;
+                $count = DB::select('select * from user_follows  where coach_id = ? and follower_id = ?', [$aid,$fid]);
+                if(count($count) == 0){
+                    $follows[] = 0; //未收藏
+                }else{
+                    $follows[] = 1; //已收藏
+                }
+            }
+        }
+
+        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows,'haveWeibo' => $haveWeibo]);
+
+
+    }
+
+    public function myFollow(){
+
+//        $weibos = DB::select('select weibos.*
+//					from weibos join user_follows on weibos.author_id=user_follows.coach_id
+//					where user_follows.follower_id = ? order by weibos.published_at DESC',[Auth::user()->id]);
+
+        $weibos = new Collection();
+        $followed = User::find(Auth::user()->id)->followed;
+        foreach($followed as $f){
+            $w = $f->published;
+            $weibos = $weibos->merge($w);
+        }
+
+
+        $author_name = [];
+        $collects = [];
+        $follows = [];
+        $haveWeibo = 1;
+
+        if(count($weibos)==0){
+            $haveWeibo = 0;
+        }else{
+            //作者名
+            foreach($weibos as $w){
+                $id = $w->author_id;
+                $name = DB::select('select nickname from users  where id = ?', [$id]);
+                $author_name[] = $name[0]->nickname;
+            }
+            reset($author_name);
+
+            //收藏
+            foreach($weibos as $w){
+                $wid = $w->id;
+                $cid = Auth::user()->id;
+                $count = DB::select('select * from weibo_collects  where weibo_id = ? and collector_id = ?', [$wid,$cid]);
+                if(count($count) == 0){
+                    $collects[] = 0; //未收藏
+                }else{
+                    $collects[] = 1; //已收藏
+                }
+            }
+
+
+            //关注
+            foreach($weibos as $w){
+                $aid = $w->author_id;
+                $fid = Auth::user()->id;
+                $count = DB::select('select * from user_follows  where coach_id = ? and follower_id = ?', [$aid,$fid]);
+                if(count($count) == 0){
+                    $follows[] = 0; //未收藏
+                }else{
+                    $follows[] = 1; //已收藏
+                }
+            }
+        }
+
+        return view('weibo.weibo',compact('weibos'),['names' => $author_name,'collects' => $collects,'follows' => $follows,'haveWeibo' => $haveWeibo]);
+
+
+    }
+
+
+
+
+
+
+    public function confirmCollect($id){
 
         $data = $id;
         $wc = new WeiboCollect();
@@ -121,17 +301,41 @@ class WeiboController extends Controller
         $wc->collector_id = Auth::user()->id;
         $wc->save();
 
-        return "success";
-//
-//
-//        }
+        DB::update('update weibos set collect_count = collect_count+1 where id = ?', [$id]);
+        $c = DB::select('select collect_count from weibos  where id = ?', [$id]);
+        $count = $c[0]->collect_count;
+
+        return $count;
+
+
+    }
+    public function cancelCollect($id){
+        DB::delete('delete from weibo_collects where weibo_id = ? and collector_id = ?',[$id,Auth::user()->id]);
+
+
+        DB::update('update weibos set collect_count = collect_count-1 where id = ?', [$id]);
+        $c = DB::select('select collect_count from weibos  where id = ?', [$id]);
+        $count = $c[0]->collect_count;
+
+        return $count;
 
 
 
     }
-    public function cancelCollect(){
+
+    public function confirmFollow($author_id){
+
+        $uf = new UserFollow();
+        $uf->coach_id = $author_id;
+        $uf->follower_id = Auth::user()->id;
+        $uf->save();
+
+    }
 
 
+    public function cancelFollow($author_id){
+
+        DB::delete('delete from user_follows where coach_id = ? and follower_id = ?',[$author_id,Auth::user()->id]);
 
     }
 

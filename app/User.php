@@ -26,7 +26,9 @@ class User extends Model implements AuthenticatableContract,
 //     $table->rememberToken();
 //     $table->timestamps();
     
-    
+
+
+
 
     /**
      * The database table used by the model.
@@ -58,5 +60,30 @@ class User extends Model implements AuthenticatableContract,
 //     		        	'sex' => $data['sex'],
 //     		        	'type' => $data['type'],
 //     ];
-    
+
+
+
+    public function collectWeibos(){
+
+        return $this->belongsToMany('App\Weibo','weibo_collects','collector_id','weibo_id')->withTimestamps();
+    }
+
+    public function followers(){
+        return $this->belongsToMany($this,'user_follows','coach_id','follower_id')->withTimestamps();
+    }
+
+
+    public function followed(){
+        return $this->belongsToMany($this,'user_follows','follower_id','coach_id')->withTimestamps();
+    }
+
+
+    public function followedWeibos(){
+        return $this->hasManyThrough('App\Weibo','App\UserFollow','follower_id','author_id','');
+    }
+
+    public function published(){
+        return $this->hasMany('App\Weibo','author_id');
+    }
+
 }
