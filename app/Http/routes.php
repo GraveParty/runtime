@@ -49,6 +49,7 @@ use App\Http\Controllers\HomeController;
 	Route::post('/exercise/history', 'ExerciseController@postHistory');
 	Route::get('/exercise/chart/{year?}', 'ExerciseController@getChart');
 	Route::post('/exercise/chart', 'ExerciseController@postChart');
+	Route::get('/exercise/coachlist','ExerciseController@getCoachList');
 	
 	//健康
 	Route::get('/health', 'HealthController@index');
@@ -59,6 +60,7 @@ use App\Http\Controllers\HomeController;
 	Route::get('/health/sleep', 'HealthController@getSleep');
 	Route::post('/health/sleep', 'HealthController@postSleep');
 	Route::get('/health/rate', 'HealthController@getRate');
+
 	
 	
 	//活动
