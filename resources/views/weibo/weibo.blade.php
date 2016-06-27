@@ -9,7 +9,7 @@
     <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
     <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
     {{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet" media="screen">--}}
-    {{--<link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet" media="screen">--}}
+    <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet" media="screen">
     <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
     {{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet" media="screen">--}}
 
@@ -205,7 +205,7 @@
             @else
                 @for($i=0;$i<count($weibos);$i++)
                     <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-                        <div class="card">
+                        <div class="card card-local">
                             <div class="card-header">
                                 <h3 class="weibo-title" style="display:inline">
                                     {{ $weibos[$i]->title }}

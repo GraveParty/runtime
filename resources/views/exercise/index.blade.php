@@ -21,7 +21,7 @@
 
 	<style>
 		body {
-			/*padding-top: 80px;*/
+			padding-top: 40px;
 		}
 	</style>
 
@@ -173,16 +173,62 @@
 			{{--</ul>--}}
 		{{--</div>--}}
 		<!-- main content -->
-		<div
-				class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
 
-				<div class="panel panel-default panel-success">
+				<div class="col-md-4">
+					<div class="card card-inverse card-success">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-2">
+								<i class="icon-calendar"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $days ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">已运动天数</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="55" max="100"></progress>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card  card-inverse card-success">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-2">
+								<i class="icon-fire"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $calories ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">消耗卡路里</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="75" max="100"></progress>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card  card-inverse card-success">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-2">
+								<i class="icon-compass"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $km ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">累计里程公里数</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="45" max="100"></progress>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="row">
+
+				<div class="card card-local">
 					<!-- Default panel contents -->
-					<div class="panel-heading">
+					<div class="card-header">
 						<b>本月运动情况</b>
 					</div>
-					<div class="panel-body">
+					<div class="card-block">
 
 						<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 						<div id="goal" style="height: 400px"></div>
@@ -294,6 +340,7 @@
 					</div>
 				</div>
 
+			<!--
 			</div>
 			<hr />
 			<div class="caption">
@@ -319,6 +366,8 @@
 				累积里程<?php echo $km ?>公里
 			</div>
 			<hr />
+
+			-->
 
 
 

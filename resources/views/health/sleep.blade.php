@@ -183,14 +183,14 @@
         {{--</div>--}}
         <!-- main content -->
         <div
-                class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                class="col-md-10 col-md-offset-1">
 
-            <div class="panel panel-default panel-success">
+            <div class="card card-local">
                 <!-- Default panel contents -->
-                <div class="panel-heading">
+                <div class="card-header">
                     <b>近期睡眠曲线</b>
                 </div>
-                <div id="sleep" style="height: 400px"></div>
+                <div class="card-block" id="sleep" style="height: 400px"></div>
                 <script src="/build/dist/echarts-all.js"></script>
                 <script type="text/javascript">
                     // 基于准备好的dom，初始化echarts图表
@@ -264,11 +264,11 @@
             </div>
 
 
-            <div class="panel panel-default panel-success">
-                <div class="panel-heading">
+            <div class="card card-local">
+                <div class="card-header">
                     <b>睡眠总时长曲线</b>
                 </div>
-                <div id="total" style="height: 400px"></div>
+                <div class="card-block" id="total" style="height: 400px"></div>
                 <script src="../../echarts-2.2.7/build/dist/echarts-all.js"></script>
                 <script type="text/javascript">
                     // 基于准备好的dom，初始化echarts图表
@@ -329,13 +329,13 @@
                 </script>
             </div>
 
-            <div class="panel panel-default panel-success">
+            <div class="card card-local">
                 <!-- Default panel contents -->
-                <div class="panel-heading">
+                <div class="card-header">
                     <b>详细睡眠信息</b>
                 </div>
 
-                <div class="panel-body">
+                <div class="card-block">
                     {!! Form::open(['url' => '/health/sleep', 'class' =>
                     'form-inline', 'role' => 'form']) !!}
                     <div class="form-group">
@@ -374,7 +374,7 @@
                                 <td>{{ round($in->awake/3600,1) }}</td>
                             </tr>
                         @endforeach @else
-                            <h1>无睡眠数据</h1>
+                            <p class="text-mute">无睡眠数据</p>
                         @endif
                     </table>
 

@@ -186,15 +186,15 @@ body {
 			{{--</div>--}}
 			<!-- main content -->
 			<div
-				class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+				class="col-md-10 col-md-offset-1">
 
 
-				<div class="panel panel-default panel-success">
+				<div class="card card-local">
 					<!-- Default panel contents -->
-					<div class="panel-heading">
+					<div class="card-header">
 						<b>心率监测</b>
 					</div>
-					<div id="heart" style="height: 400px"></div>
+					<div class="card-block" id="heart" style="height: 450px"></div>
 					<script src="/build/dist/echarts-all.js"></script>
 					<script type="text/javascript">
                     // 基于准备好的dom，初始化echarts图表

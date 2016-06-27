@@ -111,44 +111,55 @@ body {
 	<div class="row">
 
 		<div
-			class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+			class="col-md-10 col-md-offset-1">
 			<div class="row">
-				<div class="caption text-center">
-					<h3>你加入RunTime以来</h3>
+				<div class="card card-local">
+					<div class="card-block p-a-0 clearfix">
+						<i class="fa fa-moon-o bg-success p-a-1 font-2xl m-r-1 pull-left"></i>
+						<div class="h5 text-success m-b-0 p-t-1">你加入RunTime以来……</div>
+					</div>
 				</div>
 			</div>
-			<br> <br> <br>
 			<div class="row">
-				<div class="info col-xs-4 col-sm-4 col-md-4">
-					<div>
-						<a href="#" class="img-circle"> <img src="image/time_green.png"
-							alt="天">
-						</a>
+				<div class="col-md-11 col-md-offset-1">
+					<div class="card card-inverse card-info">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-0">
+								<i class="icon-calendar"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $days ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">已运动天数</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="55" max="100"></progress>
+						</div>
 					</div>
-					<div>
-						<br>
-						<p class="info">已运动<?php echo $days ?>天</p>
-					</div>
-
 				</div>
-				<div class="info col-xs-4 col-sm-4 col-md-4">
-					<a href="#" class="img-circle"> <img src="image/burn_green.png"
-						alt="大卡">
-					</a>
-                    <div>
-						<br>
-						<p class="info">共燃烧<?php echo $calories ?>大卡</p>
+
+				<div class="col-md-11 col-md-offset-1">
+					<div class="card  card-inverse card-warning">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-0">
+								<i class="icon-fire"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $calories ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">消耗卡路里</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="75" max="100"></progress>
+						</div>
 					</div>
-                </div>
-				<div class="info col-xs-4 col-sm-4 col-md-4">
-					<a href="#" class="img-circle"> <img src="image/run_green.png"
-						alt="公里">
-					</a>
-                    <div>
-						<br>
-						<p class="info"> 累积里程<?php echo $km ?>公里</p>
+				</div>
+
+				<div class="col-md-11 col-md-offset-1">
+					<div class="card  card-inverse card-success">
+						<div class="card-block">
+							<div class="h1 text-muted text-xs-right m-b-0">
+								<i class="icon-compass"></i>
+							</div>
+							<div class="h4 m-b-0"><?php echo $km ?></div>
+							<small class="text-muted text-uppercase font-weight-bold">累计里程公里数</small>
+							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="45" max="100"></progress>
+						</div>
 					</div>
-                </div>
+				</div>
+
 
 
 			</div>

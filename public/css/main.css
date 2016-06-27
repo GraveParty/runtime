@@ -9,6 +9,23 @@
     z-index: 0;
 }
 
+.card-local {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card-local .card-header{
+    background-color: #d0e9c6;
+
+}
+
+
+.card-local .card-block{
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
 
 
 

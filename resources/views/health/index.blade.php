@@ -9,8 +9,7 @@
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
 {{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet" media="screen">--}}
-<link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
-	media="screen">
+<link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet" media="screen">
 	<link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 
 <script type="text/javascript"
@@ -187,15 +186,15 @@ body {
 			{{--</div>--}}
 			<!-- main content -->
 			<div
-				class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+				class="col-md-10 col-md-offset-1">
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-						<div class="panel panel-default panel-success"style="height: 330px">
+						<div class="card card-local"style="height: 400px">
 							<!-- Default panel contents -->
-							<div class="panel-heading">
+							<div class="card-header">
 								<b>当前情况</b>
 							</div>
-							<div class="panel-body">
+							<div class="card-block">
 								<p>当前身高：<?php echo $height ?>cm</p>
 								<p>当前体重：<?php echo $weight ?>kg</p>
 								<p>目标身高：<?php echo $goalheight ?>cm</p>
@@ -205,12 +204,12 @@ body {
 						</div>
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-						<div class="panel panel-default panel-success"style="height: 330px">
+						<div class="card card-local "style="height: 400px">
 							<!-- Default panel contents -->
-							<div class="panel-heading">
+							<div class="card-header">
 								<b>当前BMI</b>
 							</div>
-							<div class="panel-body">
+							<div class="card-block">
 							<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 							<div id="bmi" style="height: 300px"></div>
 							<!-- ECharts单文件引入 -->
@@ -351,12 +350,12 @@ body {
 
 
 
-				<div class="panel panel-default panel-success">
+				<div class="card card-local">
 					<!-- Default panel contents -->
-					<div class="panel-heading">
+					<div class="card-header">
 						<b>体重变化</b>
 					</div>
-					<div class="panel-body">
+					<div class="card-block">
 
 
 
@@ -429,24 +428,24 @@ body {
 				</div>
 
 
-				<div class="panel panel-default panel-success">
+				<div class="card card-local">
 					<!-- Default panel contents -->
-					<div class="panel-heading">
+					<div class="card-header">
 						<b>目标设置</b> <a href="javascript:form.submit();" type="button"
-							class="btn btn-default btn-xs btn-success pull-right"> <span
-							class="glyphicon glyphicon-star" aria-hidden="true"></span> 保存
+							class="btn btn-sm btn-success pull-right">
+							<i class="fa fa-magic"></i>保存
 						</a>
 					</div>
 
-					<div class="panel-body">
+					<div class="card-block">
 						<form name="form" class="form-horizontal" method="POST"
 							action="/health">
 
 							{!! csrf_field() !!}
-							<div class="form-group">
-								<label for="inputHeight" class="col-sm-2 control-label">身高</label>
+							<div class="form-group row">
+								<label for="inputHeight" class="col-md-1 col-md-offset-1 form-control-label">身高</label>
 
-								<div class="col-sm-8 col-md-6 col-lg-8">
+								<div class="col-md-10">
 									<div class="input-group">
 										<input name="height" type="text" class="form-control"
 											id="inputHeight" placeholder="请输入目标身高"
@@ -455,10 +454,10 @@ body {
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="inputWeight" class="col-sm-2 control-label">体重</label>
+							<div class="form-group row">
+								<label for="inputWeight" class="col-md-1 col-md-offset-1 form-control-label">体重</label>
 
-								<div class="col-sm-8 col-md-6 col-lg-8">
+								<div class="col-md-10">
 									<div class="input-group">
 										<input name="weight" type="text" class="form-control"
 											id="inputWeight" placeholder="请输入目标体重"
