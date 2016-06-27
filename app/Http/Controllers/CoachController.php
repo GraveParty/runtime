@@ -46,13 +46,18 @@ class CoachController extends Controller {
 				$rate [] = '暂无数据';
 			}
 		}
+		$oneDayRecipe = array(0=>"主题：针对中年人<br/>早餐：西红柿炒鸡蛋<br/>午餐：红烧肉<br/>晚餐：不吃了",
+				1=>"主题：针对老年人<br/>早餐：牛奶豆浆<br/>午餐：面包炒蛋<br/>晚餐：披萨",
+				2=>"主题：针对青年人<br/>早餐：乐视薯片<br/>午餐：牛肉棒<br/>晚餐：饺子");
+// 		$oneDayRecipe = [ ];
 		
 		return view ( 'coach.export', [ 
+				'oneDayRecipes' => $oneDayRecipe,
 				'ids' => $id,
 				'nicknames' => $nickname,
 				'bmis' => $bmi,
 				'bodyfats' => $bodyfat,
-				'rates' => $rate 
+				'rates' => $rate
 		] );
 	}
 	public function postAdviceIn(AdviceRequest $request) {
