@@ -22,6 +22,7 @@
 	<script type="text/javascript"
 			src="{{ URL::asset('/') }}js/bootstrap.js"></script>
 
+
 	<script>
 		function verticalAlignMiddle()
 		{
