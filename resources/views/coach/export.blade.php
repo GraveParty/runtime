@@ -12,13 +12,24 @@
 	media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
+<link href="http://localhost:8000/css/style.css" rel="stylesheet"
+	media="screen">
+<link href="http://localhost:8000/css/select2.min.css" rel="stylesheet"
+	media="screen">
 
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/bootstrap.js"></script>
-
-<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
+<script src="http://localhost:8000/js/app.js"></script>
+<!-- Plugins and scripts required by this views -->
+<script src="http://localhost:8000/js/libs/jquery.maskedinput.min.js"></script>
+<script src="http://localhost:8000/js/libs/moment.min.js"></script>
+<script src="http://localhost:8000/js/libs/select2.min.js"></script>
+<script src="http://localhost:8000/js/libs/daterangepicker.min.js"></script>
+<!-- Custom scripts required by this view -->
+<script src="http://localhost:8000/js/views/forms.js"></script>
+<script type="text/javascript" src="http://localhost:8000/js/Chart.js"></script>
 
 
 <style>
@@ -64,7 +75,7 @@ body {
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<div class="sidebar col-md-2 ">
+			<div class="col-md-2 ">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="{{ URL::to('/coach') }}">导入建议</a></li>
 					<li role="presentation" class="active"><a
@@ -74,82 +85,86 @@ body {
 			<!-- sidebar -->
 
 			<!-- main content -->
-			<div class="panel panel-default panel-success col-md-9" id="list">
-				<!-- Default panel contents -->
-				<div class="panel-heading">
-					<b>申请用户</b>
-				</div>
-				<div class="panel-body">
-					<table class="table table-hover">
-						<tr>
-							<th>问题</th>
-							<th>用户</th>
-							<th>操作</th>
-						</tr>
-						@if(count($ids)>0) @for($i=0;$i < count($ids);$i++)
-						<tr align="left">
-							<td><a style="cursor: pointer;" tabindex="0" role="button"
-								data-toggle="popover" data-trigger="focus" title="问题详情"
-								data-content="总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...">每天晚上很难睡着怎么办？</a></td>
-							<td><a style="cursor: pointer;" tabindex="0" role="button"
-								data-toggle="popover" data-trigger="focus" title="用户信息"
-								data-content="一个精神有一些问题的人，需要关爱">宗羿</a></td>
-							<td><a style="cursor: pointer;" onclick="reply()">回复</a></td>
-						</tr>
-						@endfor @endif
-					</table>
+			<div class="col-md-10">
+				<div class="card" id="list">
+					<div class="card-header">建议申请</div>
+					<div class="card-block">
+						<table class="table table-hover">
+							<tr>
+								<th>问题</th>
+								<th>用户</th>
+								<th>操作</th>
+							</tr>
+							@if(count($ids)>0) @for($i=0;$i < count($ids);$i++)
+							<tr align="left">
+								<td><a style="cursor: pointer;" tabindex="0" role="button"
+									data-toggle="popover" data-trigger="focus" title="问题详情"
+									data-content="总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...">每天晚上很难睡着怎么办？</a></td>
+								<td><a style="cursor: pointer;" tabindex="0" role="button"
+									data-toggle="popover" data-trigger="focus" title="用户信息"
+									data-content="一个精神有一些问题的人，需要关爱">宗羿</a></td>
+								<td><a style="cursor: pointer;" onclick="reply()">回复</a></td>
+							</tr>
+							@endfor @endif
+						</table>
+					</div>
 				</div>
 			</div>
 
 			<div id="reply" style="display: none;" class="col-md-7">
-				<div class="alert alert-info alert-dismissible fade in" role="alert">
-					<div>
-						<strong>问题：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
-					</div>
-					<div>
-						<strong>用户信息：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
-					</div>
-				</div>
-				<div class="alert alert-success alert-dismissible fade in"
-					role="alert">
-					输入您的<strong> 回复 </strong>，也可以添加<strong> 食谱 </strong>或者<strong> 健身建议
-					</strong>
-					<textarea class="form-control" rows="6" style="resize: none;"></textarea>
-				</div>
-
-				<div id="planResult"></div>
-
-				<div class="alert alert-info col-md-4" role="alert">
-					<a class="btn btn-info" role="button" data-toggle="modal"
-						data-target="#oneDayRecipe" onclick="setOneDayRecipeModal('0')">
-						添加 </a> 一个<strong> 一天 </strong>的<strong> 食谱 </strong>
-				</div>
-				<div class="alert alert-info col-md-4" role="alert">
-					<a class="btn btn-info" role="button" data-toggle="modal"
-						data-target="#oneWeekRecipe" onclick="setOneWeekRecipeModal('0')">
-						添加 </a> 一个<strong> 一周 </strong>的<strong> 食谱 </strong>
-				</div>
-				<div class="alert alert-info col-md-4" role="alert">
-					<a class="btn btn-info" role="button" data-toggle="modal"
-						data-target="#exercisePlan" onclick="setExerciseItem('0')"> 添加 </a>
-					一条<strong> 健身建议 </strong>
-				</div>
-
-				<div class="modal fade" id="oneDayRecipe" tabindex="-1"
-					role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title">
-									<span id="oneDayRecipeTitle" style="display: none;"></span>一天的食谱
-								</h4>
+				<form class="form" method="POST" action="/coach/reply">
+					{!! csrf_field() !!}
+					<div class="card">
+						<div class="card-header">问题描述/用户信息</div>
+						<div class="card-block">
+							<div>
+								<strong>问题：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
 							</div>
-							<div class="modal-body">
-								<form>
+							<div>
+								<strong>用户信息：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							输入您的<strong> 回复 </strong>，也可以添加<strong> 食谱 </strong>或者<strong>
+								健身建议 </strong>
+						</div>
+						<div class="card-block">
+							<textarea class="form-control" rows="6" style="resize: none;"
+								name="replyArea"></textarea>
+							<input type="hidden" name="oneDayRecipesInput"
+								id="oneDayRecipesInput"> <input type="hidden"
+								name="oneWeekRecipesInput" id="oneWeekRecipesInput"> <input
+								type="hidden" name="exerciseItemsInput" id="exerciseItemsInput">
+						</div>
+					</div>
+
+					<div id="planResult"></div>
+
+					<div class="card">
+						<div class="card-block">
+							<button type="button" class="btn btn-info-outline btn btn-block"
+								onclick="customSubmit()">提交</button>
+							<button type="button" class="btn btn-secondary btn btn-block"
+								onclick="reply()">取消</button>
+						</div>
+					</div>
+
+					<div class="modal fade" id="oneDayRecipe" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">
+										<span id="oneDayRecipeTitle" style="display: none;"></span>一天的食谱
+									</h4>
+								</div>
+								<div class="modal-body">
 									<div class="form-group">
 										<div class="input-group">
 											<div class="input-group-addon">主题</div>
@@ -175,34 +190,32 @@ body {
 											<input type="text" class="form-control" id="oneDayDinner">
 										</div>
 									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal" id="oneDayRecipeModalConfirm"
-									onclick="oneDayRecipe()">添加</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-primary"
+										data-dismiss="modal" id="oneDayRecipeModalConfirm"
+										onclick="oneDayRecipe()">添加</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="modal fade" id="oneWeekRecipe" tabindex="-1"
-					role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title">
-									<span id="oneWeekRecipeTitle" style="display: none;"></span>一周的食谱
-								</h4>
-							</div>
-							<div class="modal-body">
-								<form>
+					<div class="modal fade" id="oneWeekRecipe" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">
+										<span id="oneWeekRecipeTitle" style="display: none;"></span>一周的食谱
+									</h4>
+								</div>
+								<div class="modal-body">
 									<div class="form-group">
 										<div class="input-group">
 											<div class="input-group-addon">主题</div>
@@ -281,42 +294,41 @@ body {
 												class="form-control" id="sundayDinner" placeholder="晚餐">
 										</div>
 									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal" id="oneWeekRecipeModalConfirm"
-									onclick="oneWeekRecipe()">添加</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-primary"
+										data-dismiss="modal" id="oneWeekRecipeModalConfirm"
+										onclick="oneWeekRecipe()">添加</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="modal fade" id="exercisePlan" tabindex="-1"
-					role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title">
-									<span id="exercisePlanTitle" style="display: none;"></span>一条健身建议
-								</h4>
-							</div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-md-2">运动日期</div>
-									<div class="col-md-2">时间段</div>
-									<div class="col-md-2">具体运动</div>
-									<div class="col-md-2">运动组数</div>
-									<div class="col-md-2">运动方式（单位）</div>
+					<div class="modal fade" id="exercisePlan" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">
+										<span id="exercisePlanTitle" style="display: none;"></span>一条健身建议
+									</h4>
 								</div>
-								<div class="row">
-									<form id="exerciseItem">
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-md-2">运动日期</div>
+										<div class="col-md-2">时间段</div>
+										<div class="col-md-2">具体运动</div>
+										<div class="col-md-2">运动组数</div>
+										<div class="col-md-2">运动量</div>
+										<div class="col-md-2">运动单位</div>
+									</div>
+									<div class="row">
 										<div class="col-md-2">
 											<select class="form-control" id="exerciseDate"
 												onchange="exerciseHideOrShow(this.id)">
@@ -363,27 +375,25 @@ body {
 												<div class="input-group-addon">组</div>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-2">
 											<div class="input-group">
 												<input type="number" class="form-control" placeholder="量"
 													id="exerciseValue">
-												<div class="input-group-addon">
-													<select id="exerciseUnit"
-														onchange="exerciseHideOrShow(this.id)">
-														<option>米</option>
-														<option>千米</option>
-														<option>个</option>
-														<option>分钟</option>
-														<option>小时</option>
-														<option>自定义</option>
-													</select>
-												</div>
 											</div>
 										</div>
-									</form>
-								</div>
-								<div class="row">
-									<form>
+										<div class="col-md-2">
+											<select class="form-control" id="exerciseUnit"
+												onchange="exerciseHideOrShow(this.id)">
+												<option>米</option>
+												<option>千米</option>
+												<option>个</option>
+												<option>分钟</option>
+												<option>小时</option>
+												<option>自定义</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
 										<div class="col-md-2">
 											<input type="text" class="form-control" placeholder="自定义日期"
 												id="customExerciseDate" style="display: none;">
@@ -401,94 +411,276 @@ body {
 											<input type="text" class="form-control" placeholder="单位"
 												id="customExerciseUnit" style="display: none;">
 										</div>
-									</form>
+									</div>
 								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal" id="exercisePlanConfirmButton"
-									onclick="oneExerciseItem()">添加</button>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-primary"
+										data-dismiss="modal" id="exercisePlanConfirmButton"
+										onclick="oneExerciseItem()">添加</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+
+				</form>
 			</div>
 
 
 			<!-- main content -->
 			<div id="myReply" class="col-md-3" style="display: none;">
-				<div class="alert alert-info" role="alert"
-					style="height: 300px; overflow: auto;">
-					<div class="panel-heading">
-						<b>我回复过的食谱</b>
+				<div class="card">
+					<div class="card-header">功能区</div>
+					<div class="card-block">
+						<a class="btn btn-info-outline btn btn-block" role="button"
+							data-toggle="modal" data-target="#oneDayRecipe"
+							onclick="setOneDayRecipeModal('-1')"> <strong>添加</strong>一个<strong>
+								一天 </strong>的<strong> 食谱 </strong></a> <a
+							class="btn btn-info-outline btn btn-block" role="button"
+							data-toggle="modal" data-target="#oneWeekRecipe"
+							onclick="setOneWeekRecipeModal('-1')"> <strong>添加</strong>一个<strong>
+								一周 </strong>的<strong> 食谱 </strong></a> <a
+							class="btn btn-info-outline btn btn-block" role="button"
+							data-toggle="modal" data-target="#exercisePlan"
+							onclick="setExerciseItem('-1')"> <strong>添加</strong>一条<strong>
+								健身建议 </strong>
+						</a>
 					</div>
-					<table class="table table-hover">
-						<tr>
-							<th>食谱</th>
-							<th>操作</th>
-						</tr>
-						@if(count($oneDayRecipes)>0) @for($i=0;$i <
-						count($oneDayRecipes);$i++)
-						<tr align="left">
-							<td><a style="cursor: pointer;" tabindex="0" role="button"
-								data-placement="left" data-toggle="popover" data-trigger="focus"
-								title="一天食谱" data-content="<?php echo $oneDayRecipes[$i] ?>" data-html="true">一天食谱——<?php echo explode("<br/>", $oneDayRecipes[$i])[0] ?></a></td>
-							<td><a style="cursor: pointer;" id="<?php echo $oneDayRecipes[$i] ?>" onclick="addOneDayRecipeFromHistory(this.id)">添加</a></td>
-						</tr>
-						@endfor @endif
-					</table>
+				</div>
+				<div class="card" style="height: 300px; overflow: auto;">
+					<div class="card-header">我回复过的食谱</div>
+					<div class="card-block">
+						<table class="table table-hover">
+							<tr>
+								<th>食谱</th>
+								<th>操作</th>
+							</tr>
+							@if(count($oneDayRecipes)>0) @for($i=0;$i <
+							count($oneDayRecipes);$i++)
+							<tr align="left">
+								<td><a style="cursor: pointer;" tabindex="0" role="button"
+									data-placement="bottom" data-toggle="popover"
+									data-trigger="focus" title="一天食谱"
+									data-content="<?php echo $oneDayRecipes[$i]; ?>"
+									data-html="true">一天——<?php echo explode("<br/>", $oneDayRecipes[$i])[0]; ?></a></td>
+								<td><a style="cursor: pointer;"
+									id="<?php echo $oneDayRecipes[$i]; ?>"
+									onclick="addOneDayRecipeFromHistory(this.id)">添加</a></td>
+							</tr>
+							@endfor @endif
+							<tr></tr>
+							@if(count($oneWeekRecipes)>0) @for($i=0;$i <
+							count($oneWeekRecipes);$i++)
+							<tr align="left">
+								<td><a style="cursor: pointer;" tabindex="0" role="button"
+									data-placement="bottom" data-toggle="popover"
+									data-trigger="focus" title="一周食谱"
+									data-content="<?php echo $oneWeekRecipes[$i]; ?>"
+									data-html="true">一周——<?php echo explode("<br/>", $oneWeekRecipes[$i])[0]; ?></a></td>
+								<td><a style="cursor: pointer;"
+									id="<?php echo $oneWeekRecipes[$i]; ?>"
+									onclick="addOneWeekRecipeFromHistory(this.id)">添加</a></td>
+							</tr>
+							@endfor @endif
+						</table>
+					</div>
 				</div>
 
-				<div class="alert alert-info" role="alert"
-					style="height: 300px; overflow: auto;">
-					<div class="panel-heading">
-						<b>我回复过的健身建议</b>
+				<div class="card" style="height: 300px; overflow: auto;">
+					<div class="card-header">我回复过的健身建议</div>
+					<div class="card-block">
+						<table class="table table-hover">
+							<tr>
+								<th>建议</th>
+								<th>操作</th>
+							</tr>
+							@if(count($exerciseItems)>0) @for($i=0;$i <
+							count($exerciseItems);$i++)
+							<tr align="left">
+								<td><a style="cursor: pointer;" tabindex="0" role="button"
+									data-placement="right" data-toggle="popover"
+									data-trigger="focus" title="健身建议"
+									data-content="<?php echo str_replace(' ','',$exerciseItems[$i]); ?>"><?php echo explode(" ", $exerciseItems[$i])[2]; ?></a></td>
+								<td><a style="cursor: pointer;"
+									id="<?php echo $exerciseItems[$i]; ?>"
+									onclick="addExerciseItemFromHistory(this.id)">添加</a></td>
+							</tr>
+							@endfor @endif
+						</table>
 					</div>
-					<table class="table table-hover">
-						<tr>
-							<th>建议</th>
-							<th>操作</th>
-						</tr>
-						@if(count($ids)>0) @for($i=0;$i < 10;$i++)
-						<tr align="left">
-							<td><a style="cursor: pointer;" tabindex="0" role="button"
-								data-placement="left" data-toggle="popover" data-trigger="focus"
-								title="问题详情"
-								data-content="总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...">每天晚上很难睡着怎么办？</a></td>
-							<td><a style="cursor: pointer;" onclick="reply()">添加</a></td>
-						</tr>
-						@endfor @endif
-					</table>
 				</div>
 			</div>
 		</div>
 
 	</div>
 	<script>
-	  var index = 1;
+	  var index = 0;
+	  var array = new Array();
 	  
       $(function () {
         $('[data-toggle="popover"]').popover()
       })
       
+      function customSubmit() {
+          for(var i = 0;i < array.length; i++){
+              if(array[i] == "oneDayRecipe") {
+            	  var oneDaySubject = document.getElementById("oneDaySubjectAdded" + i).innerText;
+            	  var oneDayBreakfast = document.getElementById("oneDayBreakfastAdded" + i).innerText;
+            	  var oneDayLunch = document.getElementById("oneDayLunchAdded" + i).innerText;
+            	  var oneDayDinner = document.getElementById("oneDayDinnerAdded" + i).innerText;
+            	  
+            	  document.getElementById("oneDayRecipesInput").value += "主题：" + oneDaySubject + "<br/>早餐：" + oneDayBreakfast 
+            	  	+ "<br/>午餐：" + oneDayLunch + "<br/>晚餐：" + oneDayDinner +";";
+              } else if(array[i] == "oneWeekRecipe") {
+            	  var oneWeekSubject = document.getElementById("oneWeekSubjectAdded" + i).innerText;
+            	  var mondayBreakfast = document.getElementById("mondayBreakfastAdded" + i).innerText;
+            	  var mondayLunch = document.getElementById("mondayLunchAdded" + i).innerText;
+            	  var mondayDinner = document.getElementById("mondayDinnerAdded" + i).innerText;
+            	  var tuesdayBreakfast = document.getElementById("tuesdayBreakfastAdded" + i).innerText;
+            	  var tuesdayLunch = document.getElementById("tuesdayLunchAdded" + i).innerText;
+            	  var tuesdayDinner = document.getElementById("tuesdayDinnerAdded" + i).innerText;
+            	  var wednesdayBreakfast = document.getElementById("wednesdayBreakfastAdded" + i).innerText;
+            	  var wednesdayLunch = document.getElementById("wednesdayLunchAdded" + i).innerText;
+            	  var wednesdayDinner = document.getElementById("wednesdayDinnerAdded" + i).innerText;
+            	  var thursdayBreakfast = document.getElementById("thursdayBreakfastAdded" + i).innerText;
+            	  var thursdayLunch = document.getElementById("thursdayLunchAdded" + i).innerText;
+            	  var thursdayDinner = document.getElementById("thursdayDinnerAdded" + i).innerText;
+            	  var fridayBreakfast = document.getElementById("fridayBreakfastAdded" + i).innerText;
+            	  var fridayLunch = document.getElementById("fridayLunchAdded" + i).innerText;
+            	  var fridayDinner = document.getElementById("fridayDinnerAdded" + i).innerText;
+            	  var saturdayBreakfast = document.getElementById("saturdayBreakfastAdded" + i).innerText;
+            	  var saturdayLunch = document.getElementById("saturdayLunchAdded" + i).innerText;
+            	  var saturdayDinner = document.getElementById("saturdayDinnerAdded" + i).innerText;
+            	  var sundayBreakfast = document.getElementById("sundayBreakfastAdded" + i).innerText;
+            	  var sundayLunch = document.getElementById("sundayLunchAdded" + i).innerText;
+            	  var sundayDinner = document.getElementById("sundayDinnerAdded" + i).innerText;
+
+            	  document.getElementById("oneWeekRecipesInput").value += "主题：" + oneWeekSubject + "<br/>周一：<br/>早餐：" + mondayBreakfast + "<br/>午餐：" + mondayLunch + "<br/>晚餐：" + mondayDinner
+            	  	+ "<br/>周二：<br/>早餐：" + tuesdayBreakfast + "<br/>午餐：" + tuesdayLunch + "<br/>晚餐：" + tuesdayDinner
+            	  	+ "<br/>周三：<br/>早餐：" + wednesdayBreakfast + "<br/>午餐：" + wednesdayLunch + "<br/>晚餐：" + wednesdayDinner
+            	  	+ "<br/>周四：<br/>早餐：" + thursdayBreakfast + "<br/>午餐：" + thursdayLunch + "<br/>晚餐：" + thursdayDinner
+            	  	+ "<br/>周五：<br/>早餐：" + fridayBreakfast + "<br/>午餐：" + fridayLunch + "<br/>晚餐：" + fridayDinner
+            	  	+ "<br/>周六：<br/>早餐：" + saturdayBreakfast + "<br/>午餐：" + saturdayLunch + "<br/>晚餐：" + saturdayDinner
+            	  	+ "<br/>周日：<br/>早餐：" + sundayBreakfast + "<br/>午餐：" + sundayLunch + "<br/>晚餐：" + sundayDinner + ";";
+              } else if (array[i] == "oneExerciseItem") {
+            	  var exerciseDate = document.getElementById("exerciseDateAdded" + i).innerText;
+            	  var exerciseTime = document.getElementById("exerciseTimeAdded" + i).innerText;
+            	  var exerciseName = document.getElementById("exerciseNameAdded" + i).innerText;
+            	  var exerciseGroup = document.getElementById("exerciseGroupAdded" + i).innerText;
+            	  var exerciseValue = document.getElementById("exerciseValueAdded" + i).innerText;
+            	  var exerciseUnit = document.getElementById("exerciseUnitAdded" + i).innerText;
+
+            	  document.getElementById("exerciseItemsInput").value += exerciseDate +" "+ exerciseTime +" "+ exerciseName +" "+ exerciseGroup + " 组，每组 " + exerciseValue +" "+ exerciseUnit + ";";
+              }
+          };
+          
+          var form = document.getElementById("form");
+          form.submit();
+      }
+
+      function addExerciseItemFromHistory(id) {
+    	  var items = id.split(" ");
+
+    	  var planResult = document.getElementById("planResult");
+    	  planResult.innerHTML += 
+        	  "<div class='card'>"
+        	  + "<div class='card-header'>"
+        	  + "一条健身建议"
+        	  + "<div class='card-actions'>"
+        	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+        	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#exercisePlan' id='" + index + "' onclick='setExerciseItem(this.id)'>修改</button>"
+        	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+        	  + "</div></div>"
+        	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
+        	  + "<span id='exerciseDateAdded" + index + "'>" + items[0] + "</span>"
+        	  + "<span id='exerciseTimeAdded" + index + "'>" + items[1] + "</span>"
+        	  + "<span id='exerciseNameAdded" + index + "'>" + items[2] + "</span>"
+        	  + "<span id='exerciseGroupAdded" + index + "'>" + items[3] + "</span>组，每组"
+        	  + "<span id='exerciseValueAdded" + index + "'>" + items[5] + "</span>"
+        	  + "<span id='exerciseUnitAdded" + index + "'>" + items[6] + "</span>"
+        	  +"</div></div>";
+
+    	  array[index] = "oneExerciseItem";
+    	  index ++ ;
+      }
+      
       function addOneDayRecipeFromHistory(id) {
+    	  var items = id.split("<br/>");
+          
+    	  var planResult = document.getElementById("planResult");
+    	  planResult.innerHTML += 
+    		  "<div class='card'>"
+        	  + "<div class='card-header'>"
+        	  + "一条一天的食谱"
+        	  + "<div class='card-actions'>"
+        	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneDayRecipe' id='" + index + "' onclick='setOneDayRecipeModal(this.id)'>修改</button>"
+        	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+        	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+        	  + "</div></div>"
+        	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
+        	  + "<strong>主题： </strong> <span id='oneDaySubjectAdded" + index + "'>" + items[0].split("：")[1] + "</span>"
+        	  + "<br /><strong>早餐： </strong> <span id='oneDayBreakfastAdded" + index + "'>" + items[1].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='oneDayLunchAdded" + index + "'>" + items[2].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='oneDayDinnerAdded" + index + "'>" + items[3].split("：")[1] + "</span>"
+        	  +"</div></div>";
+
+          array[index] = "oneDayRecipe";
+    	  index ++ ;
+      }
+
+      function addOneWeekRecipeFromHistory(id) {
     	  var items = id.split("<br/>"); 
           
     	  var planResult = document.getElementById("planResult");
     	  planResult.innerHTML += 
-        	  "<div class='alert alert-success alert-dismissible fade in' role='alert'>"
-        	  + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-        	  + "<strong>一天的食谱： </strong>"
-        	  + "<br /><strong>主题： </strong> <span id='oneDaySubjectAdded" + index + "'>" + items[0].split("：")[1] + "</span>"
-        	  + "<br /><strong>早餐： </strong> <span id='oneDayBreakfastAdded" + index + "'>" + items[1].split("：")[1] + "</span>"
-        	  + "<br /><strong>午餐： </strong> <span id='oneDayLunchAdded" + index + "'>" + items[2].split("：")[1] + "</span>"
-        	  + "<br /><strong>晚餐： </strong> <span id='oneDayDinnerAdded" + index + "'>" + items[3].split("：")[1] + "</span>"
-        	  + "<div class='row'><div class='col-md-offset-11'><button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneDayRecipe' id='" + index + "' onclick='setOneDayRecipeModal(this.id)'>修改</button></div></div>"
-        	  +"</div>";
+    		  "<div class='card'>"
+        	  + "<div class='card-header'>"
+        	  + "一条一周的食谱"
+        	  + "<div class='card-actions'>"
+        	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneWeekRecipe' id='" + index + "' onclick='setOneWeekRecipeModal(this.id)'>修改</button>"
+          	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+        	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+        	  + "</div></div>"
+        	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
+        	  + "<strong>主题： </strong> <span id='oneWeekSubjectAdded" + index + "'>" + items[0].split("：")[1] + "</span>"
+        	  + "<br /><strong>周一： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='mondayBreakfastAdded" + index + "'>" + items[2].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='mondayLunchAdded" + index + "'>" + items[3].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='mondayDinnerAdded" + index + "'>" + items[4].split("：")[1] + "</span>"
+        	  + "<br /><strong>周二： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='tuesdayBreakfastAdded" + index + "'>" + items[6].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='tuesdayLunchAdded" + index + "'>" + items[7].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='tuesdayDinnerAdded" + index + "'>" + items[8].split("：")[1] + "</span>"
+        	  + "<br /><strong>周三： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='wednesdayBreakfastAdded" + index + "'>" + items[10].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='wednesdayLunchAdded" + index + "'>" + items[11].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='wednesdayDinnerAdded" + index + "'>" + items[12].split("：")[1] + "</span>"
+        	  + "<br /><strong>周四： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='thursdayBreakfastAdded" + index + "'>" + items[14].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='thursdayLunchAdded" + index + "'>" + items[15].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='thursdayDinnerAdded" + index + "'>" + items[16].split("：")[1] + "</span>"
+        	  + "<br /><strong>周五： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='fridayBreakfastAdded" + index + "'>" + items[18].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='fridayLunchAdded" + index + "'>" + items[19].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='fridayDinnerAdded" + index + "'>" + items[20].split("：")[1] + "</span>"
+        	  + "<br /><strong>周六： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='saturdayBreakfastAdded" + index + "'>" + items[22].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='saturdayLunchAdded" + index + "'>" + items[23].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='saturdayDinnerAdded" + index + "'>" + items[24].split("：")[1] + "</span>"
+        	  + "<br /><strong>周日： </strong>"
+        	  + "<br /><strong>早餐： </strong> <span id='sundayBreakfastAdded" + index + "'>" + items[26].split("：")[1] + "</span>"
+        	  + "<br /><strong>午餐： </strong> <span id='sundayLunchAdded" + index + "'>" + items[27].split("：")[1] + "</span>"
+        	  + "<br /><strong>晚餐： </strong> <span id='sundayDinnerAdded" + index + "'>" + items[28].split("：")[1] + "</span>"
+        	  +"</div></div>";
 
+    	  array[index] = "oneWeekRecipe";
     	  index ++ ;
+      }
+
+      function customRemove(id) {
+          var number = parseInt(id.split(":")[1]);
+          array[number] = "";
       }
 
       function exerciseHideOrShow(id) {
@@ -543,18 +735,24 @@ body {
     	  if(title == "添加") {
     		  var planResult = document.getElementById("planResult");
         	  planResult.innerHTML += 
-            	  "<div class='alert alert-success alert-dismissible fade in' role='alert'>"
-            	  + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-            	  + "<strong>一条健身建议： </strong>"
-            	  + "<br /><span id='exerciseDateAdded" + index + "'>" + exerciseDate + "</span>"
+        		  "<div class='card'>"
+            	  + "<div class='card-header'>"
+            	  + "一条健身建议"
+            	  + "<div class='card-actions'>"
+            	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+            	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#exercisePlan' id='" + index + "' onclick='setExerciseItem(this.id)'>修改</button>"
+            	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+            	  + "</div></div>"
+            	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
+            	  + "<span id='exerciseDateAdded" + index + "'>" + exerciseDate + "</span>"
             	  + "<span id='exerciseTimeAdded" + index + "'>" + exerciseTime + "</span>"
             	  + "<span id='exerciseNameAdded" + index + "'>" + exerciseName + "</span>"
             	  + "<span id='exerciseGroupAdded" + index + "'>" + exerciseGroup + "</span>组，每组"
             	  + "<span id='exerciseValueAdded" + index + "'>" + exerciseValue + "</span>"
             	  + "<span id='exerciseUnitAdded" + index + "'>" + exerciseUnit + "</span>"
-            	  + "<div class='row'><div class='col-md-offset-11'><button type='button' class='btn btn-default' data-toggle='modal' data-target='#exercisePlan' id='" + index + "' onclick='setExerciseItem(this.id)'>修改</button></div></div>"
-            	  +"</div>";
+            	  +"</div></div>";
 
+              array[index] = "oneExerciseItem";
         	  index ++ ;
     	  } else {
     		  document.getElementById("exerciseDateAdded" + title).innerText = exerciseDate;
@@ -567,7 +765,7 @@ body {
       };
 
       function setExerciseItem(id) {
-    	  if (id == "0") {
+    	  if (id == "-1") {
     		  document.getElementById("exerciseDate").value = "不限制";
     		  document.getElementById("exerciseTime").value = "不限制";
     		  document.getElementById("exerciseName").value = "慢跑";
@@ -654,16 +852,22 @@ body {
           if(title == "添加") {
         	  var planResult = document.getElementById("planResult");
         	  planResult.innerHTML += 
-            	  "<div class='alert alert-success alert-dismissible fade in' role='alert'>"
-            	  + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-            	  + "<strong>一天的食谱： </strong>"
+        		  "<div class='card'>"
+            	  + "<div class='card-header'>"
+            	  + "一条一天的食谱"
+            	  + "<div class='card-actions'>"
+            	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+            	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneDayRecipe' id='" + index + "' onclick='setOneDayRecipeModal(this.id)'>修改</button>"
+            	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+            	  + "</div></div>"
+            	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
             	  + "<br /><strong>主题： </strong> <span id='oneDaySubjectAdded" + index + "'>" + oneDaySubject + "</span>"
             	  + "<br /><strong>早餐： </strong> <span id='oneDayBreakfastAdded" + index + "'>" + oneDayBreakfast + "</span>"
             	  + "<br /><strong>午餐： </strong> <span id='oneDayLunchAdded" + index + "'>" + oneDayLunch + "</span>"
             	  + "<br /><strong>晚餐： </strong> <span id='oneDayDinnerAdded" + index + "'>" + oneDayDinner + "</span>"
-            	  + "<div class='row'><div class='col-md-offset-11'><button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneDayRecipe' id='" + index + "' onclick='setOneDayRecipeModal(this.id)'>修改</button></div></div>"
-            	  +"</div>";
+            	  +"</div></div>";
 
+              array[index] = "oneDayRecipe";
         	  index ++ ;
           } else {
         	  document.getElementById("oneDaySubjectAdded" + title).innerText = oneDaySubject;
@@ -674,7 +878,7 @@ body {
       };
 
       function setOneDayRecipeModal(id) {
-          if(id == "0") {
+          if(id == "-1") {
         	  document.getElementById("oneDaySubject").value = "";
         	  document.getElementById("oneDayBreakfast").value = "";
         	  document.getElementById("oneDayLunch").value = "";
@@ -724,9 +928,15 @@ body {
           if(title == "添加") {
         	  var planResult = document.getElementById("planResult");
         	  planResult.innerHTML += 
-            	  "<div class='alert alert-success alert-dismissible fade in' role='alert'>"
-            	  + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-            	  + "<strong>一周的食谱： </strong>"
+        		  "<div class='card'>"
+            	  + "<div class='card-header'>"
+            	  + "一条一周的食谱"
+            	  + "<div class='card-actions'>"
+            	  + "<a class='btn-minimize collapsed' data-toggle='collapse' href='#collapseExample" + index + "' aria-expanded='true' aria-controls='collapseExample"+index+"'><i class='icon-arrow-down'></i></a>"
+            	  + "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneWeekRecipe' id='" + index + "' onclick='setOneWeekRecipeModal(this.id)'>修改</button>"
+            	  + "<a class='btn-close' href='#' id='removeButton:" + index + "' onclick='customRemove(this.id)'><i class='icon-close'></i></a>"
+            	  + "</div></div>"
+            	  + "<div class='card-block collapse' id='collapseExample"+index+"'>"
             	  + "<br /><strong>主题： </strong> <span id='oneWeekSubjectAdded" + index + "'>" + oneWeekSubject + "</span>"
             	  + "<br /><strong>周一： </strong>"
             	  + "<br /><strong>早餐： </strong> <span id='mondayBreakfastAdded" + index + "'>" + mondayBreakfast + "</span>"
@@ -756,9 +966,9 @@ body {
             	  + "<br /><strong>早餐： </strong> <span id='sundayBreakfastAdded" + index + "'>" + sundayBreakfast + "</span>"
             	  + "<br /><strong>午餐： </strong> <span id='sundayLunchAdded" + index + "'>" + sundayLunch + "</span>"
             	  + "<br /><strong>晚餐： </strong> <span id='sundayDinnerAdded" + index + "'>" + sundayDinner + "</span>"
-            	  + "<div class='row'><div class='col-md-offset-11'><button type='button' class='btn btn-default' data-toggle='modal' data-target='#oneWeekRecipe' id='" + index + "' onclick='setOneWeekRecipeModal(this.id)'>修改</button></div></div>"
-            	  +"</div>";
+            	  +"</div></div>";
 
+              array[index] = "oneWeekRecipe";
         	  index ++ ;
           } else {
         	  document.getElementById("oneWeekSubjectAdded" + title).innerText = oneWeekSubject;
@@ -787,7 +997,7 @@ body {
       };
 
       function setOneWeekRecipeModal(id) {
-          if(id == "0") {
+          if(id == "-1") {
         	  document.getElementById("oneWeekSubject").value = "";
         	  document.getElementById("mondayBreakfast").value = "";
         	  document.getElementById("mondayLunch").value = "";
@@ -865,14 +1075,13 @@ body {
 
       function reply(){
 		var reply = document.getElementById("reply");
-		reply.style.display = "";
+		reply.style.display = reply.style.display == "" ? "none" : "";
 		var myReply = document.getElementById("myReply");
-		myReply.style.display = "";
+		myReply.style.display = myReply.style.display == "" ? "none" : "";
 		var list = document.getElementById("list");
-		list.style.display = "none";
+		list.style.display = list.style.display == "" ? "none" : "";
       };
     </script>
-
 
 </body>
 

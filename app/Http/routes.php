@@ -76,6 +76,7 @@ use App\Http\Controllers\HomeController;
 	//教练
 	Route::get('/coach', 'CoachController@index');
 	Route::post('/coach', 'CoachController@postAdviceIn');
+	Route::post('/coach/reply', 'CoachController@reply');
 	Route::get('/coach/export', 'CoachController@getExport');
 	
 	
