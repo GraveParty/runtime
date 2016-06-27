@@ -21,6 +21,7 @@
 <script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
 
 
+
 <style>
 body {
 	padding-top: 80px;
@@ -72,28 +73,34 @@ body {
 				      			<option>运动/健身</option>
 				      			<option>饮食</option>
 				      			<option>健康</option>	
-				      			</select>			      
+				      			</select>	
+				      		<span class="input-group-addon">教练</span>
+				      		<select class="form-control">
+				      			
+				      				<option>全站提问</option>
+				      				
+				      			</select>		      
 				      </div>
 				   </div>
 
 				   <div class="tab-pane fade" id="onecoach">
 				      <div class="input-group" style="width: 100%">
-				      	<input type = "text" class="form-control" placeholder="标题" id="title">
-				      	<textarea class="form-control" placeholder="内容" id="content" rows="5"></textarea> 
+				      	<input type = "text" class="form-control" placeholder="标题" id="one_title">
+				      	<textarea class="form-control" placeholder="内容" id="one_content" rows="5"></textarea> 
 				      	
 				      </div>
 				      <div class="input-group">
 				      		<span class="input-group-addon">分类</span>
-							<select class="form-control" id="category">
+							<select class="form-control" id="one_category">
 				      			<option>运动/健身</option>
 				      			<option>饮食</option>
 				      			<option>健康</option>
 				      			</select>
 				      	<span class="input-group-addon">教练</span>
-				      		<select class="form-control" id="category">
-				      			<option>教练A</option>
-				      			<option>教练B</option>
-				      			<option>教练C</option>
+				      		<select class="form-control" id="coach_list">
+				      			@foreach ($coachlist as $cl)
+				      				<option value = '<?php echo $cl->id ?>'><?php echo $cl->nickname ?></option>
+				      				@endforeach
 				      			</select>
 				      </div>
 				      
@@ -105,7 +112,7 @@ body {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="suggestion_confirm">提交</button>
+        <button type="button" class="btn btn-primary" id="pppp">提交</button>
       </div>
     </div>
   </div>
@@ -164,25 +171,71 @@ body {
 				<div class="row">
 
 
-					@if($hasAsked==0) <a
+					@if($hasAsked==0) <a id = "postR"
 						class="btn btn-large btn-success" type="button" data-target="#mobal-suggestion" data-toggle="modal">&nbsp;申请建议&nbsp; <span
 						class="glyphicon glyphicon glyphicon-chevron-right"
 						aria-hidden="true"></span>
 					</a> @else <a href="#" class="btn btn-large btn-success disabled"
-						role="button">&nbsp;已申请建议&nbsp; <span
+						role="button">&nbsp;等待答复&nbsp; <span
 						class="glyphicon glyphicon glyphicon-chevron-right"
 						aria-hidden="true"></span>
 					</a> @endif <br> <br> @if(count($suggestions) > 0)
 					<div>
 						<ul>
+							@if($hasAsked!=0)
+							@foreach($notAnswered as $nA)
+							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+
+								<div class="panel panel-default">
+									<!-- Default panel contents -->
+									<div class="panel-heading">
+										<b><?php echo $nA->title ?></b>
+										<button type="button"
+											class="btn btn-default btn-xs btn-success" style="background: rgba(0, 153, 255, 1);border-color: rgba(0, 153, 255, 1)">
+											<?php echo $nA->kind ?>
+											</button>
+										
+										<div class="pull-right">
+											提问于<?php echo $nA->created_at ?> &nbsp;
+										</div>
+
+									</div>
+									
+
+									<div class="panel-body">
+										<!-- Table -->
+										<div class="">
+										
+										<br></br>
+										</div>
+											
+										<div class="panel panel-default">										<div class="panel-heading">
+												
+												</div>
+												<div class="panel-body">
+												
+												暂无回答，请耐心等待
+												</div>
+											</div>
+									</div>
+								</div>
+
+							</div>
+							@endforeach
+							@else
+							@endif
 							@foreach ($suggestions as $su)
 							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
 								<div class="panel panel-default">
 									<!-- Default panel contents -->
 									<div class="panel-heading">
-										<b><?php echo $su->id ?></b>
-
+										<b><?php echo $su->title ?></b>
+										<button type="button"
+											class="btn btn-default btn-xs btn-success" style="background: rgba(0, 153, 255, 1);border-color: rgba(0, 153, 255, 1)">
+											<?php echo $su->kind ?>
+											</button>
+										@if($su->state==0)
 										<button type="button"
 											class="btn btn-default btn-xs btn-success pull-right"
 											data-toggle="modal"
@@ -190,6 +243,19 @@ body {
 											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 											确认
 										</button>
+										
+										@else
+											<button type="button"
+											class="btn btn-default btn-xs btn-success pull-right"
+											>
+											
+											已确认
+										</button>
+										
+										@endif
+										<div class="pull-right">
+											提问于<?php echo $su->asdate ?> &nbsp;
+										</div>
 
 									</div>
 									<!-- Modal -->
@@ -208,7 +274,7 @@ body {
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">取消</button>
 													<a role="button"
-														href="/exercise/suggestions/delete/<?php echo $su->id ?>"
+														href="/exercise/suggestion/delete/<?php echo $su->askid ?>"
 														class="btn btn-primary">确认</a>
 												</div>
 											</div>
@@ -217,16 +283,23 @@ body {
 
 									<div class="panel-body">
 										<!-- Table -->
-										<table class="table">
-											<tr>
-												<th>教练</th>
-												<th>建议内容</th>
-											</tr>
-											<tr>
-												<td><?php echo $su->nickname ?></td>
-												<td><?php echo $su->content ?></td>
-											</tr>
-										</table>
+										<div class="">
+										<?php echo $su->ask_content ?>
+										<br></br>
+										</div>
+											
+										<div class="panel panel-default">										<div class="panel-heading">
+												<b><?php echo $su->nickname ?>:教练</b>
+												<div class="pull-right">
+												回答于
+												<?php echo $su->addate?>
+												</div>
+												</div>
+												<div class="panel-body">
+												
+												<?php echo $su->content ?>
+												</div>
+											</div>
 									</div>
 								</div>
 
@@ -255,5 +328,5 @@ body {
 
 
 </body>
-
+<script type="text/javascript" src="{{ URL::asset('/') }}js/exercise_sug.js"></script>
 </html>

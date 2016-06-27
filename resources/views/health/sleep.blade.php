@@ -74,8 +74,8 @@ body {
 					<li role="presentation" class="active"><a
 						href="{{ URL::to('/health/sleep') }}">睡眠分析</a></li>
 					<li role="presentation"><a href="{{ URL::to('/health/rate') }}">心率分析</a></li>
-					<li role="presentation"><a
-						href="{{ URL::to('/health/suggestion') }}">健康建议</a></li>
+					<!-- <li role="presentation"><a
+						href="{{ URL::to('/health/suggestion') }}">健康建议</a></li> -->
 				</ul>
 			</div>
 			<!-- main content -->

@@ -13,6 +13,7 @@ class CreateDoctoradvicesTable extends Migration {
 			$table->integer ( 'docid' );
 			$table->integer ( 'userid' );
 			$table->string ( 'content' );
+			$table->integer ('askid');
 			$table->timestamps ();
 		} );
 	}

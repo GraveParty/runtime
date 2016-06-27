@@ -15,6 +15,7 @@ use App\Goal;
 class ExerciseController extends Controller
 {
 
+
 	
 	public function postGoal(ExerciseGoalRequest $req)
 	{
@@ -57,33 +58,42 @@ class ExerciseController extends Controller
 	
 	public function getSuggestionDelete($sugid)
 	{
-		DB::delete('delete from coach_advices where id = ?',[$sugid]);
+		DB::update('update coach_asks set state = 1 where id = ?',[$sugid]);
 		
 		return Redirect::to ( '/exercise/suggestion' );
 	}
 	
 	
-	public function getSuggestionAsk()
+	public function getSuggestionAsk(Request $req)
 	{
 		$ca = new CoachAsk();
 		$ca->userid = Auth::user()->id;
+		$ca->title = $req->title;
+		$ca->content = $req->content;
+		$ca->kind= $req->kind;
+		$ca->coachid= $req->coachid;
+		$ca->state=0 ;
 		$ca->save();
 		
 		return Redirect::to ( '/exercise/suggestion' );
 	}
 	
-	
+	public function getCoachList(){
+		$result = DB::select('select * from users where type =2');
+		return view('exercise.suggestion',['coachlist'=> $result]);
+	}
 	
 	public function getSuggestion()
 	{
-		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content 
-				from coach_advices join users
-				on coach_advices.coachid = users.id
-				where userid = ?', [Auth::user()->id]);
+		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content,coach_advices.askid,coach_advices.created_at as addate,coach_asks.title,coach_asks.content as ask_content,coach_asks.state,coach_asks.kind,coach_asks.created_at as asdate
+				from coach_asks join users join coach_advices
+				on coach_advices.askid = coach_asks.id and coach_advices.coachid = users.id
+				where coach_advices.userid = ?', [Auth::user()->id]);
 		
-		$hasAsked = DB::select('select * from coach_asks where userid = ?', [Auth::user()->id]);
-		
-		return view('exercise.suggestion',['suggestions' => $results,'hasAsked' => count($hasAsked)]);
+		$hasAsked = DB::select('select * from coach_asks where userid = ? and state = 0', [Auth::user()->id]);
+		$result = DB::select('select * from users where type =2');
+
+		return view('exercise.suggestion',['suggestions' => $results,'hasAsked' => count($hasAsked),'coachlist'=> $result,'notAnswered'=> $hasAsked]);
 	}
 	
 	public function postHistory(Request $req)
