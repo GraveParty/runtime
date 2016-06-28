@@ -35,7 +35,7 @@ class LoginController extends Controller {
 			}else if($type==9){  //管理员
 				return Redirect::to ( '/admin' )->with ( 'message', '成功登录' );
 			}else{  //普通用户
-				return Redirect::to ( '/home' )->with ( 'message', '成功登录' );
+				return Redirect::to ( '/exercise' )->with ( 'message', '成功登录' );
 			}
 			
 		} else {

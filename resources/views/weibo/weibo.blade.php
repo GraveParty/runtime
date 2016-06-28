@@ -38,8 +38,8 @@
 
     <style>
         body {
-            /*padding-top: 80px;*/
-            font-family:"微软雅黑";
+            padding-top: 20px;
+            /*font-family:"微软雅黑";*/
         }
 
         .weibo-count{
@@ -48,15 +48,59 @@
             margin-right: 8px;
         }
 
-        /*.collect-yes {*/
-            /*background-color: #4dbd74;*/
-            /*color: #ffffff;*/
-        /*}*/
+        .weibo-title {
+            font-family: "微软雅黑";
+        }
 
-        /*.collect-no {*/
-            /*background-color: transparent;*/
-            /*color: #4dbd74;*/
-        /*}*/
+        .collect-no{
+            background-color: transparent;
+            color:#f8cb00;
+            border-color: #f8cb00;
+        }
+        .collect-no:hover{
+            background-color: #f8cb00;
+            color:#ffffff;
+            border-color: #f8cb00;
+        }
+
+        .collect-yes{
+            background-color: #f8cb00;
+            color:#ffffff;
+            border-color: #f8cb00;
+        }
+
+        .collect-yes:hover{
+            background-color: transparent;
+            /*color:#f41a18;*/
+            color:#f8cb00;
+            border-color: #f8cb00;
+        }
+
+
+
+        .follow-no{
+            background-color: transparent;
+            color:#63c2de;
+            border-color: #63c2de;
+        }
+        .follow-no:hover{
+            background-color: #63c2de;
+            color:#ffffff;
+            border-color: #63c2de;
+        }
+
+        .follow-yes{
+            background-color: #63c2de;
+            color:#ffffff;
+            border-color: #63c2de;
+        }
+
+        .follow-yes:hover{
+            background-color: transparent;
+            color:#63c2de;
+            border-color: #63c2de;
+        }
+
     </style>
 
 </head>
@@ -72,9 +116,7 @@
             <li class="nav-item">
                 <a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
             </li>
-            <li class="nav-item p-x-1">
-                <a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
-            </li>
+
             <li class="nav-item p-x-1">
                 <a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
             </li>
@@ -208,66 +250,112 @@
             {{--</ul>--}}
             {{--</div>--}}
 
-
-
-
             <!-- main content -->
-
-
             @if($haveWeibo==0)
-                <div>
-                    <h4>暂无文章</h4>
+                <div class="col-md-12">
+                    <div class="card card-local">
+                        <div class="card-block">
+                            暂无内容
+                        </div>
+                    </div>
                 </div>
             @else
                 @for($i=0;$i<count($weibos);$i++)
-                    <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-                        <div class="card card-local">
+                    <div class="col-md-12">
+                        <div class="card ">
                             <div class="card-header">
-                                <h3 class="weibo-title" style="display:inline">
+                                <h4 class="weibo-title" style="display:inline">
                                     {{ $weibos[$i]->title }}
-                                </h3>
+                                </h4>
 
-                                <div class="btn-group pull-right">
-                                    <button type="button" class="collect btn btn-success-outline btn-sm "
-                                            id="c{{ $weibos[$i]->id }}">
+                                {{--<div class="btn-group pull-right">--}}
+                                    {{--<button type="button" class="collect btn btn-success-outline btn-sm "--}}
+                                            {{--id="c{{ $weibos[$i]->id }}">--}}
+                                        {{--<i class="icon-star"></i>&nbsp;--}}
+                                        {{--{{ $weibos[$i]->collect_count }}--}}
 
-                                        @if($collects[$i]==0)
-                                            收藏
-                                        @else
-                                            已收藏
-                                        @endif
+                                        {{--@if($collects[$i]==0)--}}
+                                            {{--收藏--}}
+                                        {{--@else--}}
+                                            {{--已收藏--}}
+                                        {{--@endif--}}
                                         {{--<i class="fa fa-star"></i>--}}
 
-                                    </button>
+                                    {{--</button>--}}
 
-                                </div>
-
-                                <div class="weibo-count pull-right" id="count-{{ $weibos[$i]->id }}" >{{ $weibos[$i]->collect_count }}</div>
+                                {{--</div>--}}
 
 
-                                <div class="weibo-time">
-                                    {{ $weibos[$i]->published_at }}
-                                </div>
+                                @if($collects[$i]==0)
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="collect collect-no btn btn-sm"
+                                                id="c{{ $weibos[$i]->id }}">
+                                            <i class="icon-star"></i>&nbsp;
+                                            {{ $weibos[$i]->collect_count }}
+                                        </button>
+                                    </div>
+                                @else
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="collect collect-yes btn btn-sm"
+                                                id="c{{ $weibos[$i]->id }}">
+                                            <i class="icon-star"></i>&nbsp;
+                                            {{ $weibos[$i]->collect_count }}
+                                        </button>
+                                    </div>
+                                @endif
 
                             </div>
 
                             <div class="card-block">
-                                {{ $weibos[$i]->content }}
+                                <div class="weibo-content">
+                                    {{ $weibos[$i]->content }}
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
                                 <div class="weibo-author" style="display:inline">
-                                    <div style="display:inline">{{ $names[$i] }}</div>
-                                    <div class="btn-group">
-                                        <button type="button" class="follow btn btn-info-outline btn-sm follow-{{ $weibos[$i]->author_id }}"
+                                    <span class="weibo-time" style="display:inline">
+                                        <i class="icon-clock icons m-t-2"></i>
+                                        {{--<i class="fa fa-clock-o  m-t-2"></i>--}}
+                                    {{ $weibos[$i]->published_at }}
+                                    </span>
+                                    <span style="display:inline">
+                                        <i class="icon-user icons m-t-2"></i>
+                                        {{--<i class="fa fa-user  m-t-2"></i>--}}
+                                        {{ $names[$i] }}
+                                    </span>
+
+
+                                    {{--<span class="btn-group">--}}
+                                        {{--<button type="button" class="follow btn btn-info-outline btn-sm follow-{{ $weibos[$i]->author_id }}"--}}
+                                                {{--id="{{ 'f'.$weibos[$i]->author_id }}">--}}
+                                            {{--@if($follows[$i]==0)--}}
+                                                {{--关注--}}
+                                            {{--@else--}}
+                                                {{--已关注--}}
+                                            {{--@endif--}}
+                                        {{--</button>--}}
+                                    {{--</span>--}}
+
+                                    @if($follows[$i]==0)
+                                        <span class="btn-group">
+                                        <button type="button" class="follow btn follow-no btn-sm follow-{{ $weibos[$i]->author_id }}"
                                                 id="{{ 'f'.$weibos[$i]->author_id }}">
-                                            @if($follows[$i]==0)
-                                                关注
-                                            @else
-                                                已关注
-                                            @endif
+                                            关注
+                                            &nbsp;<i class="icon-user-follow"></i>
                                         </button>
-                                    </div>
+                                    </span>
+                                    @else
+                                        <span class="btn-group">
+                                        <button type="button" class="follow btn follow-yes btn-sm follow-{{ $weibos[$i]->author_id }}"
+                                                id="{{ 'f'.$weibos[$i]->author_id }}">
+                                            已关注
+                                            &nbsp;<i class="icon-user-following"></i>
+                                        </button>
+                                    </span>
+                                    @endif
+
                                 </div>
 
                                 <div class="pull-right">

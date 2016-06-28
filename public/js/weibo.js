@@ -76,7 +76,7 @@ $(document).ready(function() {
         var html =  jQuery.trim($(this).html());
         var id = $(this).attr("id").substring(1);
 
-        if(html=="收藏"){
+        if($(this).hasClass("collect-no")){
             $.ajax({
                 type: "get",
                 url: "/weibo/confirmcollect/"+id,
@@ -84,11 +84,11 @@ $(document).ready(function() {
                 data: {'weiboid':id},
                 success: function($newcount) {
 
-                    var count = '#count-' + id;
-                    $(count).html($newcount);
+                    //var count = '#count-' + id;
+                    //$(count).html($newcount);
 
                     var item = '#c' + id;
-                    $(item).html("已收藏");
+                    $(item).html('<i class="icon-star"></i> &nbsp;'+$newcount);
                     $(item).addClass("collect-yes");
                     $(item).removeClass("collect-no");
                 },
@@ -100,19 +100,24 @@ $(document).ready(function() {
                 },
             })
         }
-        if(html=="已收藏"){
+        if($(this).hasClass("collect-yes")){
             $.ajax({
                 type: "get",
                 url: "/weibo/cancelcollect/"+id,
                 cache: false,
                 data: {'weiboid':id},
                 success: function($newcount) {
-                    var count = '#count-' + id;
-                    $(count).html($newcount);
+                    //var count = '#count-' + id;
+                    //$(count).html($newcount);
 
                     var item = '#c' + id;
                     $(item).html("收藏");
                     //$(item).removeClass("active");
+
+                    var item = '#c' + id;
+                    $(item).html('<i class="icon-star"></i> &nbsp;'+$newcount);
+                    $(item).addClass("collect-no");
+                    $(item).removeClass("collect-yes");
 
                 },
                 error: function(data) {
@@ -217,7 +222,7 @@ $(document).ready(function() {
         var html =  jQuery.trim($(this).html());
         var id = $(this).attr("id").substring(1);
 
-        if(html=="关注"){
+        if($(this).hasClass("follow-no")){
             $.ajax({
                 type: "get",
                 url: "/weibo/confirmfollow/"+id,
@@ -226,7 +231,9 @@ $(document).ready(function() {
                 success: function() {
 
                     var bt = '.follow-' + id;
-                    $(bt).html("已关注");
+                    $(bt).html('已关注 &nbsp;<i class="icon-user-following"></i>');
+                    $(bt).removeClass("follow-no");
+                    $(bt).addClass("follow-yes");
 
                 },
                 error: function() {
@@ -238,7 +245,7 @@ $(document).ready(function() {
             })
         }
 
-        if(html=="已关注"){
+        if($(this).hasClass("follow-yes")){
             $.ajax({
                 type: "get",
                 url: "/weibo/cancelfollow/"+id,
@@ -247,7 +254,9 @@ $(document).ready(function() {
                 success: function() {
 
                     var bt = '.follow-' + id;
-                    $(bt).html("关注");
+                    $(bt).html('关注 &nbsp;<i class="icon-user-follow"></i>');
+                    $(bt).removeClass("follow-yes");
+                    $(bt).addClass("follow-no");
 
                 },
                 error: function() {

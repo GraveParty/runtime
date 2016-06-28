@@ -30,7 +30,7 @@
 
 	<style>
 		body {
-			/*padding-top: 80px;*/
+			padding-top: 20px;
 		}
 
 		#inputDate{
@@ -50,9 +50,7 @@
 			<li class="nav-item">
 				<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
 			</li>
-			<li class="nav-item p-x-1">
-				<a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
-			</li>
+
 			<li class="nav-item p-x-1">
 				<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
 			</li>
@@ -182,50 +180,48 @@
 			{{--</div>--}}
 			<!-- main content -->
 			<div
-					class="col-md-10 col-md-offset-1">
-				<div class="row">
+					class="col-md-12">
 
-					<div class="card card-local">
-						<div class="card-block p-a-1 clearfix row">
+				<div class="card card-local">
+					<div class="card-block p-a-1 clearfix row">
 
-					<form name="form" class="form-inline" method="POST"
-						  action="/exercise/chart">
-						{!! csrf_field() !!}
+						<form name="form" class="form-inline" method="POST"
+							  action="/exercise/chart">
+							{!! csrf_field() !!}
 
-						<div class="form-group col-md-3 col-md-offset-4">
-							<div class="">
+							<div class="form-group col-md-3 col-md-offset-4">
+								<div class="">
 
-								<input name="date" type="text" readonly
-									   class="form-control input-append date form_datetime"
-									   id="inputDate" placeholder="" value="2015" data-date="2015">
-								<script type="text/javascript">
-									$(".form_datetime").datetimepicker({
-										format: 'yyyy',
-										autoclose: true,
-										todayBtn: true,
-										minView: 'year',
-										pickerPosition: "bottom-left"
+									<input name="date" type="text" readonly
+										   class="form-control input-append date form_datetime"
+										   id="inputDate" placeholder="" value="2015" data-date="2015">
+									<script type="text/javascript">
+										$(".form_datetime").datetimepicker({
+											format: 'yyyy',
+											autoclose: true,
+											todayBtn: true,
+											minView: 'year',
+											pickerPosition: "bottom-left"
 
-									});
-								</script>
+										});
+									</script>
+
+								</div>
+
+							</div>
+							<div class="form-group col-md-1">
+								<button type="submit" class="btn btn-default btn-xs btn-success">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提交
+								</button>
+
 
 							</div>
 
-						</div>
-						<div class="form-group col-md-1">
-							<button type="submit" class="btn btn-default btn-xs btn-success">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提交
-							</button>
+						</form>
 
-
-						</div>
-
-					</form>
-
-						</div>
 					</div>
-
 				</div>
+
 
 				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 				<div class="card card-local">

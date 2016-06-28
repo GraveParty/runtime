@@ -10,8 +10,8 @@
 }
 
 .card-local {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    /*margin-top: 30px;*/
+    /*margin-bottom: 30px;*/
 }
 
 .card-local .card-header{
@@ -25,6 +25,10 @@
     padding-bottom: 30px;
 
 }
+
+/*body {*/
+    /*padding-top:20px;*/
+/*}*/
 
 
 

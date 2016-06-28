@@ -21,7 +21,7 @@
 
 	<style>
 		body {
-			padding-top: 40px;
+			padding-top: 20px;
 		}
 	</style>
 
@@ -37,9 +37,7 @@
 			<li class="nav-item">
 				<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
 			</li>
-			<li class="nav-item p-x-1">
-				<a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
-			</li>
+
 			<li class="nav-item p-x-1">
 				<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
 			</li>
@@ -157,190 +155,190 @@
 
 <!-- main -->
 <main class="main">
-<div class="container-fluid">
-	<div class="row">
-		<!-- sidebar -->
-		{{--<div class="sidebar col-xs-2 col-sm-3 col-md-2 ">--}}
+	<div class="container-fluid">
+		<div class="row">
+			<!-- sidebar -->
+			{{--<div class="sidebar col-xs-2 col-sm-3 col-md-2 ">--}}
 			{{--<ul class="nav nav-pills nav-stacked">--}}
-				{{--<li role="presentation" class="active"><a--}}
-							{{--href="{{ URL::to('/exercise') }}">我的运动</a></li>--}}
-				{{--<li role="presentation"><a href="{{ URL::to('/exercise/goal') }}">运动目标</a></li>--}}
-				{{--<li role="presentation"><a--}}
-							{{--href="{{ URL::to('/exercise/history') }}">历史数据</a></li>--}}
-				{{--<li role="presentation"><a href="{{ URL::to('/exercise/chart') }}">图表展示</a></li>--}}
-				{{--<li role="presentation"><a--}}
-							{{--href="{{ URL::to('/exercise/suggestion') }}">锻炼建议</a></li>--}}
+			{{--<li role="presentation" class="active"><a--}}
+			{{--href="{{ URL::to('/exercise') }}">我的运动</a></li>--}}
+			{{--<li role="presentation"><a href="{{ URL::to('/exercise/goal') }}">运动目标</a></li>--}}
+			{{--<li role="presentation"><a--}}
+			{{--href="{{ URL::to('/exercise/history') }}">历史数据</a></li>--}}
+			{{--<li role="presentation"><a href="{{ URL::to('/exercise/chart') }}">图表展示</a></li>--}}
+			{{--<li role="presentation"><a--}}
+			{{--href="{{ URL::to('/exercise/suggestion') }}">锻炼建议</a></li>--}}
 			{{--</ul>--}}
-		{{--</div>--}}
-		<!-- main content -->
-		<div class="col-md-10 col-md-offset-1">
-			<div class="row">
+			{{--</div>--}}
+			<!-- main content -->
+			<div class="col-md-12">
+				<div class="row">
 
-				<div class="col-md-4">
-					<div class="card card-inverse card-success">
-						<div class="card-block">
-							<div class="h1 text-muted text-xs-right m-b-2">
-								<i class="icon-calendar"></i>
+					<div class="col-md-4">
+						<div class="card card-inverse card-success">
+							<div class="card-block">
+								<div class="h1 text-muted text-xs-right m-b-2">
+									<i class="icon-calendar"></i>
+								</div>
+								<div class="h4 m-b-0"><?php echo $days ?></div>
+								<small class="text-muted text-uppercase font-weight-bold">已运动天数</small>
+								<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="55" max="100"></progress>
 							</div>
-							<div class="h4 m-b-0"><?php echo $days ?></div>
-							<small class="text-muted text-uppercase font-weight-bold">已运动天数</small>
-							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="55" max="100"></progress>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-md-4">
-					<div class="card  card-inverse card-success">
-						<div class="card-block">
-							<div class="h1 text-muted text-xs-right m-b-2">
-								<i class="icon-fire"></i>
+					<div class="col-md-4">
+						<div class="card  card-inverse card-success">
+							<div class="card-block">
+								<div class="h1 text-muted text-xs-right m-b-2">
+									<i class="icon-fire"></i>
+								</div>
+								<div class="h4 m-b-0"><?php echo $calories ?></div>
+								<small class="text-muted text-uppercase font-weight-bold">消耗卡路里</small>
+								<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="75" max="100"></progress>
 							</div>
-							<div class="h4 m-b-0"><?php echo $calories ?></div>
-							<small class="text-muted text-uppercase font-weight-bold">消耗卡路里</small>
-							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="75" max="100"></progress>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-md-4">
-					<div class="card  card-inverse card-success">
-						<div class="card-block">
-							<div class="h1 text-muted text-xs-right m-b-2">
-								<i class="icon-compass"></i>
+					<div class="col-md-4">
+						<div class="card  card-inverse card-success">
+							<div class="card-block">
+								<div class="h1 text-muted text-xs-right m-b-2">
+									<i class="icon-compass"></i>
+								</div>
+								<div class="h4 m-b-0"><?php echo $km ?></div>
+								<small class="text-muted text-uppercase font-weight-bold">累计里程公里数</small>
+								<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="45" max="100"></progress>
 							</div>
-							<div class="h4 m-b-0"><?php echo $km ?></div>
-							<small class="text-muted text-uppercase font-weight-bold">累计里程公里数</small>
-							<progress class="progress progress-xs progress-success m-t-1 m-b-0" value="45" max="100"></progress>
 						</div>
 					</div>
-				</div>
 
 
 
-			</div>
 
 
 
-			<div class="row">
 
-				<div class="card card-local">
-					<!-- Default panel contents -->
-					<div class="card-header">
-						<b>本月运动情况</b>
-					</div>
-					<div class="card-block">
+					<div class="col-md-12">
 
-						<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-						<div id="goal" style="height: 400px"></div>
-						<!-- ECharts单文件引入 -->
-						<script src="{{ URL::asset('/') }}build/dist/echarts.js"></script>
-						<script type="text/javascript">
-							// 路径配置
-							require.config({
-								paths: {
-									echarts: '/build/dist'
-								}
-							});
+						<div class="card card-local">
+							<!-- Default panel contents -->
+							<div class="card-header">
+								<b>本月运动情况</b>
+							</div>
+							<div class="card-block">
 
-							// 使用
-							require(
-									[
-										'echarts',
-										'echarts/chart/gauge'
-									],
-									function (ec) {
-										// 基于准备好的dom，初始化echarts图表
-										var myChart = ec.init(document.getElementById('goal'), 'macarons');
+								<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+								<div id="goal" style="height: 400px"></div>
+								<!-- ECharts单文件引入 -->
+								<script src="{{ URL::asset('/') }}build/dist/echarts.js"></script>
+								<script type="text/javascript">
+									// 路径配置
+									require.config({
+										paths: {
+											echarts: '/build/dist'
+										}
+									});
 
-										var option = {
-											tooltip : {
-												formatter: "{a} <br/>{b} : {c}%"
-											},
-											toolbox: {
-												show : true,
-												feature : {
-													mark : {show: false},
-													restore : {show: true},
-													saveAsImage : {show: true}
-												}
-											},
-											series : [
-												{
-													name:'业务指标',
-													type:'gauge',
-													startAngle: 180,
-													endAngle: 0,
-													center : ['50%', '90%'],    // 默认全局居中
-													radius : 320,
-													axisLine: {            // 坐标轴线
-														lineStyle: {       // 属性lineStyle控制线条样式
-															width: 200
-														}
+									// 使用
+									require(
+											[
+												'echarts',
+												'echarts/chart/gauge'
+											],
+											function (ec) {
+												// 基于准备好的dom，初始化echarts图表
+												var myChart = ec.init(document.getElementById('goal'), 'macarons');
+
+												var option = {
+													tooltip : {
+														formatter: "{a} <br/>{b} : {c}%"
 													},
-													axisTick: {            // 坐标轴小标记
-														splitNumber: 10,   // 每份split细分多少段
-														length :12,        // 属性length控制线长
-													},
-													axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
-														formatter: function(v){
-															switch (v+''){
-																case '25': return '低';
-																case '50': return '中';
-																case '75': return '高';
-																default: return '';
-															}
-														},
-														textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-															color: '#fff',
-															fontSize: 15,
-															fontWeight: 'bolder'
-														}
-													},
-													pointer: {
-														width:50,
-														length: '90%',
-														color: 'rgba(255, 255, 255, 0.8)'
-													},
-													title : {
+													toolbox: {
 														show : true,
-														offsetCenter: [0, '-60%'],       // x, y，单位px
-														textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-															color: '#fff',
-															fontSize: 30
+														feature : {
+															mark : {show: false},
+															restore : {show: true},
+															saveAsImage : {show: true}
 														}
 													},
-													detail : {
-														show : true,
-														backgroundColor: 'rgba(0,0,0,0)',
-														borderWidth: 0,
-														borderColor: '#ccc',
-														width: 100,
-														height: 40,
-														offsetCenter: [0, -40],       // x, y，单位px
-														formatter:'{value}%',
-														textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-															fontSize : 50
+													series : [
+														{
+															name:'业务指标',
+															type:'gauge',
+															startAngle: 180,
+															endAngle: 0,
+															center : ['50%', '90%'],    // 默认全局居中
+															radius : 320,
+															axisLine: {            // 坐标轴线
+																lineStyle: {       // 属性lineStyle控制线条样式
+																	width: 200
+																}
+															},
+															axisTick: {            // 坐标轴小标记
+																splitNumber: 10,   // 每份split细分多少段
+																length :12,        // 属性length控制线长
+															},
+															axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+																formatter: function(v){
+																	switch (v+''){
+																		case '25': return '低';
+																		case '50': return '中';
+																		case '75': return '高';
+																		default: return '';
+																	}
+																},
+																textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+																	color: '#fff',
+																	fontSize: 15,
+																	fontWeight: 'bolder'
+																}
+															},
+															pointer: {
+																width:50,
+																length: '90%',
+																color: 'rgba(255, 255, 255, 0.8)'
+															},
+															title : {
+																show : true,
+																offsetCenter: [0, '-60%'],       // x, y，单位px
+																textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+																	color: '#fff',
+																	fontSize: 30
+																}
+															},
+															detail : {
+																show : true,
+																backgroundColor: 'rgba(0,0,0,0)',
+																borderWidth: 0,
+																borderColor: '#ccc',
+																width: 100,
+																height: 40,
+																offsetCenter: [0, -40],       // x, y，单位px
+																formatter:'{value}%',
+																textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+																	fontSize : 50
+																}
+															},
+															data:[{
+																value:  <?php echo $percent ?>,
+																name: '运动目标完成',
+
+															}]
 														}
-													},
-													data:[{
-														value:  <?php echo $percent ?>,
-														name: '运动目标完成',
+													]
+												};
 
-													}]
-												}
-											]
-										};
+												// 为echarts对象加载数据
+												myChart.setOption(option);
+											}
+									);
+								</script>
 
-										// 为echarts对象加载数据
-										myChart.setOption(option);
-									}
-							);
-						</script>
+							</div>
+						</div>
 
-					</div>
-				</div>
-
-			<!--
+						<!--
 			</div>
 			<hr />
 			<div class="caption">
@@ -372,9 +370,11 @@
 
 
 
+					</div>
+
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 </main>
 
 

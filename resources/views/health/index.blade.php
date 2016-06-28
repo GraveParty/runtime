@@ -35,7 +35,7 @@
 
 <style>
 body {
-	/*padding-top: 80px;*/
+	padding-top: 20px;
 }
 </style>
 
@@ -52,9 +52,7 @@ body {
 				<li class="nav-item">
 					<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
 				</li>
-				<li class="nav-item p-x-1">
-					<a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
-				</li>
+
 				<li class="nav-item p-x-1">
 					<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
 				</li>
@@ -186,9 +184,9 @@ body {
 			{{--</div>--}}
 			<!-- main content -->
 			<div
-				class="col-md-10 col-md-offset-1">
+				class="col-md-12">
 				<div class="row">
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="col-md-5">
 						<div class="card card-local"style="height: 400px">
 							<!-- Default panel contents -->
 							<div class="card-header">
@@ -203,7 +201,7 @@ body {
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+					<div class="col-md-7">
 						<div class="card card-local "style="height: 400px">
 							<!-- Default panel contents -->
 							<div class="card-header">

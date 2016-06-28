@@ -26,7 +26,7 @@
 
 	<style>
 		body {
-			/*padding-top: 80px;*/
+			padding-top: 20px;
 		}
 
 		#inputDate{
@@ -45,9 +45,6 @@
 		<ul class="nav navbar-nav hidden-md-down">
 			<li class="nav-item">
 				<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
-			</li>
-			<li class="nav-item p-x-1">
-				<a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
 			</li>
 			<li class="nav-item p-x-1">
 				<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
@@ -174,51 +171,44 @@
 			{{--</ul>--}}
 			{{--</div>--}}
 			<!-- main content -->
-			<div
-					class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="card card-local">
-						<div class="card-block p-a-1 clearfix row">
+			<div class="col-md-12">
+				<div class="card card-local">
+					<div class="card-block p-a-1 clearfix row">
 
-							<form name="form" class="form-inline" method="POST" action="/exercise/history">
-								{!! csrf_field() !!}
+						<form name="form" class="form-inline" method="POST" action="/exercise/history">
+							{!! csrf_field() !!}
 
-								<div class="form-group col-md-3 col-md-offset-4">
-									<div class="">
+							<div class="form-group col-md-3 col-md-offset-4">
+								<div class="">
 
-										<input name="date" type="text" readonly class="form-control input-append date form_datetime"
-											   id="inputDate" placeholder="" value="2015-12">
+									<input name="date" type="text" readonly class="form-control input-append date form_datetime"
+										   id="inputDate" placeholder="" value="2015-12">
 
-										<script type="text/javascript">
-											$(".form_datetime").datetimepicker({
-												format: 'yyyy-mm',
-												autoclose: true,
-												todayBtn: true,
-												minView: 'year',
-												pickerPosition: "bottom-left"
+									<script type="text/javascript">
+										$(".form_datetime").datetimepicker({
+											format: 'yyyy-mm',
+											autoclose: true,
+											todayBtn: true,
+											minView: 'year',
+											pickerPosition: "bottom-left"
 
-											});
-										</script>
-
-									</div>
+										});
+									</script>
 
 								</div>
 
-								<div class="form-group col-md-1">
-									<button type="submit" class="btn btn-default btn-xs btn-success">
-										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择月份</button>
+							</div>
+
+							<div class="form-group col-md-1">
+								<button type="submit" class="btn btn-default btn-xs btn-success">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择月份</button>
 
 
-								</div>
+							</div>
 
-							</form>
-						</div>
+						</form>
 					</div>
-
-
 				</div>
-
-				<br>
 
 				<div class="card card-local">
 					<div class="card-header">

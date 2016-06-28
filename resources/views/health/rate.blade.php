@@ -39,7 +39,7 @@
 
 <style>
 body {
-	/*padding-top: 80px;*/
+	padding-top: 20px;
 }
 </style>
 
@@ -55,9 +55,7 @@ body {
 				<li class="nav-item">
 					<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
 				</li>
-				<li class="nav-item p-x-1">
-					<a class="nav-link" href="{{ URL::to('/home') }}">主页</a>
-				</li>
+
 				<li class="nav-item p-x-1">
 					<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
 				</li>
@@ -186,7 +184,7 @@ body {
 			{{--</div>--}}
 			<!-- main content -->
 			<div
-				class="col-md-10 col-md-offset-1">
+				class="col-md-12">
 
 
 				<div class="card card-local">
