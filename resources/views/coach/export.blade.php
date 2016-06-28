@@ -8,8 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-{{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"--}}
-	{{--media="screen">--}}
+{{--
+<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
+	--}}
+	{{--media="screen">
+--}}
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
 <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet"
@@ -21,13 +24,20 @@
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/bootstrap.js"></script>
-{{--<script src="http://localhost:8000/js/app.js"></script>--}}
-{{--<!-- Plugins and scripts required by this views -->--}}
+{{--
+<script src="http://localhost:8000/js/app.js"></script>
+--}} {{--
+<!-- Plugins and scripts required by this views -->
+--}}
 <script src="http://localhost:8000/js/libs/jquery.maskedinput.min.js"></script>
-{{--<script src="http://localhost:8000/js/libs/moment.min.js"></script>--}}
+{{--
+<script src="http://localhost:8000/js/libs/moment.min.js"></script>
+--}}
 <script src="http://localhost:8000/js/libs/select2.min.js"></script>
 <script src="http://localhost:8000/js/libs/daterangepicker.min.js"></script>
-{{--<!-- Custom scripts required by this view -->--}}
+{{--
+<!-- Custom scripts required by this view -->
+--}}
 <script src="http://localhost:8000/js/views/forms.js"></script>
 <script type="text/javascript" src="http://localhost:8000/js/Chart.js"></script>
 
@@ -35,6 +45,7 @@
 <style>
 body {
 	/*padding-top: 50px;*/
+	
 }
 </style>
 
@@ -44,80 +55,98 @@ body {
 	<!-- fixed header -->
 	<header class="navbar">
 		<div class="container-fluid">
-			<button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+			<button class="navbar-toggler mobile-toggler hidden-lg-up"
+				type="button">&#9776;</button>
 			<a class="navbar-brand" href="#"></a>
 			<ul class="nav navbar-nav hidden-md-down">
-				<li class="nav-item">
-					<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
-				</li>
-				<li class="nav-item p-x-1">
-					<a class="nav-link" href="{{ URL::to('/coach/export') }}">建议</a>
-				</li>
+				<li class="nav-item"><a
+					class="nav-link navbar-toggler layout-toggler" href="#">☰</a></li>
+				<li class="nav-item p-x-1"><a class="nav-link"
+					href="{{ URL::to('/coach/export') }}">建议</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right hidden-md-down">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle nav-link" data-toggle="dropdown"
+					href="#" role="button" aria-haspopup="true" aria-expanded="false">
 						<span class="hidden-md-down">{{ Auth::user()->nickname }}</span>
-					</a>
+				</a>
 					<div class="dropdown-menu dropdown-menu-right">
 
 						<div class="dropdown-header text-xs-center">
 							<strong>设置</strong>
 						</div>
-						<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>
-						<a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>
-					</div>
-				</li>
+						<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i
+							class="fa fa-user"></i> 个人设置</a> <a class="dropdown-item"
+							href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>
+					</div></li>
 
 			</ul>
 		</div>
 	</header>
 
-	{{--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">--}}
-		{{--<div class="container-fluid">--}}
-			{{--<div class="navbar-header">--}}
-				{{--<button class="navbar-toggle collapsed" type="button"--}}
-					{{--data-toggle="collapse" data-target="#collapse-header">--}}
-					{{--<span class="sr-only">Toggle navigation</span> <span--}}
-						{{--class="icon-bar"></span> <span class="icon-bar"></span> <span--}}
-						{{--class="icon-bar"></span>--}}
-				{{--</button>--}}
-				{{--<a class="navbar-brand" href="#">RunTime</a>--}}
-			{{--</div>--}}
-			{{--<div class="navbar-collapse collapse" role="navigation"--}}
-				{{--id="collapse-header">--}}
-				{{--<ul class="nav navbar-nav">--}}
-					{{--<li class="active"><a href="{{ URL::to('/coach') }}">教练</a></li>--}}
-				{{--</ul>--}}
-				{{--<ul class="nav navbar-nav navbar-right">--}}
-					{{--<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"--}}
+	{{--
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		--}} {{--
+		<div class="container-fluid">
+			--}} {{--
+			<div class="navbar-header">
+				--}} {{--
+				<button class="navbar-toggle collapsed" type="button"
+					--}}
+					{{--data-toggle="collapse" data-target="#collapse-header">
+					--}} {{--<span class="sr-only">Toggle navigation</span>
+					<span-- }}
+						{{--class="icon-bar"> </span> <span class="icon-bar"></span> <span--
+						}}
+						{{--class="icon-bar"> </span>--}} {{-- 
+				
+				</button>
+				--}} {{--<a class="navbar-brand" href="#">RunTime</a>--}} {{--
+			</div>
+			--}} {{--
+			<div class="navbar-collapse collapse" role="navigation"
+				--}}
+				{{--id="collapse-header">
+				--}} {{--
+				<ul class="nav navbar-nav">
+					--}} {{--
+					<li class="active"><a href="{{ URL::to('/coach') }}">教练</a></li>--}}
+					{{--
+				</ul>
+				--}} {{--
+				<ul class="nav navbar-nav navbar-right">
+					--}} {{--
+					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						--}}
 						{{--role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>--}}
-						{{--<ul class="dropdown-menu">--}}
-							{{--<li><a href="/personal">个人设置</a></li>--}}
-							{{--<li role="separator" class="divider"></li>--}}
-							{{--<li><a href="{{ URL::to('/logout') }}">退出登录</a></li>--}}
-						{{--</ul></li>--}}
-				{{--</ul>--}}
-			{{--</div>--}}
-		{{--</div>--}}
-	{{--</nav>--}}
+						{{--
+						<ul class="dropdown-menu">
+							--}} {{--
+							<li><a href="/personal">个人设置</a></li>--}} {{--
+							<li role="separator" class="divider"></li>--}} {{--
+							<li><a href="{{ URL::to('/logout') }}">退出登录</a></li>--}} {{--
+						</ul></li>--}} {{--
+				</ul>
+				--}} {{--
+			</div>
+			--}} {{--
+		</div>
+		--}} {{--
+	</nav>
+	--}}
 
 
 	<!-- sidebar -->
 	<div class="sidebar">
 		<nav class="sidebar-nav">
 			<ul class="nav">
-				<li class="nav-title">
-					建议
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ URL::to('/coach/export') }}"><i class="icon-puzzle"></i> 查看申请</a>
-
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ URL::to('/weibo/create') }}"><i class="icon-energy"></i> 发布文章</a>
-
-				</li>
+				<li class="nav-title">建议</li>
+				<li class="nav-item"><a class="nav-link active"
+					href="{{ URL::to('/coach/export') }}"><i class="icon-puzzle"></i>
+						查看申请</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="{{ URL::to('/weibo/create') }}"><i class="icon-energy"></i>
+						发布文章</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -127,54 +156,59 @@ body {
 	<main class="main">
 	<div class="container-fluid">
 		<div class="row">
-			<!-- sidebar -->
-			{{--<div class="col-md-2 ">--}}
-				{{--<ul class="nav nav-pills nav-stacked">--}}
-					{{--<li role="presentation"><a href="{{ URL::to('/coach') }}">导入建议</a></li>--}}
-					{{--<li role="presentation" class="active"><a--}}
-						{{--href="{{ URL::to('/coach/export') }}">查看申请</a></li>--}}
-				{{--</ul>--}}
-			{{--</div>--}}
-			<!-- sidebar -->
-
 			<!-- main content -->
-			<div class="col-md-10">
-				<div class="card" id="list">
-					<div class="card-header">建议申请</div>
+			<div class="col-md-10 col-md-offset-1" id="list">
+				@if(count($questionsToMe)>0) @for($i=0;$i <
+				count($questionsToMe);$i++)
+				<div class="card card-local">
+					<div class="card-header">
+						<code>对我提问</code>
+						<strong>问题：</strong><?php echo $questionsToMe[$i]->title; ?>
+					</div>
 					<div class="card-block">
-						<table class="table table-hover">
-							<tr>
-								<th>问题</th>
-								<th>用户</th>
-								<th>操作</th>
-							</tr>
-							@if(count($ids)>0) @for($i=0;$i < count($ids);$i++)
-							<tr align="left">
-								<td><a style="cursor: pointer;" tabindex="0" role="button"
-									data-toggle="popover" data-trigger="focus" title="问题详情"
-									data-content="总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...">每天晚上很难睡着怎么办？</a></td>
-								<td><a style="cursor: pointer;" tabindex="0" role="button"
-									data-toggle="popover" data-trigger="focus" title="用户信息"
-									data-content="一个精神有一些问题的人，需要关爱">宗羿</a></td>
-								<td><a style="cursor: pointer;" onclick="reply()">回复</a></td>
-							</tr>
-							@endfor @endif
-						</table>
+						<strong>描述：</strong> <br /><?php echo $questionsToMe[$i]->content; ?>
+						<hr>
+						<strong>申请用户：</strong><?php echo $userNamesToMe[$i]; ?> 
+						<br /> <strong>个人信息：</strong><br /><?php echo $userDataToMe[$i]; ?>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-info-outline col-md-offset-11"
+							id="<?php echo $questionsToMe[$i]->userid; ?>;<?php echo $questionsToMe[$i]->id; ?>;<?php echo $questionsToMe[$i]->content; ?>;<?php echo $userDataToMe[$i]; ?>"
+							onclick="reply(this.id)">回复</button>
 					</div>
 				</div>
+				@endfor @endif @if(count($questionsToAll)>0) @for($i=0;$i <
+				count($questionsToAll);$i++)
+				<div class="card card-local">
+					<div class="card-header">
+						<strong>问题：</strong><?php echo $questionsToAll[$i]->title; ?>
+					</div>
+					<div class="card-block">
+						<strong>描述：</strong> <br /><?php echo $questionsToAll[$i]->content; ?>
+						<hr>
+						<strong>申请用户：</strong><?php echo $userNamesToAll[$i]; ?> <br /> <strong>个人信息：</strong><br /><?php echo $userDataToAll[$i]; ?>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-info-outline col-md-offset-11"
+							id="<?php echo $questionsToAll[$i]->userid; ?>;<?php echo $questionsToAll[$i]->id; ?>;<?php echo $questionsToAll[$i]->content; ?>;<?php echo $userDataToAll[$i]; ?>"
+							onclick="reply(this.id)">回复</button>
+					</div>
+				</div>
+				@endfor @endif
 			</div>
 
-			<div id="reply" style="display: none;" class="col-md-7">
-				<form class="form" method="POST" action="/coach/reply">
+			<div id="reply" style="display: none;" class="col-md-9">
+				<form class="form" method="POST" action="/coach/reply" id="form">
 					{!! csrf_field() !!}
 					<div class="card">
 						<div class="card-header">问题描述/用户信息</div>
 						<div class="card-block">
 							<div>
-								<strong>问题：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
+								<strong>问题：</strong><span id="question"></span>
 							</div>
 							<div>
-								<strong>用户信息：</strong>总是在下午5、6点的时候困，但是到了要睡觉的时候，在床上玩一会儿手机就不困了，一直到4、5点钟，然后白天重复这个过程，是不是恶性循环...
+								<strong>用户信息：</strong><br />
+								<span id="infomation"></span>
 							</div>
 						</div>
 					</div>
@@ -185,11 +219,13 @@ body {
 						</div>
 						<div class="card-block">
 							<textarea class="form-control" rows="6" style="resize: none;"
-								name="replyArea"></textarea>
+								name="replyArea" id="replyArea"></textarea>
 							<input type="hidden" name="oneDayRecipesInput"
 								id="oneDayRecipesInput"> <input type="hidden"
 								name="oneWeekRecipesInput" id="oneWeekRecipesInput"> <input
-								type="hidden" name="exerciseItemsInput" id="exerciseItemsInput">
+								type="hidden" name="exerciseItemsInput" id="exerciseItemsInput"><input
+								type="hidden" name="userId" id="userId"><input type="hidden"
+								name="questionId" id="questionId">
 						</div>
 					</div>
 
@@ -200,7 +236,7 @@ body {
 							<button type="button" class="btn btn-info-outline btn btn-block"
 								onclick="customSubmit()">提交</button>
 							<button type="button" class="btn btn-secondary btn btn-block"
-								onclick="reply()">取消</button>
+								onclick="reply('-1')">取消</button>
 						</div>
 					</div>
 
@@ -631,7 +667,7 @@ body {
             	  document.getElementById("exerciseItemsInput").value += exerciseDate +" "+ exerciseTime +" "+ exerciseName +" "+ exerciseGroup + " 组，每组 " + exerciseValue +" "+ exerciseUnit + ";";
               }
           };
-          
+
           var form = document.getElementById("form");
           form.submit();
       }
@@ -1130,13 +1166,25 @@ body {
           };
       };
 
-      function reply(){
-		var reply = document.getElementById("reply");
-		reply.style.display = reply.style.display == "" ? "none" : "";
-		var myReply = document.getElementById("myReply");
-		myReply.style.display = myReply.style.display == "" ? "none" : "";
-		var list = document.getElementById("list");
-		list.style.display = list.style.display == "" ? "none" : "";
+      function reply(id){
+    	  if(id != "-1") {
+    		  document.getElementById("question").innerText = id.split(";")[2];
+        	  document.getElementById("infomation").innerHTML = id.split(";")[3];
+        	  document.getElementById("userId").value = id.split(";")[0];
+        	  document.getElementById("questionId").value = id.split(";")[1];
+    	  }
+          
+          var reply = document.getElementById("reply");
+          reply.style.display = reply.style.display == "" ? "none" : "";
+          var myReply = document.getElementById("myReply");
+          myReply.style.display = myReply.style.display == "" ? "none" : "";
+          var list = document.getElementById("list");
+          list.style.display = list.style.display == "" ? "none" : "";
+
+          document.getElementById("planResult").innerHTML = "";
+          document.getElementById("replyArea").value = "";
+          index = 0;
+          array = new Array();
       };
     </script>
 
@@ -1150,7 +1198,9 @@ body {
 <!-- GenesisUI main scripts -->
 <script src="{{ URL::asset('/') }}js/app.js"></script>
 <!-- Plugins and scripts required by this views -->
-{{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
+{{--
+<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>
+--}}
 <script src="{{ URL::asset('/') }}js/libs/gauge.min.js"></script>
 <script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
 <!-- Custom scripts required by this view -->

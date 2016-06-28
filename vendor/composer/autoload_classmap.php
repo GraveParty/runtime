@@ -18,6 +18,7 @@ return array(
     'CreateLabelsTable' => $baseDir . '/database/migrations/2016_06_25_060512_create_labels_table.php',
     'CreateMovesTable' => $baseDir . '/database/migrations/2015_12_03_105706_create_moves_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateReplyTable' => $baseDir . '/database/migrations/2016_06_28_061154_create_reply_table.php',
     'CreateSleepsTable' => $baseDir . '/database/migrations/2015_12_03_105712_create_sleeps_table.php',
     'CreateUserFollowsTable' => $baseDir . '/database/migrations/2016_06_25_113108_create_user_follows_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
