@@ -37,6 +37,21 @@ class ActivityController extends Controller
         $money = $request->get('money');
         $listInfo = $request->get('listInfo');
         $tagInfo = $request->get('tagInfo');
+
+
+
+        $activityStore = new ActivityStore();
+        $activityStore->Theme = $request->get('theme');
+
+
+
+        if($activityStore->save()){
+            echo 111;
+        }
+        else{
+            return redirect()->back()->withInput()->withErrors('保存失败！');
+        }
+
         echo $activityTheme;
         echo $daterange;
         echo $activityField;

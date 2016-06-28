@@ -85,7 +85,7 @@ body {
 
 
 
-<div class="col-md-10">
+	<div class="col-md-10">
 			  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">待审活动</a></li>
@@ -239,6 +239,16 @@ body {
 				              </div>
 				            </div>
 				        </div>
+
+				        <nav>
+							<ul class="pager">
+						        <div class="form-group">
+								    <li><a href="#">NextPage <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+										
+								    </li>
+								</div>
+							</ul>
+						</nav>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="messages">...</div>
 				  </div>
@@ -388,11 +398,11 @@ body {
 	          
 
 	          <div class="form-group">
-	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
 	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
 	            </button>
 
-	            <div class="collapse" id="collapseExample" >
+	            <div class="collapse" id="collapseExample2" >
 	                  <div id="has_TimeList" class="form-group">
 	                      <div id="noneTimelist" >
 	                      	<p></p>
