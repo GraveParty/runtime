@@ -27,6 +27,26 @@ class ActivityController extends Controller
                           activity_ins.activityid = activities.id where userid = ?', [Auth::user()->id]);
 		return view('activity.myactivity',['name' => Auth::user()->name, 'activities' => $results]);
 	}
+
+    public function postNewActivity(Request $request){
+        $activityTheme = $request->get('theme');
+        $daterange = $request->get('daterange');
+        $activityField = $request->get('activityField');
+        $descriptionInfo = $request->get('descriptionInfo');
+        $peopleNumber = $request->get('peopleNumber');
+        $money = $request->get('money');
+        $listInfo = $request->get('listInfo');
+        $tagInfo = $request->get('tagInfo');
+        echo $activityTheme;
+        echo $daterange;
+        echo $activityField;
+        echo $descriptionInfo;
+        echo $peopleNumber;
+        echo $money;
+        echo $listInfo;
+        echo $tagInfo;
+  
+    }
 	
 	
     /**

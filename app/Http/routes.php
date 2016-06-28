@@ -67,6 +67,7 @@ use App\Http\Controllers\HomeController;
 	Route::get('/activity', 'ActivityController@index');
 	Route::get('/activity/success/{id}', 'ActivityController@activityIn');
 	Route::get('/activity/myactivity', 'ActivityController@getMyActivity');
+	Route::post('/activity/newActivity', 'ActivityController@postNewActivity');
 	
 	//医生
 	Route::get('/doctor', 'DoctorController@index');

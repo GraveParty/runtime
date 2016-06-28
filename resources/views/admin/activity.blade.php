@@ -85,84 +85,333 @@ body {
 
 
 
+<div class="col-md-10">
+			  <!-- Nav tabs -->
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">待审活动</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>
+				    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>
+				  </ul>
 
-			<div
-				class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-				<div class="row">
+				  <!-- Tab panes -->
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="home">
+				    	<div class="col-md-2" >
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group" >
+					              <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailActivity">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div> 
+				              </div>
+				            </div>
+				        </div>
 
-					@if (count($activities) > 0)
-					<div>
-						<ul>
-							@foreach ($activities as $a)
-							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+				        <div class="col-md-2">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group">
+					              <button type="button" class="btn btn-default"  aria-label="Left Align">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div>
+				              </div>
+				            </div>
+				        </div>
 
-								<div class="panel panel-default">
-									<!-- Default panel contents -->
-									<div class="panel-heading">
-										<b><?php echo $a->id ?></b>
-										<button type="button"
-											class="btn btn-default btn-xs btn-success pull-right"
-											data-toggle="modal" data-target="#myModal<?php echo $a->id ?>">
-											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-											删除
-										</button>
-										<a role="button" href="/admin/activity/modify/<?php echo $a->id ?>"
-											class="btn btn-default btn-xs btn-success pull-right"> <span
-											class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-											修改
-										</a>
+				        <div class="col-md-2">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group">
+					              <button type="button" class="btn btn-default"  aria-label="Left Align">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div>
+				              </div>
+				            </div>
+				        </div>
 
-									</div>
-									<!-- Modal -->
-									<div class="modal fade" id="myModal<?php echo $a->id ?>" tabindex="-1"
-										role="dialog" aria-labelledby="myModalLabel">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-													<h5 class="modal-title" id="myModalLabel">确认删除活动？</h5>
-												</div>
-												<div class="modal-body">
-													<button type="button" class="btn btn-default"
-														data-dismiss="modal">取消</button>
-													<a role="button" href="/admin/activity/delete/<?php echo $a->id ?>" 
-													class="btn btn-primary">确认</a>
-												</div>
-											</div>
-										</div>
-									</div>
+				        <div class="col-md-2">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group">
+					              <button type="button" class="btn btn-default"  aria-label="Left Align">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div>
+				              </div>
+				            </div>
+				        </div>
 
-									<!-- Table -->
-									<table class="table">
-										<tr>
-											<th>活动名称</th>
-											<th>活动简介</th>
-											<th>开始时间</th>
-											<th>结束时间</th>
-										</tr>
-										<tr>
-											<td><?php echo $a->title ?></td>
-											<td><?php echo $a->introduction ?></td>
-											<td><?php echo $a->start ?></td>
-											<td><?php echo $a->end ?></td>
-										</tr>
-									</table>
+				        <div class="col-md-2">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group">
+					              <button type="button" class="btn btn-default"  aria-label="Left Align">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div>
+				              </div>
+				            </div>
+				        </div>
+
+
+				        <nav>
+							<ul class="pager">
+						        <div class="form-group">
+								    <li><a href="#">NextPage <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+										
+								    </li>
 								</div>
-
-							</div>
-							@endforeach
-						</ul>
-					</div>
-					@endif
-				</div>
+							</ul>
+						</nav>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="profile">
+						<div class="col-md-2" >
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3>
+				                  <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])">Bootstrap 编码规范<br><small>by @mdo</small></a>
+				                </h3>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <p>
+				                Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。
+				                </p>
+				                <div class="form-group" >
+					              <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailMyActivity">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div> 
+				              </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+				  </div>
 			</div>
+
 
 
 			<!-- main content -->
 		</div>
+		<nav class="col-md-offset-5">
+		  <ul class="pagination" >
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li class="active"><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
+
+
+	<!-- detailActivityModal -->
+	<div class="modal fade" id="detailActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">活动名称</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-body">
+
+	          <h4>活动主题</h4>
+	          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
+	          <h4>活动时间</h4>
+	          <p><a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> and <a href="#" class="tooltip-test" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+	          
+	          <h4>活动地点</h4>
+	          <p><a href="#" class="tooltip-test" title="" data-original-title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+	          <div class="row">
+			    <div class="col-md-6 ">
+			                <h4>参与人数</h4>	
+	           				<div class="bs-example tooltip-demo">
+	    						<p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan</p>
+	  		   				</div>
+			    </div>
+
+			    <div class="col-md-6">
+			    			<h4>保证金</h4>	
+			                <div class="bs-example tooltip-demo">
+	    						<p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan</p>
+	  		   				</div>
+			    </div>
+		   	  </div>
+
+	          <h4>活动描述</h4>
+	          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+	          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+	         
+	          
+
+	          <div class="form-group">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+	            </button>
+
+	            <div class="collapse" id="collapseExample" >
+	                  <div id="has_TimeList" class="form-group">
+	                      <div id="noneTimelist" >
+	                      	<p></p>
+	                        <p class="alert alert-info alert-dismissible">暂无活动安排</p> 
+	                        <p class="alert alert-info alert-dismissible">暂无活动安排</p> 
+	                      </div>
+	                  </div>
+	            </div>
+	          </div>
+	        </div>
+
+	   
+	      </div>
+	      <div class="modal-footer">
+	      	<div>
+	      		<h4>申报人/申报时间</h4>
+	        	<p>someone at time</p>
+	    	</div>
+	      	<button type="button" class="btn btn-success">通过</button>
+	      	<button type="button" class="btn btn-warning">删除</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<!-- detailMyActivityModal -->
+	<div class="modal fade" id="detailMyActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">活动名称</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-body">
+
+	          <h4>活动主题</h4>
+	          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
+	          <h4>活动时间</h4>
+	          <p><a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> and <a href="#" class="tooltip-test" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+	          
+	          <h4>活动地点</h4>
+	          <p><a href="#" class="tooltip-test" title="" data-original-title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+	          <div class="row">
+			    <div class="col-md-6 ">
+			                <h4>参与人数</h4>	
+	           				<div class="bs-example tooltip-demo">
+	    						<p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan</p>
+	  		   				</div>
+			    </div>
+
+			    <div class="col-md-6">
+			    			<h4>保证金</h4>	
+			                <div class="bs-example tooltip-demo">
+	    						<p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan</p>
+	  		   				</div>
+			    </div>
+		   	  </div>
+
+	          <h4>活动描述</h4>
+	          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+	          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+	         
+	          
+
+	          <div class="form-group">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+	            </button>
+
+	            <div class="collapse" id="collapseExample" >
+	                  <div id="has_TimeList" class="form-group">
+	                      <div id="noneTimelist" >
+	                      	<p></p>
+	                        <p class="alert alert-info alert-dismissible">暂无活动安排</p> 
+	                        <p class="alert alert-info alert-dismissible">暂无活动安排</p> 
+	                      </div>
+	                  </div>
+	            </div>
+	          </div>
+	        </div>
+
+	   
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-warning">删除</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 

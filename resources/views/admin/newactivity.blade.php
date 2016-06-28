@@ -10,21 +10,28 @@
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
 <link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
-<link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
-	media="screen">
-<link href="{{ URL::asset('/') }}css/bootstrap-datetimepicker.min.css"
-	rel="stylesheet" media="screen">
 
+
+<link href="{{ URL::asset('/') }}css/style.min.css" rel="stylesheet">
 
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/bootstrap.js"></script>
-<script type="text/javascript"
-	src="{{ URL::asset('/') }}js/bootstrap-datetimepicker.js"></script>
 
-<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
 
+
+
+
+        <!-- GenesisUI main scripts -->
+<script src="{{ URL::asset('/') }}js/app.js"></script>
+        <!-- Plugins and scripts required by this views -->
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/daterangepicker.min.js"></script>
+        <!-- Custom scripts required by this view -->
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
 
 <style>
 body {
@@ -86,105 +93,222 @@ body {
 			<!-- sidebar -->
 
 			<!-- main content -->
-
-			<div
-				class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-				<div class="row">
-
-					<form class="form-horizontal" method="POST"
-						action="/admin/newactivity">
-						{!! csrf_field() !!}
-
-						<div class="form-group">
-							<label for="inputTitle" class="col-sm-2 control-label">活动名称</label>
-
-							<div class="col-sm-8 col-md-6 col-lg-8">
-								<input name="title" type="text" class="form-control"
-									id="inputTitle" placeholder="请输入活动名称"
-									value="{{ old('title') }}">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputIntroduction" class="col-sm-2 control-label">活动简介</label>
-
-							<div class="col-sm-8 col-md-6 col-lg-8">
-								<input name="introduction" type="text" class="form-control"
-									id="inputIntroduction" placeholder="请输入活动简介"value="{{ old('introduction') }}">
-							</div>
-						</div>
+			<div class="col-md-10">
+				<form style="padding:30px" id="newActivity" action="/activity/newActivity" method="POST">
+					{!! csrf_field() !!}
+			        <div class="alert alert-success alert-dismissible fade in" role="alert">
+			          <div class="form-group" >
+			             <label for="exampleInputEmail1">活动主题</label>
+			             <input type="text" class="form-control"  name="theme"  id="exampleInputEmail1" placeholder="主题名称">
+			          </div>
 
 
+			          <div class="form-group" >
+				        <fieldset class="form-group">
+                            <label>活动时间</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input name="daterange" class="form-control" type="text">
+                                </div>
+                        </fieldset>
+					  </div>
+			          
+			          <div class="form-group">
+			              <label for="exampleInputPassword1">地点</label>
+			              <input  class="form-control" id="activityField" name="activityField" placeholder="省/市/区/地点描述">
+			          </div>
+			           
+			          
 
-						<div class="form-group">
-							<label for="inputStart" class="col-sm-2 control-label">开始时间</label>
+			          
+			           <div class="form-group">
+			              <label for="exampleInputPassword1">活动详情</label>
+			               <input type="hidden" id="descriptionInfo" name="descriptionInfo" value=""></input> 
+			              <textarea id="description"  class="form-control" rows="5" placeholder="活动描述"></textarea>
+			            </div>
+			          
 
-							<div class="col-sm-8 col-md-6 col-lg-8">
-							
-								<input name="start" type="text" readonly class="form-control input-append date form_datetime"
-									id="inputStart" placeholder="" value="{{ old('start') }}">
-								<script type="text/javascript">
-   							 $(".form_datetime").datetimepicker({
-   	   							 format: 'yyyy-mm-dd hh:ii',
-   	   						 	autoclose: true,
-   	   			       	 		todayBtn: true,
-   	   			        		pickerPosition: "bottom-left"
-   	   	   							 });
-								</script>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="inputEnd" class="col-sm-2 control-label">结束时间</label>
+			          <div class="row">
+			            <div class="col-md-2 ">
+			              <div class="form-group">
+			                <label for="exampleInputPassword1">人数</label>
+			                <div class="input-group">
+			                  <input type="text" name="peopleNumber"  class="form-control" placeholder="0" aria-describedby="basic-addon1">
+			                  <span class="input-group-addon" id="basic-addon1">人</span>
+			                </div>
+			              </div>
+			            </div>
 
-							<div class="col-sm-8 col-md-6 col-lg-8">
-							
-								<input name="end" type="text" readonly class="form-control input-append date form_datetime"
-									id="inputEnd" placeholder="" value="{{ old('end') }}">
-									<span class="add-on"><i class="icon-remove"></i></span>
-    <span class="add-on"><i class="icon-calendar"></i></span>
-								<script type="text/javascript">
-   							 $(".form_datetime").datetimepicker({
-   	   							 format: 'yyyy-mm-dd hh:ii',
-   	   						 	autoclose: true,
-   	   			       	 		todayBtn: true,
-   	   			        		pickerPosition: "bottom-left"
-   	   	   							 });
-								</script>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="inputIntroduction" class="col-sm-2 control-label">活动图片</label>
-
-							<div class="col-sm-8 col-md-6 col-lg-8">
-								<input class="" type="file" id="inputFile" name="inputFile">
-							</div>
-						</div>
-						
-						<br>
-
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-default">发布</button>
-							</div>
-						</div>
-					</form>
-					@if($errors->any())
-					<ul class="alert alert-danger">
-						@foreach($errors->all() as $error)
-						<li>{{ $error }}</li> @endforeach
-					</ul>
-					@endif
+			            <div class="col-md-2">
+			              <div class="form-group">
+			                <label for="exampleInputPassword1">保证金</label>
+			                <div class="input-group">
+			                  <input type="text" name="money" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+			                  <span class="input-group-addon" id="basic-addon1">元</span>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
 
 
-				</div>
+
+			        <div class="form-group">
+			            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+			              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+			            </button>
+
+			            <div class="collapse" id="collapseExample" >
+			            	 <a style="heigth:2px">&nbsp</a>
+			                <div class="alert alert-warning alert-dismissible fade in" role="alert">
+			                  <label for="exampleInputPassword1" class="text-center">已有时间安排</label>
+			                  
+
+			                    <div id="has_TimeList" class="form-group">
+			                      <div id="noneTimelist" class="alert alert-success alert-dismissible" role="alert">
+			                        <p id="list0">暂无活动安排</p> 
+			                        <input type="hidden" name="listInfo" id="listInfo" value=""></input> 
+			                      </div>
+			                      <a>&nbsp</a>
+			                    </div>
+
+			                  
+							  
+			                  <hr style="height:4px; border-top:2px solid #555555" />
+			                  
+			        
+
+			                
+			                  	<label for="exampleInputPassword1" class="text-center">新增时间安排</label>
+			                  	<div class="alert alert-success alert-dismissible fade in" role="alert">
+			                    	<div class="form-group" >
+							        <fieldset class="form-group">
+			                            <label>活动时间</label>
+			                                <div class="input-group">
+			                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                                    <input name="daterange" class="form-control" type="text" id="newTimeRange">
+			                                </div>
+			                        </fieldset>
+									</div>
+			                    
+
+			                   		<div class="form-group">
+			                     		 <input id="new_TimeListContent" type="text" class="form-control" id="exampleInputPassword1" placeholder="活动内容描述">
+			                    	</div>
+
+				                    <div class="row">
+				                        <div class="col-md-4 col-md-offset-10">
+				                          <div class="input-group">
+				                            <button  id="add_TimeList" class="btn btn-default" type="button" onclick="addTimeList()">
+				                              <span class="glyphicon glyphicon-plus" > 添加</span>
+				                            </button>
+				                          </div> 
+				                        </div>
+				                    </div> 
+			                  	</div> 
+
+				            </div>
+				        </div>
+				    </div> 
+
+
+				     <fieldset class="form-group">
+                         <label>标签选择</label>
+                            <div class="controls">
+                            	<input type="hidden" name="tagInfo"id="tagInfo" value=""></input> 
+                                <select id="select2-1" class="form-control" multiple>
+                                    <option>Option 1</option>
+                                    <option selected>Option 2</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                    <option>Option 5</option>
+                                </select>
+                            </div>
+                     </fieldset>
+					</div>
+
+                 	<div class="form-group">
+                    	<div class="row">
+							<div class="col-md-2 col-md-offset-8"></div>
+								<button type="button" class="btn btn-default"  aria-label="Left Align" onclick="subForm()">
+							   	 	<span class="glyphicon glyphicon-ok" aria-hidden="true"> Submit </span>
+								</button>
+							</div> 
+						</div> 
+					</div> 
+
+				
+				      
+				</form>
 			</div>
+				
+			
 
-
+			
+			
 			<!-- main content -->
 		</div>
 	</div>
 
+
+
+<script>
+	var listNumber=0;
+	function subForm(){
+		var content="";
+		var count="";
+
+
+		for (var i = 1; i <= listNumber; i++) {
+					count="list"+i;
+					if(document.getElementById(count)){
+						content = content+ (document.getElementById(count).innerText+";");
+					}
+
+		};
+
+		var listInfo = document.getElementById("listInfo");
+		listInfo.value =content;
+
+
+		var tagChoose = document.getElementById("select2-1");
+		var tagsInfo = document.getElementById("tagInfo");
+		tagInfo.value=tagChoose.value;
+
+		var description = document.getElementById("description");
+		var descriptionInfo = document.getElementById("descriptionInfo");
+		descriptionInfo.value=description.value;
+
+		var subForm = document.getElementById("newActivity");
+		subForm.submit();
+
+
+	}
+
+
+
+	function addTimeList(){
+
+		listNumber+=1;
+
+        var input_Content = document.getElementById("new_TimeListContent");
+
+
+        var startTime = document.getElementById("newTimeRange").value;
+
+        
+
+        var content =startTime+" : "+input_Content.value;
+        var hasList = document.getElementById("has_TimeList");
+        var noneTimeList = document.getElementById("noneTimelist");
+        
+        noneTimeList.style.display="none";  
+
+        hasList.innerHTML +=  "<div class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-"+"dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><p id=list"+listNumber+">" + content +"</p></div>" ;
+     
+
+	}
+
+</script>
 
 
 </body>
