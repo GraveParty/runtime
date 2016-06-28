@@ -99,30 +99,9 @@
                     </li> -->
 				</ul>
 				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade in active" id="allhost">
-						<div class="input-group" style="width: 100%">
-							<input type = "text" class="form-control" placeholder="标题" id="title">
-							<textarea class="form-control" placeholder="内容" id="content" rows="5"></textarea>
+					
 
-						</div>
-
-						<div class="input-group">
-							<span class="input-group-addon">分类</span>
-							<select class="form-control" id="category">
-								<option>运动/健身</option>
-								<option>饮食</option>
-								<option>健康</option>
-							</select>
-							<span class="input-group-addon">教练</span>
-							<select class="form-control">
-
-								<option>全站提问</option>
-
-							</select>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="onecoach">
+					
 						<div class="input-group" style="width: 100%">
 							<input type = "text" class="form-control" placeholder="标题" id="one_title">
 							<textarea class="form-control" placeholder="内容" id="one_content" rows="5"></textarea>
@@ -137,6 +116,7 @@
 							</select>
 							<span class="input-group-addon">教练</span>
 							<select class="form-control" id="coach_list">
+									<option value="0">全站提问</option>
 								@foreach ($coachlist as $cl)
 									<option value = '<?php echo $cl->id ?>'><?php echo $cl->nickname ?></option>
 								@endforeach
@@ -145,7 +125,7 @@
 
 
 
-					</div>
+					
 
 				</div>
 			</div>
@@ -274,7 +254,7 @@
 				@if(count($suggestions) > 0)
 					<div>
 						<ul>
-							@if($hasAsked!=0)
+							@if($hasAsked==1)
 								@foreach($notAnswered as $nA)
 									<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
@@ -316,6 +296,7 @@
 							@else
 							@endif
 							@foreach ($suggestions as $su)
+							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
 								<div class="card card-local">
 									<!-- Default panel contents -->
@@ -364,7 +345,7 @@
 													<button type="button" class="btn btn-default"
 															data-dismiss="modal">取消</button>
 													<a role="button"
-													   href="/exercise/suggestion/delete/<?php echo $su->askid ?>"
+													   href="/exercise/suggestion/delete/<?php echo $su->question_id ?>"
 													   class="btn btn-primary">确认</a>
 												</div>
 											</div>
@@ -388,12 +369,12 @@
 											</div>
 											<div class="card-block">
 
-												<?php echo $su->content ?>
+												<?php echo $su->reply ?>
 											</div>
 										</div>
 									</div>
 								</div>
-
+								</div>
 							@endforeach
 						</ul>
 					</div>

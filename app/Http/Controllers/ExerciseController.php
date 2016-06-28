@@ -85,10 +85,10 @@ class ExerciseController extends Controller
 	
 	public function getSuggestion()
 	{
-		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content,coach_advices.askid,coach_advices.created_at as addate,coach_asks.title,coach_asks.content as ask_content,coach_asks.state,coach_asks.kind,coach_asks.created_at as asdate
-				from coach_asks join users join coach_advices
-				on coach_advices.askid = coach_asks.id and coach_advices.coachid = users.id
-				where coach_advices.userid = ?', [Auth::user()->id]);
+		$results = DB::select('select replies.id,users.nickname,replies.reply,replies.question_id,replies.created_at as addate,coach_asks.title,coach_asks.content as ask_content,coach_asks.state,coach_asks.kind,coach_asks.created_at as asdate
+				from replies join users join coach_asks
+				on replies.question_id = coach_asks.id and replies.coach_id = users.id
+				where replies.user_id = ?', [Auth::user()->id]);
 		
 		$hasAsked = DB::select('select * from coach_asks where userid = ? and state = 0', [Auth::user()->id]);
 		$result = DB::select('select * from users where type =2');
