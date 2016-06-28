@@ -383,6 +383,7 @@
 									<a class="btn-minimize collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="icon-arrow-down"></i></a>
 								</div>
 							</div>
+
 							<div class="card-block collapse text-xs-center" id="collapseExample">
 								<div class="text-muted small text-uppercase font-weight-bold">新目标步数</div>
 
