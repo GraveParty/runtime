@@ -13,7 +13,7 @@
     <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
           media="screen">
     {{--<link href="{{ URL::asset('/') }}css/select2.min.css" rel="stylesheet"--}}
-          {{--media="screen">--}}
+    {{--media="screen">--}}
     <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet"
           media="screen">
 
@@ -28,7 +28,7 @@
 
     <style>
         body {
-            /*padding-top: 80px;*/
+            padding-top: 20px;
         }
     </style>
 
@@ -45,7 +45,7 @@
                 <a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
             </li>
             <li class="nav-item p-x-1">
-                <a class="nav-link" href="{{ URL::to('/coach/export') }}">建议</a>
+                <a class="nav-link" href="{{ URL::to('/coach/export') }}">教练</a>
             </li>
         </ul>
         <ul class="nav navbar-nav pull-right hidden-md-down">
@@ -111,8 +111,15 @@
                 <a class="nav-link" href="{{ URL::to('/coach/export') }}"><i class="icon-puzzle"></i> 查看申请</a>
 
             </li>
+            <li class="nav-title">
+                文章
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ URL::to('/weibo/myweibo') }}"><i class="icon-notebook"></i> 我的文章</a>
+
+            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ URL::to('/weibo/create') }}"><i class="icon-energy"></i> 发布文章</a>
+                <a class="nav-link" href="{{ URL::to('/weibo/create') }}"><i class="icon-pencil"></i> 发布文章</a>
 
             </li>
         </ul>
@@ -139,70 +146,68 @@
             {{--</div>--}}
 
             <!-- main content -->
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row">
-                    <div class="card card-local">
-                        <div class="card-header">
-                            <b>撰写新文章</b>
+            <div class="col-md-12">
+                <div class="card card-local">
+                    <div class="card-header">
+                        <b>撰写新文章</b>
 
-                        </div>
-                        <div class="card-block">
-                            <form class="form-horizontal" method="POST" action="/weibo/create">
-                                {!! csrf_field() !!}
+                    </div>
+                    <div class="card-block">
+                        <form class="form-horizontal" method="POST" action="/weibo/create">
+                            {!! csrf_field() !!}
 
 
-                                <div class="form-group row">
-                                    <label for="inputTitle" class="col-md-1 col-md-offset-1 control-label">标题</label>
+                            <div class="form-group row">
+                                <label for="inputTitle" class="col-md-1 col-md-offset-1 control-label">标题</label>
 
-                                    <div class="col-md-9">
-                                        <input name="title" type="text" class="form-control"
-                                               id="inputTitle" placeholder=""
-                                               value="">
-                                    </div>
+                                <div class="col-md-9">
+                                    <input name="title" type="text" class="form-control"
+                                           id="inputTitle" placeholder=""
+                                           value="">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputContent" class="col-md-1 col-md-offset-1 control-label">内容</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputContent" class="col-md-1 col-md-offset-1 control-label">内容</label>
 
-                                    <div class="col-md-9">
-                                        <textarea name="content" class="form-control" id="inputContent" rows="12"></textarea>
-                                    </div>
+                                <div class="col-md-9">
+                                    <textarea name="content" class="form-control" id="inputContent" rows="12"></textarea>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label for="inputTitle" class="col-md-1 col-md-offset-1 control-label">标签</label>
+                            <div class="form-group row">
+                                <label for="inputTitle" class="col-md-1 col-md-offset-1 control-label">标签</label>
 
-                                    <div class="col-md-9">
-                                        <select name="label_list[]" class="form-control js-example-basic-multiple"
-                                                id="inputLabel" multiple="multiple" placeholder>
-                                            @foreach($labels as $l)
-                                                <option value="<?php echo $l->id ?>"><?php echo $l->name ?></option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="col-md-9">
+                                    <select name="label_list[]" class="form-control js-example-basic-multiple"
+                                            id="inputLabel" multiple="multiple" placeholder>
+                                        @foreach($labels as $l)
+                                            <option value="<?php echo $l->id ?>"><?php echo $l->name ?></option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <div class="col-md-9 col-md-offset-2">
-                                        <button type="submit" class="btn btn-block btn-success">提交</button>
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col-md-9 col-md-offset-2">
+                                    <button type="submit" class="btn btn-block btn-success">提交</button>
                                 </div>
-                            </form>
+                            </div>
+                        </form>
 
 
-                            @if($errors->any())
-                                <ul class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li> @endforeach
-                                </ul>
-                            @endif
-
-
-                        </div>
+                        @if($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li> @endforeach
+                            </ul>
+                        @endif
 
 
                     </div>
 
+
                 </div>
+
             </div>
 
             <!-- main content -->

@@ -107,6 +107,7 @@ use App\Http\Controllers\HomeController;
 	Route::get('/weibo/follow', 'WeiboController@myFollow');
 	Route::get('/weibo/collect', 'WeiboController@myCollect');
 	Route::get('/weibo/search/{keyword}', 'WeiboController@myCollect');
+	Route::get('/weibo/myweibo', 'WeiboController@myWeibo');
 
 
 	

@@ -61,7 +61,7 @@ body {
 				<li class="nav-item"><a
 					class="nav-link navbar-toggler layout-toggler" href="#">☰</a></li>
 				<li class="nav-item p-x-1"><a class="nav-link"
-					href="{{ URL::to('/coach/export') }}">建议</a></li>
+					href="{{ URL::to('/coach/export') }}">教练</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right hidden-md-down">
 				<li class="nav-item dropdown"><a
@@ -139,13 +139,24 @@ body {
 	<div class="sidebar">
 		<nav class="sidebar-nav">
 			<ul class="nav">
-				<li class="nav-title">建议</li>
-				<li class="nav-item"><a class="nav-link active"
-					href="{{ URL::to('/coach/export') }}"><i class="icon-puzzle"></i>
-						查看申请</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="{{ URL::to('/weibo/create') }}"><i class="icon-energy"></i>
-						发布文章</a></li>
+				<li class="nav-title">
+					建议
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ URL::to('/coach/export') }}"><i class="icon-puzzle"></i> 查看申请</a>
+
+				</li>
+				<li class="nav-title">
+					文章
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ URL::to('/weibo/myweibo') }}"><i class="icon-notebook"></i> 我的文章</a>
+
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ URL::to('/weibo/create') }}"><i class="icon-pencil"></i> 发布文章</a>
+
+				</li>
 			</ul>
 		</nav>
 	</div>

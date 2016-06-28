@@ -73,6 +73,27 @@ class WeiboController extends Controller
     }
 
 
+    public function myWeibo(){
+        $weibos = Weibo::where('author_id','=',Auth::user()->id)->latest()->get();
+        $author_name = [];
+        $haveWeibo = 1;
+
+        if(count($weibos)==0){
+            $haveWeibo = 0;
+        }else{
+            //作者名
+            foreach($weibos as $w){
+                $id = $w->author_id;
+                $name = DB::select('select nickname from users  where id = ?', [$id]);
+                $author_name[] = $name[0]->nickname;
+            }
+            reset($author_name);
+        }
+
+        return view('weibo.myweibo',compact('weibos'),['names' => $author_name,'haveWeibo' => $haveWeibo]);
+    }
+
+
     public function hotWeibo(){
     $weibos = Weibo::orderBy('collect_count', 'desc')->latest()->get();
     $author_name = [];
