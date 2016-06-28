@@ -34,7 +34,7 @@ class ExerciseController extends Controller
 			$g->save();
 		}
 		
-		return Redirect::to ( '/exercise/goal' );
+		return Redirect::to ( '/exercise' );
 	}
 	
 	public function getGoal()
@@ -181,10 +181,22 @@ class ExerciseController extends Controller
     	$days = $results[0]->days;
     	$calories = $results[0]->calories;
     	$km = $results[0]->kms;
-    	
-//     	return $steps;
-    	
-        return view('exercise.index',['percent'=>$percent,'days'=>$days,'calories'=>$calories,'km'=>$km]);
+
+
+		$res = DB::select('select * from goals where userid = ?', [Auth::user()->id]);
+		$goalstep = 0;
+		if(count($res)!=0){
+			$goalstep = $res[0]->step;
+		}else{
+			$g = new Goal();
+			$g->userid = Auth::user()->id;
+			$g->step = 0;
+			$g->weight = 60;
+			$g->height = 170;
+			$g->save();
+		}
+
+        return view('exercise.index',['percent'=>$percent,'days'=>$days,'calories'=>$calories,'km'=>$km, 'goalstep'=>$goalstep]);
     }
 
     /**

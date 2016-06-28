@@ -118,10 +118,7 @@
 				<a class="nav-link" href="{{ URL::to('/exercise') }}"><i class="icon-puzzle"></i> 我的运动</a>
 
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ URL::to('/exercise/goal') }}"><i class="icon-energy"></i> 运动目标</a>
 
-			</li>
 			<li class="nav-item">
 				<a class="nav-link active" href="{{ URL::to('/exercise/history') }}"><i class="icon-docs"></i> 历史数据</a>
 
