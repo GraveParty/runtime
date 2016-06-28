@@ -24,7 +24,7 @@
 
 <style>
 body {
-	padding-top: 80px;
+	padding-top: 40px;
 }
 </style>
 
@@ -278,9 +278,9 @@ body {
 							@foreach($notAnswered as $nA)
 							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
-								<div class="panel panel-default">
+								<div class="card card-local">
 									<!-- Default panel contents -->
-									<div class="panel-heading">
+									<div class="card-header">
 										<b><?php echo $nA->title ?></b>
 										<button type="button"
 											class="btn btn-default btn-xs btn-success" style="background: rgba(0, 153, 255, 1);border-color: rgba(0, 153, 255, 1)">
@@ -294,17 +294,17 @@ body {
 									</div>
 									
 
-									<div class="panel-body">
+									<div class="card-block">
 										<!-- Table -->
 										<div class="">
 										
 										<br><br>
 										</div>
 											
-										<div class="panel panel-default">										<div class="panel-heading">
+										<div class="card">										<div class="card-header">
 												
 												</div>
-												<div class="panel-body">
+												<div class="card-block">
 												
 												暂无回答，请耐心等待
 												</div>
@@ -319,9 +319,9 @@ body {
 							@foreach ($suggestions as $su)
 							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
-								<div class="panel panel-default">
+								<div class="card card-local">
 									<!-- Default panel contents -->
-									<div class="panel-heading">
+									<div class="card-header">
 										<b><?php echo $su->title ?></b>
 										<button type="button"
 											class="btn btn-default btn-xs btn-success" style="background: rgba(0, 153, 255, 1);border-color: rgba(0, 153, 255, 1)">
@@ -373,21 +373,21 @@ body {
 										</div>
 									</div>
 
-									<div class="panel-body">
+									<div class="card-block">
 										<!-- Table -->
 										<div class="">
 										<?php echo $su->ask_content ?>
 										<br><br>
 										</div>
 											
-										<div class="panel panel-default">										<div class="panel-heading">
+										<div class="card">										<div class="card-header">
 												<b><?php echo $su->nickname ?>:教练</b>
 												<div class="pull-right">
 												回答于
 												<?php echo $su->addate?>
 												</div>
 												</div>
-												<div class="panel-body">
+												<div class="card-block">
 												
 												<?php echo $su->content ?>
 												</div>
@@ -401,11 +401,11 @@ body {
 					</div>
 					@else
 					<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-						<div class="panel panel-default panel-success">
-							<div class="panel-heading">
+						<div class="card card-local">
+							<div class="card-header">
 								<b>建议</b>
 							</div>
-							<div class="panel-body">
+							<div class="card-block">
 								<p>当前暂无建议</p>
 							</div>
 						</div>

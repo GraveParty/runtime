@@ -11,9 +11,10 @@
 	{{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet" media="screen">--}}
 	<link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 		  media="screen">
-	<link href="{{ URL::asset('/') }}css/bootstrap-datetimepicker.min.css"
-		  rel="stylesheet" media="screen">
+	<link href="{{ URL::asset('/') }}css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
 	<link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
+
 
 	<script type="text/javascript"
 			src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
@@ -30,6 +31,10 @@
 	<style>
 		body {
 			/*padding-top: 80px;*/
+		}
+
+		#inputDate{
+			background-color: transparent;
 		}
 	</style>
 
@@ -181,21 +186,18 @@
 				<div class="row">
 
 					<div class="card card-local">
-						<div class="card-block p-a-1 clearfix">
-							<i class="fa fa-moon-o bg-success p-a-1 font-2xl m-r-1 pull-left"></i>
+						<div class="card-block p-a-1 clearfix row">
 
 					<form name="form" class="form-inline" method="POST"
 						  action="/exercise/chart">
 						{!! csrf_field() !!}
 
-						<div class="form-group">
-							<div class="col-sm-8 col-md-6 col-lg-8">
+						<div class="form-group col-md-3 col-md-offset-4">
+							<div class="">
 
 								<input name="date" type="text" readonly
 									   class="form-control input-append date form_datetime"
-									   id="inputDate" placeholder="" value="2015" data-date="2015"> <span
-										class="add-on"><i class="icon-remove"></i></span> <span
-										class="add-on"><i class="icon-calendar"></i></span>
+									   id="inputDate" placeholder="" value="2015" data-date="2015">
 								<script type="text/javascript">
 									$(".form_datetime").datetimepicker({
 										format: 'yyyy',
@@ -210,7 +212,7 @@
 							</div>
 
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-1">
 							<button type="submit" class="btn btn-default btn-xs btn-success">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提交
 							</button>
@@ -528,17 +530,25 @@
 
 </body>
 
+<!-- Bootstrap and necessary plugins -->
+{{--<script src="assets/js/libs/jquery.min.js"></script>--}}
 <script src="{{ URL::asset('/') }}js/libs/tether.min.js"></script>
+{{--<script src="assets/js/libs/bootstrap.min.js"></script>--}}
 <script src="{{ URL::asset('/') }}js/libs/pace.min.js"></script>
 <!-- Plugins and scripts required by all views -->
+<script src="{{ URL::asset('/') }}js/libs/Chart.min.js"></script>
 <script src="{{ URL::asset('/') }}js/views/shared.js"></script>
 <!-- GenesisUI main scripts -->
 <script src="{{ URL::asset('/') }}js/app.js"></script>
 <!-- Plugins and scripts required by this views -->
-{{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
-<script src="{{ URL::asset('/') }}js/libs/gauge.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
 <script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/daterangepicker.min.js"></script>
 <!-- Custom scripts required by this view -->
-<script src="{{ URL::asset('/') }}js/views/main.js"></script>
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
+<script src="{{ URL::asset('/') }}js/app-options.js"></script>
+
+
 
 </html>

@@ -41,6 +41,22 @@
             /*padding-top: 80px;*/
             font-family:"微软雅黑";
         }
+
+        .weibo-count{
+            text-align: center;
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        /*.collect-yes {*/
+            /*background-color: #4dbd74;*/
+            /*color: #ffffff;*/
+        /*}*/
+
+        /*.collect-no {*/
+            /*background-color: transparent;*/
+            /*color: #4dbd74;*/
+        /*}*/
     </style>
 
 </head>
@@ -226,7 +242,7 @@
 
                                 </div>
 
-                                <div class="pull-right" id="count-{{ $weibos[$i]->id }}" >{{ $weibos[$i]->collect_count }}</div>
+                                <div class="weibo-count pull-right" id="count-{{ $weibos[$i]->id }}" >{{ $weibos[$i]->collect_count }}</div>
 
 
                                 <div class="weibo-time">

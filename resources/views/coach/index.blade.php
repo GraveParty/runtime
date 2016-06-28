@@ -8,10 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+{{--<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet" media="screen">--}}
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
+	<link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>

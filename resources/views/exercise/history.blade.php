@@ -28,6 +28,10 @@
 		body {
 			/*padding-top: 80px;*/
 		}
+
+		#inputDate{
+			background-color: transparent;
+		}
 	</style>
 
 </head>
@@ -174,20 +178,17 @@
 					class="col-md-10 col-md-offset-1">
 				<div class="row">
 					<div class="card card-local">
-						<div class="card-block p-a-1 clearfix">
-							<i class="fa fa-moon-o bg-success p-a-1 font-2xl m-r-1 pull-left"></i>
+						<div class="card-block p-a-1 clearfix row">
 
 							<form name="form" class="form-inline" method="POST" action="/exercise/history">
 								{!! csrf_field() !!}
 
-								<div class="form-group">
-									<div class="col-sm-8 col-md-6 col-lg-8">
+								<div class="form-group col-md-3 col-md-offset-4">
+									<div class="">
 
 										<input name="date" type="text" readonly class="form-control input-append date form_datetime"
 											   id="inputDate" placeholder="" value="2015-12">
 
-										<span class="add-on"><i class="icon-remove"></i></span>
-										<span class="add-on"><i class="icon-calendar"></i></span>
 										<script type="text/javascript">
 											$(".form_datetime").datetimepicker({
 												format: 'yyyy-mm',
@@ -203,7 +204,7 @@
 
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-1">
 									<button type="submit" class="btn btn-default btn-xs btn-success">
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择月份</button>
 

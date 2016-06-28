@@ -89,7 +89,8 @@ $(document).ready(function() {
 
                     var item = '#c' + id;
                     $(item).html("已收藏");
-                    //$(item).addClass("active");
+                    $(item).addClass("collect-yes");
+                    $(item).removeClass("collect-no");
                 },
                 error: function(data) {
 
@@ -136,10 +137,10 @@ $(document).ready(function() {
 //        alert("!");
 //
 //        if(html=="收藏"){
-//            num.removeClass("active");
+//            num.eq(i).addClass("collect-no");
 //        }
 //        if(html=="已收藏"){
-//            num.addClass("active");
+//            num.eq(i).addClass("collect-yes");
 //        }
 //    }
 //

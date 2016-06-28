@@ -388,9 +388,15 @@
 <script src="{{ URL::asset('/') }}js/app.js"></script>
 <!-- Plugins and scripts required by this views -->
 {{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
-<script src="{{ URL::asset('/') }}js/libs/gauge.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
 <script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/daterangepicker.min.js"></script>
 <!-- Custom scripts required by this view -->
-<script src="{{ URL::asset('/') }}js/views/main.js"></script>
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
+<script src="{{ URL::asset('/') }}js/app-options.js"></script>
+
+
+
 
 </html>

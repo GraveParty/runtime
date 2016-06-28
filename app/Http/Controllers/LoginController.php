@@ -29,7 +29,7 @@ class LoginController extends Controller {
 			
 			$type = Auth::user()->type;
 			if($type==2){ // 教练
-				return Redirect::to ( '/coach' )->with ( 'message', '成功登录' );
+				return Redirect::to ( '/coach/export' )->with ( 'message', '成功登录' );
 			}else if($type==3){  //医生
 				return Redirect::to ( '/doctor' )->with ( 'message', '成功登录' );
 			}else if($type==9){  //管理员
@@ -39,7 +39,7 @@ class LoginController extends Controller {
 			}
 			
 		} else {
-			return Redirect::to ( '/' )->with ( 'message', '用户名密码不正确' )->withInput ();
+			return Redirect::to ( '/login' )->with ( 'message', '用户名密码不正确' )->withInput ();
 		}
 	}
 	
