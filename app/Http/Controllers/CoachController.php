@@ -123,6 +123,7 @@ class CoachController extends Controller {
 // 				'replyArea' => 'required', // 必填
 // 				'oneDayRecipesInput' => 'required'
 // 		]);
+		$currentId = Auth::user()->id;
 		$reply = new Reply();
 		$reply->user_id = $request->get('userId');
 		$reply->coach_id = $currentId;

@@ -19,7 +19,9 @@
 	media="screen">
 <link href="{{ URL::asset('/') }}css/select2.min.css" rel="stylesheet"
 	media="screen">
+<link rel="stylesheet" type="text/css" href="http://localhost:8000/sweetalert/dist/sweetalert.css">
 
+<script src="http://localhost:8000/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
@@ -670,9 +672,18 @@ body {
             	  document.getElementById("exerciseItemsInput").value += exerciseDate +" "+ exerciseTime +" "+ exerciseName +" "+ exerciseGroup + " 组，每组 " + exerciseValue +" "+ exerciseUnit + ";";
               }
           };
-
-          var form = document.getElementById("form");
-          form.submit();
+          swal({   
+              title: "回复成功！",
+              text: "即将跳转至申请列表",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#90EE90",
+              confirmButtonText: "OK",
+              closeOnConfirm: true },
+              function(){
+            	  var form = document.getElementById("form");
+                  form.submit();
+                  });
       }
 
       function addExerciseItemFromHistory(id) {
