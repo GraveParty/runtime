@@ -17,9 +17,11 @@ use App\Bodydata;
 
 class CoachController extends Controller {
 	public function getExport() {
+		$currentId = Auth::user()->id;
+		
 		$userNamesToMe = array();
 		$userDataToMe = array();
-		$questionsToMe = CoachAsk::where('coachid', '=', 11)->where('state', '=', 0)->get();
+		$questionsToMe = CoachAsk::where('coachid', '=', $currentId)->where('state', '=', 0)->get();
 		foreach ($questionsToMe as $question) {
 			$user = User::find($question->userid);
 			$userNamesToMe[] = $user->nickname;
@@ -51,7 +53,7 @@ class CoachController extends Controller {
 		$oneWeekRecipes = array();
 		$exerciseItems = array();
 		
-		$replies = Reply::where('coach_id', '=', 11 ) -> get();
+		$replies = Reply::where('coach_id', '=', $currentId ) -> get();
 		foreach ($replies as $reply) {
 			$oneDayRecipe = $reply->oneDayRecipes;
 			$temp = explode(";", $oneDayRecipe);
@@ -123,7 +125,7 @@ class CoachController extends Controller {
 // 		]);
 		$reply = new Reply();
 		$reply->user_id = $request->get('userId');
-		$reply->coach_id = 11;
+		$reply->coach_id = $currentId;
 		$reply->question_id = $request->get('questionId');
 		$reply->reply = $request->get('replyArea');
 		$reply->oneDayRecipes = $request->get('oneDayRecipesInput');
