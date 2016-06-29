@@ -79,25 +79,7 @@
                <h4 class="modal-title" id="myModalLabel">申请建议</h4>
              </div> -->
 			<div class="modal-body" >
-				<ul id="myTab" class="nav nav-tabs">
-					<li class="active"><a href="#allhost" data-toggle="tab">
-							全站申请</a>
-					</li>
-					<li><a href="#onecoach" data-toggle="tab">指定教练</a></li>
-					<!-- <li class="dropdown">
-                       <a href="#" id="myTabDrop1" class="dropdown-toggle"
-                          data-toggle="dropdown">Java <b class="caret"></b>
-                       </a>
-                       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                          <li><a href="#jmeter" tabindex="-1" data-toggle="tab">
-                             jmeter</a>
-                          </li>
-                          <li><a href="#ejb" tabindex="-1" data-toggle="tab">
-                             ejb</a>
-                          </li>
-                       </ul>
-                    </li> -->
-				</ul>
+				
 				<div id="myTabContent" class="tab-content">
 					
 
@@ -274,6 +256,7 @@
 											<div class="card-block">
 												<!-- Table -->
 												<div class="">
+												<?php echo $nA->content ?>
 													<br><br>
 												</div>
 
@@ -353,7 +336,7 @@
 										<!-- Table -->
 										<div class="">
 											<?php echo $su->ask_content ?>
-											<br><br>
+											<br></br>
 										</div>
 
 										<div class="card">
@@ -367,6 +350,64 @@
 											<div class="card-block">
 
 												<?php echo $su->reply ?>
+												<br></br>
+									<div class = "card">
+										<div class="card-header">
+											<b>每日食谱</b>
+										</div>
+										<div class = "card-block">
+											<?php 
+
+											$dayArray =  explode(";", $su->oneDayRecipes) ;							
+										if(sizeof($dayArray)!=1){
+											foreach ($dayArray as $key) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo '暂无';
+										}
+											?>
+										
+										</div>
+									</div>
+									<div class = "card">
+										<div class="card-header">
+											<b>每周食谱</b>
+										</div>
+										<div class = "card-block">
+											<?php
+											$weekArray = explode(";", $su->oneWeekRecipes) ;
+										if(sizeof($weekArray)!=1){
+											foreach ($weekArray as $key) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo '暂无';
+										}
+											 ?>
+										</div>
+									</div>
+									<div class = "card">
+										<div class="card-header">
+											<b>锻炼计划</b>
+										</div>
+										<div class = "card-block">
+											<?php 
+											$exArray = explode(";", $su->exerciseItems);
+										if(sizeof($exArray)!=1){
+											foreach ($exArray as $key ) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo "暂无";
+										}
+											?>
+										
+										</div>
+									</div>
 											</div>
 										</div>
 									</div>
