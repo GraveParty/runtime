@@ -80,44 +80,361 @@ body {
 						href="{{ URL::to('/activity') }}">最新活动</a></li>
 					<li role="presentation"><a
 						href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
+					<li role="presentation"><a
+						href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
 				</ul>
 			</div>
 			<!-- main content -->
-			<div class="col-xs-9 col-sm-7 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                <div class="row">
+			
+			<div class="col-md-10">
+			  <!-- Nav tabs -->
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>
+				    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>
+				  </ul>
 
-                    @if (count($activities) > 0)
-                        <div>
-                            <ul>
-                            	@for($i=0;$i<count($activities);$i++)
-                            	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                        <!-- thumnail -->
-                                        <div class="thumbnail">
-                                            <img src="{{ URL::asset('/') }}image/grass.jpg" alt="...">
-                                            <div class="caption">
-                                                <h3><?php echo $activities[$i]->title ?></h3>
-                                                <p>开始: <?php echo $activities[$i]->start ?></p>
-                                                <p>结束: <?php echo $activities[$i]->end ?></p>
-                                                <p><?php echo $activities[$i]->introduction ?></p>
-                                                <p>
-                                                    @if($isIn[$i]==0)
-                                                        <a href="/activity/success/<?php echo $activities[$i]->id ?>" class="btn btn-primary btn-success" role="button">&nbsp;报名&nbsp;<span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                                                    @else
-                                                        <a href="#" class="btn btn-primary btn-success disabled" role="button">&nbsp;已报名&nbsp;<span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                            	@endfor
-                            	
-                            </ul>
-                        </div>
-                    @endif
-                </div>
-            </div>
+				  <!-- Tab panes -->
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="check" style="height:500px">
+
+				    	@if(count($activities_all)>0) 
+				    	@for($i=0; ($i< count($activities_all)) && ($i< 5);$i++)
+
+						<div class="col-md-2" id= "<?php $i;?>">
+				            <div class="thumbnail">
+				              <a style="height:80px" href="http://lodashjs.com/" title="Lodash 是最流行的 JavaScript 工具库。" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'lodash'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/lodash.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/lodash.png" alt="Lodash"></a>
+				              <div class="caption">
+				                <h3 style="height:100px">
+
+				                  <p ><?php echo $activities_all[$i]->Theme; ?><br><small><?php echo $activities_all[$i]->Time; ?></small></p>
+				                </h3>
+				                <p style="height:150px">
+				                	<?php echo $activities_all[$i]->Description; ?>
+				                </p>
+
+				                <p style="height:40px" >
+				                	（可参与）
+				                </p>
+				                
+				                <div class="form-group" >
+					              <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailAllActivity">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div> 
+				              </div>
+				            </div>
+				        </div>
+				        @endfor @endif
+
+				         <p ></p>
+				        
+				        
+		        
+				    </div>
+
+				    <div role="tabpanel" class="tab-pane " id="gov">
+
+				    	@if(count($activities_gov)>0) 
+				    	@for($i=0;$i < count($activities_gov) && $i < 5;$i++)
+
+						<div class="col-md-2" id= "<?php $i;?>">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3 style="height:100px">
+				                  <p ><?php echo $activities_gov[$i]->Theme; ?><br><small><?php echo $activities_gov[$i]->Time; ?></small></p>
+				                </h3>
+				                <p style="height:200px">
+				                	<?php echo $activities_gov[$i]->Description; ?>
+				                </p>
+				                
+				                <div class="form-group" >
+					              <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailGovActivity">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div> 
+				              </div>
+				            </div>
+				        </div>
+
+
+				        @endfor @endif
+
+				        
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="personal">
+				    	@if(count($activities_personal)>0) 
+				    	@for($i=0;$i < count($activities_personal) &&  $i < 5;$i++)
+						<div class="col-md-2" id= "<?php $i;?>">
+				            <div class="thumbnail">
+				              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
+				              <div class="caption">
+				                <h3 style="height:100px">
+				                  <p ><?php echo $activities_personal[$i]->Theme; ?><br><small><?php echo $activities_personal[$i]->Time; ?></small></p>
+				                </h3>
+				                <p style="height:200px">
+				                	<?php echo $activities_personal[$i]->Description; ?>
+				                </p>
+				                
+				                <div class="form-group" >
+					              <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailPersonalActivity">
+					                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
+					              </button>
+					            </div> 
+				              </div>
+				            </div>
+				        </div>
+
+				        @endfor @endif
+
+				    </div>
+				  </div>
+			</div>
+
+
+
 			<!-- main content -->
 		</div>
+			<nav class="col-md-offset-5">
+		  <ul class="pagination" >
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li class="active"><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+			</nav>
+		</div>
+
+
+	<!-- detailAllActivityModal -->
+	<div class="modal fade" id="detailAllActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">活动类型-官方活动</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-body">
+
+	          <h4>活动主题</h4>
+	          <p><?php echo $activities_all[4]->Theme; ?></p>
+
+	          <h4>活动时间</h4>
+	          <p><?php echo $activities_all[4]->Time; ?></p>
+	          
+	          <h4>活动地点</h4>
+	          <p><?php echo $activities_all[4]->Field; ?></p>
+
+	          <div class="row">
+			    <div class="col-md-6 ">
+			                <h4>参与人数</h4>	
+	           				<div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[4]->peopleNumber; ?> </p>
+	  		   				</div>
+			    </div>
+
+			    <div class="col-md-6">
+			    			<h4>保证金</h4>	
+			                <div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[4]->Money; ?></p>
+	  		   				</div>
+			    </div>
+		   	  </div>
+
+	          <h4>活动描述</h4>
+	          <p><?php echo $activities_all[4]->Description; ?></p>
+	          
+	          
+	          
+
+	         <div class="form-group">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+	            </button>
+
+	            <div class="collapse" id="collapseExample" >
+	                  <div id="has_TimeList" class="form-group">
+	                      <div id="noneTimelist" >
+	                      	<p></p>
+	                        <p class="alert alert-info alert-dismissible"><?php echo $activities_all[4]->PlanList; ?></p> 
+	                        <p></p>
+	                        <p class="alert alert-info alert-dismissible"><?php echo $activities_all[5]->PlanList; ?></p> 
+	                      </div>
+	                  </div>
+	            </div>
+	          </div>
+	        </div>
+
+	   
+	      </div>
+	      <div class="modal-footer">
+	      	<div>
+	      		<h4>负责人</h4>
+	        	<p><?php echo $activities_all[4]->UserName; ?></p>
+	    	</div>
+	      	<button type="button" class="btn btn-info">报名</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<!-- detailGovActivityModal -->
+	<div class="modal fade" id="detailGovActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">活动名称</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-body">
+
+	          <h4>活动主题</h4>
+	          <p><?php echo $activities_all[0]->Theme; ?></p>
+
+	          <h4>活动时间</h4>
+	          <p><?php echo $activities_all[0]->Time; ?></p>
+	          
+	          <h4>活动地点</h4>
+	         <p><?php echo $activities_all[0]->Feild; ?></p>
+
+	          <div class="row">
+			    <div class="col-md-6 ">
+			                <h4>参与人数</h4>	
+	           				<div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[0]->peopleNumber; ?> </p>
+	  		   				</div>
+			    </div>
+
+			    <div class="col-md-6">
+			    			<h4>保证金</h4>	
+			                <div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[0]->Money; ?></p>
+	  		   				</div>
+			    </div>
+		   	  </div>
+
+	          <h4>活动描述</h4>
+	          <p><?php echo $activities_all[0]->Description; ?></p>
+	          
+	          
+
+	          <div class="form-group">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+	            </button>
+
+	            <div class="collapse" id="collapseExample" >
+	                  <div id="has_TimeList" class="form-group">
+	                      <div id="noneTimelist" >
+	                      	<p></p>
+	                        <p class="alert alert-info alert-dismissible"><?php echo $activities_all[0]->PlanList; ?></p> 
+	                       
+	                      </div>
+	                  </div>
+	            </div>
+	          </div>
+	        </div>
+
+	   
+	      </div>
+	      <div class="modal-footer">
+	      	<div>
+	      		<h4>负责人/单位</h4>
+	        	<p><?php echo $activities_all[0]->create_at; ?></p>
+	    	</div>
+	      	<button type="button" class="btn btn-info">报名</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- detailPerActivityModal -->
+	<div class="modal fade" id="detailPersonalActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">活动名称</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-body">
+
+	          <h4>活动主题</h4>
+	          <p><?php echo $activities_all[0]->Theme; ?></p>
+
+	          <h4>活动时间</h4>
+	          <p><?php echo $activities_all[0]->Time; ?></p>
+	          
+	          <h4>活动地点</h4>
+	         <p><?php echo $activities_all[0]->Feild; ?></p>
+
+	          <div class="row">
+			    <div class="col-md-6 ">
+			                <h4>参与人数</h4>	
+	           				<div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[0]->peopleNumber; ?> </p>
+	  		   				</div>
+			    </div>
+
+			    <div class="col-md-6">
+			    			<h4>保证金</h4>	
+			                <div class="bs-example tooltip-demo">
+	    						<p><?php echo $activities_all[0]->Money; ?></p>
+	  		   				</div>
+			    </div>
+		   	  </div>
+
+	          <h4>活动描述</h4>
+	          <p><?php echo $activities_all[0]->Description; ?></p>
+	          
+	          
+
+	          <div class="form-group">
+	            <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+	              <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+	            </button>
+
+	            <div class="collapse" id="collapseExample" >
+	                  <div id="has_TimeList" class="form-group">
+	                      <div id="noneTimelist" >
+	                      	<p></p>
+	                        <p class="alert alert-info alert-dismissible"><?php echo $activities_all[0]->PlanList; ?></p> 
+	                       
+	                      </div>
+	                  </div>
+	            </div>
+	          </div>
+	        </div>
+
+	   
+	      </div>
+	      <div class="modal-footer">
+	      	<div>
+	      		<h4>负责人/单位</h4>
+	        	<p><?php echo $activities_all[0]->create_at; ?></p>
+	    	</div>
+	      	<button type="button" class="btn btn-info">报名</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 

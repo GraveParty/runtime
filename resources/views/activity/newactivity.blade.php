@@ -77,8 +77,8 @@ body {
             <div class="sidebar col-xs-2 col-sm-3 col-md-2">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation"><a href="{{ URL::to('/activity') }}">最新活动</a></li>
-                    <li role="presentation" class="active"><a href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
-                    <li role="presentation" ><a href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
+                    <li role="presentation" ><a href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
+                    <li role="presentation" class="active"><a href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
                 </ul>
             </div>
             
@@ -252,7 +252,7 @@ body {
           <div class="modal-footer">
             <div>
                 <h4>提交时间</h4>
-                <p><?php echo $activities_my[4]->created_at; ?></p>
+                <p><?php echo $activities_my[0]->created_at; ?></p>
             </div>
             <button type="button" class="btn btn-warning">退出</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -274,32 +274,32 @@ body {
             <div class="modal-body">
 
               <h4>活动主题</h4>
-              <p><?php echo $activities_my[4]->Theme; ?></p>
+              <p><?php echo $activities_my[0]->Theme; ?></p>
 
               <h4>活动时间</h4>
-              <p><?php echo $activities_my[4]->Time; ?></p>
+              <p><?php echo $activities_my[0]->Time; ?></p>
               
               <h4>活动地点</h4>
-              <p><?php echo $activities_my[4]->Feild; ?></p>
+              <p><?php echo $activities_my[0]->Feild; ?></p>
 
               <div class="row">
                 <div class="col-md-6 ">
                             <h4>参与人数</h4>   
                             <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->peopleNumber; ?> </p>
+                                <p><?php echo $activities_my[0]->peopleNumber; ?> </p>
                             </div>
                 </div>
 
                 <div class="col-md-6">
                             <h4>保证金</h4>    
                             <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->Money; ?></p>
+                                <p><?php echo $activities_my[0]->Money; ?></p>
                             </div>
                 </div>
               </div>
 
               <h4>活动描述</h4>
-              <p><?php echo $activities_my[4]->Description; ?></p>
+              <p><?php echo $activities_my[0]->Description; ?></p>
               
               
 
@@ -312,9 +312,7 @@ body {
                       <div id="has_TimeList" class="form-group">
                           <div id="noneTimelist" >
                             <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
-                            <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[5]->PlanList; ?></p> 
+                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[0]->PlanList; ?></p> 
                            
                           </div>
                       </div>

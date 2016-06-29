@@ -15,7 +15,7 @@ class CreateActivityStoreTable extends Migration
         Schema::create('activityStores', function(Blueprint $table){
         $table->increments('id');
         $table->string('Theme');
-        $table->string('Time')->nullable();
+        $table->string('Time');
         $table->integer('peopleNumber');
         $table->float('Money');
         $table->string('Description');
@@ -25,6 +25,7 @@ class CreateActivityStoreTable extends Migration
         $table->integer('UserID');
         $table->integer('State');
         $table->string('Type');
+        $table->string('UserName');
 
         $table->timestamps();
         });

@@ -88,7 +88,9 @@ use App\Http\Controllers\HomeController;
 	Route::post('/admin/usermodify/', 'AdminController@postUserModify');
 	Route::get('/admin/newactivity', 'AdminController@newActivity');
 	Route::post('/admin/newactivity', 'AdminController@postNewActivity');
+
 	Route::get('/admin/activity', 'AdminController@adminActivity');
+
 	Route::get('/admin/activity/delete/{user}', 'AdminController@deleteActivity');
 	Route::get('/admin/activity', 'AdminController@adminActivity');
 	Route::get('/admin/activity/modify/{user}', 'AdminController@getActivityModify');

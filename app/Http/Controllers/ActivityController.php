@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ActivityIn;
 use Illuminate\Http\Request;
-
+use App\ActivityStore;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -23,45 +23,61 @@ class ActivityController extends Controller
 	
 	
 	public function getMyActivity(){
+        $activities_enter = ActivityStore::where('State','=','-1')->orderBy('created_at')->get();
+        $activities_my = ActivityStore::where('State','=','1')->orderBy('created_at')->get();
+
+        return view('activity.myactivity',['activities_enter' => $activities_enter,'activities_my'=>$activities_my]);
+        
+        /*
 		$results = DB::select('select activities.* from activity_ins JOIN activities on
                           activity_ins.activityid = activities.id where userid = ?', [Auth::user()->id]);
 		return view('activity.myactivity',['name' => Auth::user()->name, 'activities' => $results]);
+        */
+
 	}
 
     public function postNewActivity(Request $request){
-        $activityTheme = $request->get('theme');
-        $daterange = $request->get('daterange');
-        $activityField = $request->get('activityField');
-        $descriptionInfo = $request->get('descriptionInfo');
-        $peopleNumber = $request->get('peopleNumber');
-        $money = $request->get('money');
-        $listInfo = $request->get('listInfo');
+
         $tagInfo = $request->get('tagInfo');
 
 
-
         $activityStore = new ActivityStore();
+
         $activityStore->Theme = $request->get('theme');
+        $activityStore->Time = $request->get('daterange');
+        $activityStore->peopleNumber = $request->get('peopleNumber');
+        $activityStore->Money = $request->get('money');
+        $activityStore->Description = $request->get('descriptionInfo');
+        $activityStore->PlanList = $request->get('listInfo');
+        $activityStore->Field = $request->get('activityField');
+        $activityStore->Tag = $request->get('tagInfo');
+        $activityStore->UserID = Auth::user()->id;
+        $activityStore->UserName = Auth::user()->nickname;
+        $activityStore->State = "-1";
+
+        if(Auth::user()->type == 9){
+            $activityStore->Type = "1";
+        }else{
+            $activityStore->Type = "0";
+        }
 
 
+        if($activityStore->save()) {
+            echo 1;
+        }else {
+            return redirect()->back()->withInput()->withErrors('保存失败！');
+        }
 
-        if($activityStore->save()){
+
+        /*if($activityStore->save()){
             echo 111;
         }
         else{
             return redirect()->back()->withInput()->withErrors('保存失败！');
-        }
-
-        echo $activityTheme;
-        echo $daterange;
-        echo $activityField;
-        echo $descriptionInfo;
-        echo $peopleNumber;
-        echo $money;
-        echo $listInfo;
-        echo $tagInfo;
-  
+        }*/
     }
+
+
 	
 	
     /**
@@ -71,6 +87,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        
+        $activities_all = ActivityStore::where('State','=','1')->get();
+        $activities_personal = ActivityStore::where('State','=','1')->where('Type','=','0')->orderBy('created_at')->get();
+        $activities_gov = ActivityStore::where('State','=','1')->where('Type','=','1')->orderBy('created_at')->get();
+        $activities = ActivityStore::all();
+        return view('activity.index',['activities' => $activities,'activities_all'=>$activities_all,'activities_personal'=>$activities_personal,'activities_gov'=>$activities_gov]);
+
+        /*
         $result = DB::select('select * from activities');
         $re = DB::select('select activities.* from activity_ins JOIN activities on
                           activity_ins.activityid = activities.id where userid = ?', [Auth::user()->id]);
@@ -86,8 +110,11 @@ class ActivityController extends Controller
             $isIn[] = $flag;
         }
         reset($isIn);
-//         return $isIn;
+
+
+
         return view('activity.index',['name' => Auth::user()->name, 'activities' => $result, 'isIn' => $isIn]);
+        */
     }
 
     /**

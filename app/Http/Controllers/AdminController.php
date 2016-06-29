@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ActivityStore;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\UserModifyRequest;
@@ -16,10 +16,14 @@ class AdminController extends Controller
 	
 	public function adminActivity()
 	{
-
-		$result = DB::select('select * from activities');
+ 		$activities_tocheck = ActivityStore::where('State','=','-1')->orderBy('created_at')->get();
+ 		$activities_personal = ActivityStore::where('Type','=','0')->orderBy('created_at')->get();
+ 		$activities_gov = ActivityStore::where('State','=','1')->orderBy('created_at')->get();
+ 		$activities = ActivityStore::all();
+        return view('admin.activity',['activities' => $activities,'activities_tocheck'=>$activities_tocheck,'activities_personal'=>$activities_personal,'activities_gov'=>$activities_gov]);
+		//$result = DB::select('select * from activities');
 		 
-		return view('admin.activity',['activities' => $result]);
+		//return view('admin.activity',['activities' => $result]);
 	}
 	
 	public function deleteActivity($acid)
