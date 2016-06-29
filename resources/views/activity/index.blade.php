@@ -12,7 +12,9 @@
 	media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
+<link rel="stylesheet" type="text/css" href="http://localhost:8000/sweetalert/dist/sweetalert.css">
 
+<script src="http://localhost:8000/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript"
 	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
@@ -285,7 +287,7 @@ body {
 	      		<h4>负责人</h4>
 	        	<p><?php echo $activities_all[4]->UserName; ?></p>
 	    	</div>
-	      	<button type="button" class="btn btn-info">报名</button>
+	      	<button type="button" class="btn btn-info" data-dismiss="modal" onclick="sign()">报名</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	      </div>
 	    </div>
@@ -437,7 +439,21 @@ body {
 	  </div>
 	</div>
 
-
+<script>
+function sign(){
+	swal({   
+              title: "报名成功！",
+              text: "",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#90EE90",
+              confirmButtonText: "OK",
+              closeOnConfirm: true },
+              function(){
+            	  
+                  });
+}
+</script>
 
 
 </body>
