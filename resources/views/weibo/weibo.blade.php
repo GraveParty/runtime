@@ -42,11 +42,6 @@
             /*font-family:"微软雅黑";*/
         }
 
-        .weibo-count{
-            text-align: center;
-            font-size: 18px;
-            margin-right: 8px;
-        }
 
         .weibo-title {
             font-family: "微软雅黑";
@@ -325,6 +320,7 @@
                                         {{--<i class="fa fa-user  m-t-2"></i>--}}
                                         {{ $names[$i] }}
                                     </span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
 
 
                                     {{--<span class="btn-group">--}}

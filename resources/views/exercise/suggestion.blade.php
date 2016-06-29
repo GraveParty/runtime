@@ -79,50 +79,11 @@
                <h4 class="modal-title" id="myModalLabel">申请建议</h4>
              </div> -->
 			<div class="modal-body" >
-				<ul id="myTab" class="nav nav-tabs">
-					<li class="active"><a href="#allhost" data-toggle="tab">
-							全站申请</a>
-					</li>
-					<li><a href="#onecoach" data-toggle="tab">指定教练</a></li>
-					<!-- <li class="dropdown">
-                       <a href="#" id="myTabDrop1" class="dropdown-toggle"
-                          data-toggle="dropdown">Java <b class="caret"></b>
-                       </a>
-                       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                          <li><a href="#jmeter" tabindex="-1" data-toggle="tab">
-                             jmeter</a>
-                          </li>
-                          <li><a href="#ejb" tabindex="-1" data-toggle="tab">
-                             ejb</a>
-                          </li>
-                       </ul>
-                    </li> -->
-				</ul>
+				
 				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade in active" id="allhost">
-						<div class="input-group" style="width: 100%">
-							<input type = "text" class="form-control" placeholder="标题" id="title">
-							<textarea class="form-control" placeholder="内容" id="content" rows="5"></textarea>
+					
 
-						</div>
-
-						<div class="input-group">
-							<span class="input-group-addon">分类</span>
-							<select class="form-control" id="category">
-								<option>运动/健身</option>
-								<option>饮食</option>
-								<option>健康</option>
-							</select>
-							<span class="input-group-addon">教练</span>
-							<select class="form-control">
-
-								<option>全站提问</option>
-
-							</select>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="onecoach">
+					
 						<div class="input-group" style="width: 100%">
 							<input type = "text" class="form-control" placeholder="标题" id="one_title">
 							<textarea class="form-control" placeholder="内容" id="one_content" rows="5"></textarea>
@@ -137,6 +98,7 @@
 							</select>
 							<span class="input-group-addon">教练</span>
 							<select class="form-control" id="coach_list">
+									<option value="0">全站提问</option>
 								@foreach ($coachlist as $cl)
 									<option value = '<?php echo $cl->id ?>'><?php echo $cl->nickname ?></option>
 								@endforeach
@@ -145,7 +107,7 @@
 
 
 
-					</div>
+					
 
 				</div>
 			</div>
@@ -201,10 +163,7 @@
 				<a class="nav-link" href="{{ URL::to('/exercise') }}"><i class="icon-puzzle"></i> 我的运动</a>
 
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ URL::to('/exercise/goal') }}"><i class="icon-energy"></i> 运动目标</a>
 
-			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{{ URL::to('/exercise/history') }}"><i class="icon-docs"></i> 历史数据</a>
 
@@ -274,7 +233,7 @@
 				@if(count($suggestions) > 0)
 					<div>
 						<ul>
-							@if($hasAsked!=0)
+							@if($hasAsked==1)
 								@foreach($notAnswered as $nA)
 									<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
@@ -297,6 +256,7 @@
 											<div class="card-block">
 												<!-- Table -->
 												<div class="">
+												<?php echo $nA->content ?>
 													<br><br>
 												</div>
 
@@ -316,6 +276,7 @@
 							@else
 							@endif
 							@foreach ($suggestions as $su)
+							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
 								<div class="card card-local">
 									<!-- Default panel contents -->
@@ -364,7 +325,7 @@
 													<button type="button" class="btn btn-default"
 															data-dismiss="modal">取消</button>
 													<a role="button"
-													   href="/exercise/suggestion/delete/<?php echo $su->askid ?>"
+													   href="/exercise/suggestion/delete/<?php echo $su->question_id ?>"
 													   class="btn btn-primary">确认</a>
 												</div>
 											</div>
@@ -375,7 +336,7 @@
 										<!-- Table -->
 										<div class="">
 											<?php echo $su->ask_content ?>
-											<br><br>
+											<br></br>
 										</div>
 
 										<div class="card">
@@ -388,12 +349,70 @@
 											</div>
 											<div class="card-block">
 
-												<?php echo $su->content ?>
+												<?php echo $su->reply ?>
+												<br></br>
+									<div class = "card">
+										<div class="card-header">
+											<b>每日食谱</b>
+										</div>
+										<div class = "card-block">
+											<?php 
+
+											$dayArray =  explode(";", $su->oneDayRecipes) ;							
+										if(sizeof($dayArray)!=1){
+											foreach ($dayArray as $key) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo '暂无';
+										}
+											?>
+										
+										</div>
+									</div>
+									<div class = "card">
+										<div class="card-header">
+											<b>每周食谱</b>
+										</div>
+										<div class = "card-block">
+											<?php
+											$weekArray = explode(";", $su->oneWeekRecipes) ;
+										if(sizeof($weekArray)!=1){
+											foreach ($weekArray as $key) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo '暂无';
+										}
+											 ?>
+										</div>
+									</div>
+									<div class = "card">
+										<div class="card-header">
+											<b>锻炼计划</b>
+										</div>
+										<div class = "card-block">
+											<?php 
+											$exArray = explode(";", $su->exerciseItems);
+										if(sizeof($exArray)!=1){
+											foreach ($exArray as $key ) {
+												echo $key;
+												echo '<br></br>';
+											}
+										}else{
+												echo "暂无";
+										}
+											?>
+										
+										</div>
+									</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
+								</div>
 							@endforeach
 						</ul>
 					</div>

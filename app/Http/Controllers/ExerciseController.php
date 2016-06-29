@@ -34,7 +34,7 @@ class ExerciseController extends Controller
 			$g->save();
 		}
 		
-		return Redirect::to ( '/exercise/goal' );
+		return Redirect::to ( '/exercise' );
 	}
 	
 	public function getGoal()
@@ -85,10 +85,10 @@ class ExerciseController extends Controller
 	
 	public function getSuggestion()
 	{
-		$results = DB::select('select coach_advices.id,users.nickname,coach_advices.content,coach_advices.askid,coach_advices.created_at as addate,coach_asks.title,coach_asks.content as ask_content,coach_asks.state,coach_asks.kind,coach_asks.created_at as asdate
-				from coach_asks join users join coach_advices
-				on coach_advices.askid = coach_asks.id and coach_advices.coachid = users.id
-				where coach_advices.userid = ?', [Auth::user()->id]);
+		$results = DB::select('select replies.id,users.nickname,replies.reply,replies.oneDayRecipes,replies.oneWeekRecipes,replies.exerciseItems,replies.question_id,replies.created_at as addate,coach_asks.title,coach_asks.content as ask_content,coach_asks.state,coach_asks.kind,coach_asks.created_at as asdate
+				from replies join users join coach_asks
+				on replies.question_id = coach_asks.id and replies.coach_id = users.id
+				where replies.user_id = ?', [Auth::user()->id]);
 		
 		$hasAsked = DB::select('select * from coach_asks where userid = ? and state = 0', [Auth::user()->id]);
 		$result = DB::select('select * from users where type =2');
@@ -181,10 +181,22 @@ class ExerciseController extends Controller
     	$days = $results[0]->days;
     	$calories = $results[0]->calories;
     	$km = $results[0]->kms;
-    	
-//     	return $steps;
-    	
-        return view('exercise.index',['percent'=>$percent,'days'=>$days,'calories'=>$calories,'km'=>$km]);
+
+
+		$res = DB::select('select * from goals where userid = ?', [Auth::user()->id]);
+		$goalstep = 0;
+		if(count($res)!=0){
+			$goalstep = $res[0]->step;
+		}else{
+			$g = new Goal();
+			$g->userid = Auth::user()->id;
+			$g->step = 0;
+			$g->weight = 60;
+			$g->height = 170;
+			$g->save();
+		}
+
+        return view('exercise.index',['percent'=>$percent,'days'=>$days,'calories'=>$calories,'km'=>$km, 'goalstep'=>$goalstep]);
     }
 
     /**

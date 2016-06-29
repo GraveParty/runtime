@@ -112,10 +112,7 @@
 				<a class="nav-link active" href="{{ URL::to('/exercise') }}"><i class="icon-puzzle"></i> 我的运动</a>
 
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ URL::to('/exercise/goal') }}"><i class="icon-energy"></i> 运动目标</a>
 
-			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{{ URL::to('/exercise/history') }}"><i class="icon-docs"></i> 历史数据</a>
 
@@ -219,7 +216,7 @@
 
 
 
-					<div class="col-md-12">
+					<div class="col-md-9">
 
 						<div class="card card-local">
 							<!-- Default panel contents -->
@@ -229,7 +226,7 @@
 							<div class="card-block">
 
 								<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-								<div id="goal" style="height: 400px"></div>
+								<div id="goal" style="height: 360px"></div>
 								<!-- ECharts单文件引入 -->
 								<script src="{{ URL::asset('/') }}build/dist/echarts.js"></script>
 								<script type="text/javascript">
@@ -295,7 +292,7 @@
 																}
 															},
 															pointer: {
-																width:50,
+																width:40,
 																length: '90%',
 																color: 'rgba(255, 255, 255, 0.8)'
 															},
@@ -304,7 +301,7 @@
 																offsetCenter: [0, '-60%'],       // x, y，单位px
 																textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
 																	color: '#fff',
-																	fontSize: 30
+																	fontSize: 26
 																}
 															},
 															detail : {
@@ -334,7 +331,6 @@
 											}
 									);
 								</script>
-
 							</div>
 						</div>
 
@@ -368,9 +364,48 @@
 			-->
 
 
+					</div>
+					<div class="col-md-3">
+						<div class="card">
+							<div class="card-block text-xs-center">
+								<div class="text-muted small text-uppercase font-weight-bold">月目标步数</div>
+								<div class="h2 p-y-1"><?php echo $goalstep ?></div>
+								<progress class="progress progress-xs progress-success" value="<?php echo $percent ?>" max="100"></progress>
+							</div>
+						</div>
+					</div>
 
+					<div class="col-md-3">
+						<div class="card">
+							<div class="card-header">
+								<b>修改目标</b>
+								<div class="card-actions">
+									<a class="btn-minimize collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="icon-arrow-down"></i></a>
+								</div>
+							</div>
+
+							<div class="card-block collapse text-xs-center" id="collapseExample">
+								<div class="text-muted small text-uppercase font-weight-bold">新目标步数</div>
+
+								<br>
+
+								<form name="form" class="form-horizontal" method="POST" action="/exercise/goal">
+									{!! csrf_field() !!}
+									<div class="form-group row">
+										<input name="step" type="text" class=" form-control" id="inputStep"
+											   placeholder="请输入目标步数" value="{{ old('step') }}">
+									</div>
+									<div class="form-group">
+										<a href="javascript:form.submit();" type="button" class="btn btn-sm btn-success">
+											<i class="fa fa-magic"></i> 保存
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
 
 					</div>
+
 
 				</div>
 			</div>
@@ -389,12 +424,13 @@
 <!-- Plugins and scripts required by this views -->
 {{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
 <script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/Chart.min.js"></script>
 <script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
 <script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
-<script src="{{ URL::asset('/') }}js/libs/daterangepicker.min.js"></script>
 <!-- Custom scripts required by this view -->
 <script src="{{ URL::asset('/') }}js/views/forms.js"></script>
 <script src="{{ URL::asset('/') }}js/app-options.js"></script>
+<script src="{{ URL::asset('/') }}js/views/widgets.js"></script>
 
 
 
