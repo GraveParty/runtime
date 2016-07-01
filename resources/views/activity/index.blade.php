@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-<link href="{{ URL::asset('/') }}css/bootstrap.css" rel="stylesheet"
-	media="screen">
+{{--<link href="{{ URL::asset('/') }}css/bootstrap.css" rel="stylesheet" media="screen">--}}
 	<link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
@@ -53,22 +52,22 @@ body {
 					<a class="nav-link" href="{{ URL::to('/weibo') }}">微博</a>
 				</li>
 			</ul>
-			{{--<ul class="nav navbar-nav pull-right hidden-md-down">--}}
-				{{--<li class="nav-item dropdown">--}}
-					{{--<a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">--}}
-						{{--<span class="hidden-md-down">{{ Auth::user()->nickname }}</span>--}}
-					{{--</a>--}}
-					{{--<div class="dropdown-menu dropdown-menu-right">--}}
+			<ul class="nav navbar-nav pull-right hidden-md-down">
+				<li class="nav-item dropdown">
+					<a style="margin-top:0px" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="hidden-md-down">{{ Auth::user()->nickname }}</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
 
-						{{--<div class="dropdown-header text-xs-center">--}}
-							{{--<strong>设置</strong>--}}
-						{{--</div>--}}
-						{{--<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>--}}
-						{{--<a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>--}}
-					{{--</div>--}}
-				{{--</li>--}}
+						<div class="dropdown-header text-xs-center">
+							<strong>设置</strong>
+						</div>
+						<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>
+						<a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>
+					</div>
+				</li>
 
-			{{--</ul>--}}
+			</ul>
 		</div>
 	</header>
 
@@ -160,11 +159,11 @@ body {
 			
 			<div class="col-md-12">
 			  <!-- Nav tabs -->
-				  {{--<ul class="nav nav-tabs" role="tablist">--}}
-				    {{--<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>--}}
-				    {{--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>--}}
-				    {{--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>--}}
-				  {{--</ul>--}}
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>
+				    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>
+				  </ul>
 
 				  <!-- Tab panes -->
 				  <div class="tab-content">
