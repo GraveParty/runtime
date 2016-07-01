@@ -8,8 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
+<link href="{{ URL::asset('/') }}css/bootstrap.css" rel="stylesheet"
 	media="screen">
+	<link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
 	media="screen">
 <link rel="stylesheet" type="text/css" href="http://localhost:8000/sweetalert/dist/sweetalert.css">
@@ -25,76 +26,145 @@
 
 <style>
 body {
-	padding-top: 80px;
+	padding-top: 20px;
 }
 </style>
 
 </head>
 
-<body>
+<body class="navbar-fixed sidebar-nav fixed-nav">
 	<!-- fixed header -->
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<header class="navbar">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<button class="navbar-toggle collapsed" type="button"
-					data-toggle="collapse" data-target="#collapse-header">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">RunTime</a>
-			</div>
-			<div class="navbar-collapse collapse" role="navigation"
-				id="collapse-header">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ URL::to('/home') }}">主页</a></li>
-					<li><a href="{{ URL::to('/exercise') }}">运动</a></li>
-					<li><a href="{{ URL::to('/health') }}">健康</a></li>
-					<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-						role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-                            <li>
-                                <a href="/personal">个人设置</a>
-                            </li>
-                            <li role="separator" class="divider">
-                            </li>
-                            <li>
-                                <a href="{{ URL::to('/logout') }}">退出登录</a>
-                            </li>
-                        </ul>
-					</li>
-				</ul>
-			</div>
+			<button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+			<a class="navbar-brand" href="#"></a>
+			<ul class="nav navbar-nav hidden-md-down">
+				<li class="nav-item">
+					<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
+				</li>
+
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
+				</li>
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/activity') }}">活动</a>
+				</li>
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/weibo') }}">微博</a>
+				</li>
+			</ul>
+			{{--<ul class="nav navbar-nav pull-right hidden-md-down">--}}
+				{{--<li class="nav-item dropdown">--}}
+					{{--<a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">--}}
+						{{--<span class="hidden-md-down">{{ Auth::user()->nickname }}</span>--}}
+					{{--</a>--}}
+					{{--<div class="dropdown-menu dropdown-menu-right">--}}
+
+						{{--<div class="dropdown-header text-xs-center">--}}
+							{{--<strong>设置</strong>--}}
+						{{--</div>--}}
+						{{--<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>--}}
+						{{--<a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>--}}
+					{{--</div>--}}
+				{{--</li>--}}
+
+			{{--</ul>--}}
 		</div>
-	</nav>
+	</header>
+
+	{{----}}
+	{{--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">--}}
+		{{--<div class="container-fluid">--}}
+			{{--<div class="navbar-header">--}}
+				{{--<button class="navbar-toggle collapsed" type="button"--}}
+					{{--data-toggle="collapse" data-target="#collapse-header">--}}
+					{{--<span class="sr-only">Toggle navigation</span> <span--}}
+						{{--class="icon-bar"></span> <span class="icon-bar"></span> <span--}}
+						{{--class="icon-bar"></span>--}}
+				{{--</button>--}}
+				{{--<a class="navbar-brand" href="#">RunTime</a>--}}
+			{{--</div>--}}
+			{{--<div class="navbar-collapse collapse" role="navigation"--}}
+				{{--id="collapse-header">--}}
+				{{--<ul class="nav navbar-nav">--}}
+					{{--<li><a href="{{ URL::to('/home') }}">主页</a></li>--}}
+					{{--<li><a href="{{ URL::to('/exercise') }}">运动</a></li>--}}
+					{{--<li><a href="{{ URL::to('/health') }}">健康</a></li>--}}
+					{{--<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>--}}
+				{{--</ul>--}}
+				{{--<ul class="nav navbar-nav navbar-right">--}}
+					{{--<li>--}}
+						{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" --}}
+						{{--role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>--}}
+						{{--<ul class="dropdown-menu">--}}
+                            {{--<li>--}}
+                                {{--<a href="/personal">个人设置</a>--}}
+                            {{--</li>--}}
+                            {{--<li role="separator" class="divider">--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="{{ URL::to('/logout') }}">退出登录</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+					{{--</li>--}}
+				{{--</ul>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+	{{--</nav>--}}
+
+
+	<!-- sidebar -->
+	<div class="sidebar">
+		<nav class="sidebar-nav">
+			<ul class="nav">
+				<li class="nav-title">
+					活动
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" href="{{ URL::to('/activity') }}"><i class="icon-puzzle"></i> 最新活动</a>
+
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ URL::to('/activity/myactivity') }}"><i class="icon-docs"></i> 我的活动</a>
+
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ URL::to('/activity/newactivity') }}"><i class="icon-graph"></i> 发布活动</a>
+
+				</li>
+
+			</ul>
+		</nav>
+	</div>
+
+
+
 
 	<!-- main -->
+	<main class="main">
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<div class="sidebar col-xs-2 col-sm-3 col-md-2">
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a
-						href="{{ URL::to('/activity') }}">最新活动</a></li>
-					<li role="presentation"><a
-						href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
-					<li role="presentation"><a
-						href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
-				</ul>
-			</div>
+			{{--<div class="sidebar col-xs-2 col-sm-3 col-md-2">--}}
+				{{--<ul class="nav nav-pills nav-stacked">--}}
+					{{--<li role="presentation" class="active"><a--}}
+						{{--href="{{ URL::to('/activity') }}">最新活动</a></li>--}}
+					{{--<li role="presentation"><a--}}
+						{{--href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>--}}
+					{{--<li role="presentation"><a--}}
+						{{--href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>--}}
+				{{--</ul>--}}
+			{{--</div>--}}
 			<!-- main content -->
 			
-			<div class="col-md-10">
+			<div class="col-md-12">
 			  <!-- Nav tabs -->
-				  <ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>
-				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>
-				    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>
-				  </ul>
+				  {{--<ul class="nav nav-tabs" role="tablist">--}}
+				    {{--<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>--}}
+				    {{--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">官方活动</a></li>--}}
+				    {{--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">私人活动</a></li>--}}
+				  {{--</ul>--}}
 
 				  <!-- Tab panes -->
 				  <div class="tab-content">
@@ -111,6 +181,7 @@ body {
 
 				                  <p ><?php echo $activities_all[$i]->Theme; ?><br><small><?php echo $activities_all[$i]->Time; ?></small></p>
 				                </h3>
+								  <br>
 				                <p style="height:150px">
 				                	<?php echo $activities_all[$i]->Description; ?>
 				                </p>
@@ -439,6 +510,8 @@ body {
 	  </div>
 	</div>
 
+		</main>
+
 <script>
 function sign(){
 	swal({   
@@ -457,5 +530,22 @@ function sign(){
 
 
 </body>
+
+<script src="{{ URL::asset('/') }}js/libs/tether.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/pace.min.js"></script>
+<!-- Plugins and scripts required by all views -->
+<script src="{{ URL::asset('/') }}js/views/shared.js"></script>
+<!-- GenesisUI main scripts -->
+<script src="{{ URL::asset('/') }}js/app.js"></script>
+<!-- Plugins and scripts required by this views -->
+{{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/Chart.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<!-- Custom scripts required by this view -->
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
+<script src="{{ URL::asset('/') }}js/app-options.js"></script>
+<script src="{{ URL::asset('/') }}js/views/widgets.js"></script>
 
 </html>
