@@ -126,7 +126,7 @@ body {
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="{{ URL::to('/activity/myactivity') }}"><i class="icon-docs"></i> 我的活动</a>
+          <a class="nav-link active" href="{{ URL::to('/activity/myactivityenter') }}"><i class="icon-docs"></i> 我的活动</a>
 
         </li>
         <li class="nav-item">
@@ -151,7 +151,7 @@ body {
             {{--<li role="presentation" ><a--}}
               {{--href="{{ URL::to('/activity') }}">最新活动</a></li>--}}
             {{--<li role="presentation" class="active"><a--}}
-              {{--href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>--}}
+              {{--href="{{ URL::to('/activity/myactivityenter') }}">我的活动</a></li>--}}
             {{--<li role="presentation"><a--}}
               {{--href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>--}}
           {{--</ul>--}}
@@ -161,17 +161,15 @@ body {
             <div class="card">
                         <div class="card-header" >
                           <i>我的活动 </i>
-                          
-                         <a  class="col-md-offset-9" href="{{ URL::to('/activity/myactivity') }}"><button class="btn btn-primary">参与</button></a>
-                          <a   href="{{ URL::to('/activity/myactivityenter') }}"><button class="btn btn-secondary">发布</button> </a>
+                          <a  class="col-md-offset-9" href="{{ URL::to('/activity/myactivity') }}"><button class="btn btn-secondary">参与</button></a>
+                          <a   href="{{ URL::to('/activity/myactivityenter') }}"><button class="btn btn-primary">发布</button> </a>
                         </div>
 
                         <div class="card-block"  color="#FFFF00">
-                          
                           <div class="row" >
 
-                            @if(count($activities_enter)>0) 
-                            @for($i=0; ($i< count($activities_enter)) && ($i< 6);$i++)
+                            @if(count($activities_my)>0) 
+                            @for($i=0; ($i< count($activities_my)) && ($i< 4);$i++)
 
                             <div class="col-md-2" id= "<?php $i;?>">
                                 <div class="card card-local" id= "<?php $i;?>">
@@ -180,16 +178,16 @@ body {
                                     <div class="card-block" style="padding:10px">
                                       <div ><img  src="{{ URL::asset('/') }}image/grass.jpg" width="140" height="85"  alt="Lodash"></div>
                                     <h3  style="height:50px">
-                                      <p ><?php echo $activities_enter[$i]->Theme;?></p>
+                                      <p ><?php echo $activities_my[$i]->Theme;?></p>
                                     </h3 >
 
                                     <h3 style="height:100px">
 
-                                      <p ><br><small><?php echo $activities_enter[$i]->Time; ?></small></p>
+                                      <p ><br><small><?php echo $activities_my[$i]->Time; ?></small></p>
                                     </h3>
 
                                     <p style="height:100px">
-                                        <?php echo $activities_enter[$i]->Description; ?>
+                                        <?php echo $activities_my[$i]->Description; ?>
                                     </p>
                                     <p id="sign" style="height:40px" >
                                       （已开始）
@@ -250,32 +248,32 @@ body {
             <div class="modal-body">
 
               <h4>活动主题</h4>
-              <p><?php echo $activities_my[4]->Theme; ?></p>
+              <p><?php echo $activities_my[3]->Theme; ?></p>
 
               <h4>活动时间</h4>
-              <p><?php echo $activities_my[4]->Time; ?></p>
+              <p><?php echo $activities_my[3]->Time; ?></p>
               
               <h4>活动地点</h4>
-             <p><?php echo $activities_my[4]->Field; ?></p>
+             <p><?php echo $activities_my[3]->Field; ?></p>
 
               <div class="row">
                 <div class="col-md-6 ">
                             <h4>参与人数</h4>   
                             <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->peopleNumber; ?> </p>
+                                <p><?php echo $activities_my[3]->peopleNumber; ?> </p>
                             </div>
                 </div>
 
                 <div class="col-md-6">
                             <h4>保证金</h4>    
                             <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->Money; ?></p>
+                                <p><?php echo $activities_my[3]->Money; ?></p>
                             </div>
                 </div>
               </div>
 
               <h4>活动描述</h4>
-              <p><?php echo $activities_my[4]->Description; ?></p>
+              <p><?php echo $activities_my[3]->Description; ?></p>
               
               
               
@@ -289,9 +287,9 @@ body {
                       <div id="has_TimeList" class="form-group">
                           <div id="noneTimelist" >
                             <p></p>
-                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[3]->PlanList; ?></p> 
                             <p></p>
-                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[3]->PlanList; ?></p> 
                           </div>
                       </div>
                 </div>
@@ -302,14 +300,14 @@ body {
           </div>
           <div class="modal-footer">
             <div>
-                <h4>负责人</h4>
-                <p><?php echo $activities_my[4]->UserName; ?></p>
+                <h4>发布时间</h4>
+                <p><?php echo $activities_my[3]->created_at; ?></p>
 
             </div>
             <form id="exitActivity" action="/activity/exitActivity" method="POST">
             {!! csrf_field() !!}
               <input id="newexit" type="hidden" name="newexit" value=""></input>
-              <button id="exit" value="" type="button" class="btn btn-warning" data-dismiss="modal" onclick="newexit(this.value)">退出</button>
+  
               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </form>
           </div>
@@ -318,80 +316,7 @@ body {
     </div>
 
 
-    <!-- detailMyActivity -->
-    <div class="modal fade" id="detailMyActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">活动名称-<?php echo $activities_my[0]->State; ?></h4>
-          </div>
-          <div class="modal-body">
-            <div class="modal-body">
-
-              <h4>活动主题</h4>
-              <p><?php echo $activities_my[4]->Theme; ?></p>
-
-              <h4>活动时间</h4>
-              <p><?php echo $activities_my[4]->Time; ?></p>
-              
-              <h4>活动地点</h4>
-              <p><?php echo $activities_my[4]->Field; ?></p>
-
-              <div class="row">
-                <div class="col-md-6 ">
-                            <h4>参与人数</h4>   
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->peopleNumber; ?> </p>
-                            </div>
-                </div>
-
-                <div class="col-md-6">
-                            <h4>保证金</h4>    
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->Money; ?></p>
-                            </div>
-                </div>
-              </div>
-
-              <h4>活动描述</h4>
-              <p><?php echo $activities_my[4]->Description; ?></p>
-              
-              
-
-              <div class="form-group">
-                <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
-                  <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
-                </button>
-
-                <div class="collapse" id="collapseExample" >
-                      <div id="has_TimeList" class="form-group">
-                          <div id="noneTimelist" >
-                            <p></p>
-                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
-                            <p></p>
-                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
-                           
-                          </div>
-                      </div>
-                </div>
-              </div>
-            </div>
-
-       
-          </div>
-          <div class="modal-footer">
-            <div>
-                <h4>负责人/单位</h4>
-                <p><?php echo $activities_my[0]->created_at; ?></p>
-            </div>
-            <button type="button" class="btn btn-info">撤销</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+   
 
   </main> 
 

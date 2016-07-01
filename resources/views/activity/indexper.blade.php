@@ -162,35 +162,35 @@ body {
 
 							<div class="card-header" >
 								<i>最近活动</i>
-								<a  class="col-md-offset-9" href="{{ URL::to('/activity') }}"><button class="btn btn-primary">全部</button></a>
+								<a  class="col-md-offset-9" href="{{ URL::to('/activity/activity') }}"><button class="btn btn-secondary">全部</button></a>
                          		<a   href="{{ URL::to('/activity/activitygov') }}"><button class="btn btn-secondary">官方</button> </a>
-                         		<a   href="{{ URL::to('/activity/activityper') }}"><button class="btn btn-secondary">私人</button> </a>
+                         		<a   href="{{ URL::to('/activity/activityper') }}"><button class="btn btn-primary">私人</button> </a>
 							</div>
 
 							<div class="card-block"  color="#FFFF00">
 								<div class="row" >
-							    	@if(count($activities_all)>0) 
-							    	@for($i=0; ($i< count($activities_all)) && ($i< 6);$i++)
+							    	@if(count($activities_personal)>0) 
+							    	@for($i=0; ($i< count($activities_personal)) && ($i< 6);$i++)
 
 							    	<div class="col-md-2" >
 							    	  <div class="card card-local" id= "<?php $i;?>">
-							        	<div class="card-header" color="000000">
+							        	<div class="card-header " color="#000000">
 										</div>
 										<div class="card-block" style="padding:10px">
 							              	<div ><img  src="{{ URL::asset('/') }}image/grass.jpg" width="140" height="85"  alt="Lodash"></div>
 
 							                <h3 style="height:50px">
 
-							                  <p ><?php echo $activities_all[$i]->Theme; ?></p>
+							                  <p ><?php echo $activities_personal[$i]->Theme; ?></p>
 							                </h3>
 
 							                <h3 style="height:100px">
 
-							                  <p ><br><small><?php echo $activities_all[$i]->Time; ?></small></p>
+							                  <p ><br><small><?php echo $activities_personal[$i]->Time; ?></small></p>
 							                </h3>
 
 							                <p style="height:100px">
-							                	<?php echo $activities_all[$i]->Description; ?>
+							                	<?php echo $activities_personal[$i]->Description; ?>
 							                </p>
 
 							                <p id="sign" style="height:40px" >
@@ -250,7 +250,7 @@ body {
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">活动类型-全部活动</h4>
+		        <h4 class="modal-title" id="myModalLabel">活动类型-私人活动</h4>
 		      </div>
 		      <div class="modal-body">
 		        <div class="modal-body">
