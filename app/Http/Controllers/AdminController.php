@@ -42,6 +42,24 @@ class AdminController extends Controller
 	
 	}
 	
+
+	public function checkActivity(Request $request)
+    {
+        
+        $id = $request->get('id');
+        $answer = $request->get('answer');
+        if($answer == 1  ){
+
+            DB::update('update activitie_stores set state = 1 where id = ?',[$id]);
+        }
+        else{
+            DB::update('update activitie_stores set state = 0 where id = ?',[$id]);
+        }
+        
+        return redirect('/admin/activity');  
+    }
+
+
 	public function postActivityModify(NewActivityRequest $req)
 	{
 		

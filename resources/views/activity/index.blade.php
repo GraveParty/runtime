@@ -185,7 +185,7 @@ body {
 				                	<?php echo $activities_all[$i]->Description; ?>
 				                </p>
 
-				                <p style="height:40px" >
+				                <p id="sign" style="height:40px" >
 				                	（可参与）
 				                </p>
 				                
@@ -522,8 +522,12 @@ function sign(){
               confirmButtonText: "OK",
               closeOnConfirm: true },
               function(){
+              	var change=document.getElementById("sign");
+              	
+              	
+
             	  
-                  });
+              });
 }
 </script>
 

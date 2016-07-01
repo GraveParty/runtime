@@ -205,7 +205,7 @@ body {
               <p><?php echo $activities_my[4]->Time; ?></p>
               
               <h4>活动地点</h4>
-             <p><?php echo $activities_my[4]->Feild; ?></p>
+             <p><?php echo $activities_my[4]->Field; ?></p>
 
               <div class="row">
                 <div class="col-md-6 ">
@@ -280,7 +280,7 @@ body {
               <p><?php echo $activities_my[4]->Time; ?></p>
               
               <h4>活动地点</h4>
-              <p><?php echo $activities_my[4]->Feild; ?></p>
+              <p><?php echo $activities_my[4]->Field; ?></p>
 
               <div class="row">
                 <div class="col-md-6 ">
@@ -327,7 +327,7 @@ body {
           <div class="modal-footer">
             <div>
                 <h4>负责人/单位</h4>
-                <p><?php echo $activities_my[0]->create_at; ?></p>
+                <p><?php echo $activities_my[0]->created_at; ?></p>
             </div>
             <button type="button" class="btn btn-info">撤销</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

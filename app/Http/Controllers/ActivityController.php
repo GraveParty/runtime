@@ -23,25 +23,42 @@ class ActivityController extends Controller
 	
 	
 	public function getMyActivity(){
+        /*
         $activities_enter = ActivityStore::where('State','=','-1')->orderBy('created_at')->get();
         $activities_my = ActivityStore::where('State','=','1')->orderBy('created_at')->get();
 
         return view('activity.myactivity',['activities_enter' => $activities_enter,'activities_my'=>$activities_my]);
-        
-        /*
-		$results = DB::select('select activities.* from activity_ins JOIN activities on
-                          activity_ins.activityid = activities.id where userid = ?', [Auth::user()->id]);
-		return view('activity.myactivity',['name' => Auth::user()->name, 'activities' => $results]);
         */
 
+        
+		$activities_enter = DB::select('select activity_stores.* from activity_stores Left JOIN activityUser on
+                          activity_stores.id = activityUser.ActivityId where activity_stores.UserID = ?', [Auth::user()->id]);
+        $activities_my = DB::select('select activity_stores.* from activity_stores where activity_stores.UserID = ?', [Auth::user()->id]);
+
+		return view('activity.myactivity',['name' => Auth::user()->name, 'activities_my' => $activities_my,'activities_enter' => $activities_enter]);
 	}
 
+
+    public function signActivity(Request $request){
+        $activityStore = new Activity_User();
+        $activityStore->ActivityId=$request->get('ActivityId');
+        $activityStore->UserID=$request->get('UserID');
+        if($activityStore->save()) {
+            echo 1;
+        }else {
+            return redirect()->back()->withInput()->withErrors('保存失败！');
+        }
+    }
+
+
+
+
+
     public function postNewActivity(Request $request){
-
-        $tagInfo = $request->get('tagInfo');
-
-
         $activityStore = new ActivityStore();
+
+
+        
 
         $activityStore->Theme = $request->get('theme');
         $activityStore->Time = $request->get('daterange');
@@ -68,13 +85,6 @@ class ActivityController extends Controller
             return redirect()->back()->withInput()->withErrors('保存失败！');
         }
 
-
-        /*if($activityStore->save()){
-            echo 111;
-        }
-        else{
-            return redirect()->back()->withInput()->withErrors('保存失败！');
-        }*/
     }
 
 
