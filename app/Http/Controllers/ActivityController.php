@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ActivityIn;
 use Illuminate\Http\Request;
 use App\ActivityStore;
+use App\Activity_User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -21,6 +22,10 @@ class ActivityController extends Controller
 		return Redirect::to('/activity');
 	}
 	
+
+    public function newactivity(){
+        return view('activity.newactivity');
+    }
 	
 	public function getMyActivity(){
         /*
@@ -31,8 +36,9 @@ class ActivityController extends Controller
         */
 
         
-		$activities_enter = DB::select('select activity_stores.* from activity_stores Left JOIN activityUser on
-                          activity_stores.id = activityUser.ActivityId where activity_stores.UserID = ?', [Auth::user()->id]);
+		$activities_enter = DB::select('select activity_stores.* from activity_stores Left JOIN activity__Users on
+                          activity_stores.id = activity__Users.ActivityId where activity__Users.UserID = ?', [Auth::user()->id]);
+
         $activities_my = DB::select('select activity_stores.* from activity_stores where activity_stores.UserID = ?', [Auth::user()->id]);
 
 		return view('activity.myactivity',['name' => Auth::user()->name, 'activities_my' => $activities_my,'activities_enter' => $activities_enter]);
@@ -40,14 +46,22 @@ class ActivityController extends Controller
 
 
     public function signActivity(Request $request){
-        $activityStore = new Activity_User();
-        $activityStore->ActivityId=$request->get('ActivityId');
-        $activityStore->UserID=$request->get('UserID');
-        if($activityStore->save()) {
-            echo 1;
+        $activityUser = new Activity_User();
+        $activityUser->ActivityId=$request->get('newsign');
+        $activityUser->UserID=Auth::user()->id;
+        if($activityUser->save()) {
+            return Redirect::to('/activity');
         }else {
             return redirect()->back()->withInput()->withErrors('保存失败！');
         }
+    }
+
+    public function exitActivity(Request $request){
+        DB::delete('delete from activity__Users where ActivityId = ? and UserID = ?', [$request->get('newexit'),Auth::user()->id]);
+        
+
+        return Redirect::to('/activity');
+        
     }
 
 
@@ -80,7 +94,7 @@ class ActivityController extends Controller
 
 
         if($activityStore->save()) {
-            echo 1;
+
         }else {
             return redirect()->back()->withInput()->withErrors('保存失败！');
         }

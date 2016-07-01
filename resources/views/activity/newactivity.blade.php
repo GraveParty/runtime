@@ -8,335 +8,405 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+{{--<link href="{{ URL::asset('/') }}css/bootstrap.css" rel="stylesheet" media="screen">--}}
+  <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
-	media="screen">
+  media="screen">
+<link rel="stylesheet" type="text/css" href="http://localhost:8000/sweetalert/dist/sweetalert.css">
 
+<script src="http://localhost:8000/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript"
-	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
+  src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
-	src="{{ URL::asset('/') }}js/bootstrap.js"></script>
-	
-	<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
+  src="{{ URL::asset('/') }}js/bootstrap.js"></script>
+
+<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
+
+
+        <!-- GenesisUI main scripts -->
+<script src="{{ URL::asset('/') }}js/app.js"></script>
+        <!-- Plugins and scripts required by this views -->
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/daterangepicker.min.js"></script>
+        <!-- Custom scripts required by this view -->
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
 
 
 <style>
 body {
-	padding-top: 80px;
+	padding-top: 20px;
 }
 </style>
 
 </head>
 
-<body>
+<body class="navbar-fixed sidebar-nav fixed-nav">
 	<!-- fixed header -->
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<header class="navbar">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<button class="navbar-toggle collapsed" type="button"
-					data-toggle="collapse" data-target="#collapse-header">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">RunTime</a>
-			</div>
-			<div class="navbar-collapse collapse" role="navigation"
-				id="collapse-header">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ URL::to('/home') }}">主页</a></li>
-					<li><a href="{{ URL::to('/exercise') }}">运动</a></li>
-					<li><a href="{{ URL::to('/health') }}">健康</a></li>
-					<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-						role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-                            <li>
-                                <a href="/personal">个人设置</a>
-                            </li>
-                            <li role="separator" class="divider">
-                            </li>
-                            <li>
-                                <a href="{{ URL::to('/logout') }}">退出登录</a>
-                            </li>
-                        </ul>
-					</li>
-				</ul>
+			<button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+			<a class="navbar-brand" href="#"></a>
+			<ul class="nav navbar-nav hidden-md-down">
+				<li class="nav-item">
+					<a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
+				</li>
+
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
+				</li>
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/activity') }}">活动</a>
+				</li>
+				<li class="nav-item p-x-1">
+					<a class="nav-link" href="{{ URL::to('/weibo') }}">微博</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav pull-right hidden-md-down">
+				<li class="nav-item dropdown">
+					<a style="margin-top:0px" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="hidden-md-down">{{ Auth::user()->nickname }}</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+
+						<div class="dropdown-header text-xs-center">
+							<strong>设置</strong>
+						</div>
+						<a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>
+						<a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</header>
+
+	{{----}}
+	{{--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">--}}
+		{{--<div class="container-fluid">--}}
+			{{--<div class="navbar-header">--}}
+				{{--<button class="navbar-toggle collapsed" type="button"--}}
+					{{--data-toggle="collapse" data-target="#collapse-header">--}}
+					{{--<span class="sr-only">Toggle navigation</span> <span--}}
+						{{--class="icon-bar"></span> <span class="icon-bar"></span> <span--}}
+						{{--class="icon-bar"></span>--}}
+				{{--</button>--}}
+				{{--<a class="navbar-brand" href="#">RunTime</a>--}}
+			{{--</div>--}}
+			{{--<div class="navbar-collapse collapse" role="navigation"--}}
+				{{--id="collapse-header">--}}
+				{{--<ul class="nav navbar-nav">--}}
+					{{--<li><a href="{{ URL::to('/home') }}">主页</a></li>--}}
+					{{--<li><a href="{{ URL::to('/exercise') }}">运动</a></li>--}}
+					{{--<li><a href="{{ URL::to('/health') }}">健康</a></li>--}}
+					{{--<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>--}}
+				{{--</ul>--}}
+				{{--<ul class="nav navbar-nav navbar-right">--}}
+					{{--<li>--}}
+						{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" --}}
+						{{--role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>--}}
+						{{--<ul class="dropdown-menu">--}}
+                            {{--<li>--}}
+                                {{--<a href="/personal">个人设置</a>--}}
+                            {{--</li>--}}
+                            {{--<li role="separator" class="divider">--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="{{ URL::to('/logout') }}">退出登录</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+					{{--</li>--}}
+				{{--</ul>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+	{{--</nav>--}}
+
+
+	<!-- sidebar -->
+	<div class="sidebar">
+		<nav class="sidebar-nav">
+			<ul class="nav">
+				<li class="nav-title">
+					活动
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="{{ URL::to('/activity') }}"><i class="icon-puzzle"></i> 最新活动</a>
+
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ URL::to('/activity/myactivity') }}"><i class="icon-docs"></i> 我的活动</a>
+
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" href="{{ URL::to('/activity/newactivity') }}"><i class="icon-graph"></i> 发布活动</a>
+
+				</li>
+
+			</ul>
+		</nav>
+	</div>
+
+	<!-- main -->
+	<main class="main">
+		<div class="container-fluid">
+			<div class="row">
+				<!-- sidebar -->
+				{{--<div class="sidebar col-xs-2 col-sm-3 col-md-2">--}}
+					{{--<ul class="nav nav-pills nav-stacked">--}}
+						{{--<li role="presentation" class="active"><a--}}
+							{{--href="{{ URL::to('/activity') }}">最新活动</a></li>--}}
+						{{--<li role="presentation"><a--}}
+							{{--href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>--}}
+						{{--<li role="presentation"><a--}}
+							{{--href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>--}}
+					{{--</ul>--}}
+				{{--</div>--}}
+
+				<!-- main content -->
+				<div class="col-md-12">
+					<form  id="newActivity" action="/activity/newActivity" method="POST">
+						{!! csrf_field() !!}
+				        <div class="card">
+					        <div class="card-header">
+					          	<i>发布活动</i>
+					        </div>
+
+
+					        <div class="card-block">
+					          <div class="form-group" >
+					             <label for="exampleInputEmail1">活动主题</label>
+					             <input type="text" class="form-control"  name="theme"  id="exampleInputEmail1" placeholder="主题名称">
+					          </div>
+
+
+					          <div class="form-group" >
+						        <fieldset class="form-group">
+		                            <label>活动时间</label>
+		                                <div class="input-group">
+		                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		                                    <input name="daterange" class="form-control" type="text">
+		                                </div>
+		                        </fieldset>
+							  </div>
+					          
+					          <div class="form-group">
+					              <label for="exampleInputPassword1">活动地点</label>
+					              <input  class="form-control" id="activityField" name="activityField" placeholder="省/市/区/地点描述">
+					          </div>
+					           
+					          
+
+					          
+					           <div class="form-group">
+					              <label for="exampleInputPassword1">活动详情</label>
+					               <input type="hidden" id="descriptionInfo" name="descriptionInfo" value=""></input> 
+					              <textarea id="description"  class="form-control" rows="5" placeholder="活动描述"></textarea>
+					           </div>
+					          
+
+					          <div class="row">
+					            <div class="col-md-2 ">
+					              <div class="form-group">
+					                <label for="exampleInputPassword1">人数</label>
+					                <div class="input-group">
+					                  <input type="text" name="peopleNumber"  class="form-control" placeholder="0" aria-describedby="basic-addon1">
+					                  <span class="input-group-addon" id="basic-addon1">人</span>
+					                </div>
+					              </div>
+					            </div>
+
+					            <div class="col-md-2">
+					              <div class="form-group">
+					                <label for="exampleInputPassword1">保证金</label>
+					                <div class="input-group">
+					                  <input type="text" name="money" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+					                  <span class="input-group-addon" id="basic-addon1">元</span>
+					                </div>
+					              </div>
+					            </div>
+					          </div>
+
+
+
+						        <div class="form-group">
+						            <button id="list_ActivityTime" class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+						              <span id="list_ActivityTime_span" class="fa fa-angle-double-down" aria-hidden="true"> 活动时间安排 </span>
+						            </button>
+
+						            <div class="collapse" id="collapseExample" >
+						            	 <a style="heigth:2px">&nbsp</a>
+						                <div class="card ">
+						                 <div class="card-header">
+						                  <label for="exampleInputPassword1" class="text-center">已有时间安排</label>
+						                  
+
+						                    <div id="has_TimeList" class="form-group">
+						                      <div id="noneTimelist" class="alert alert-success alert-dismissible" role="alert">
+						                        <p id="list0">暂无活动安排</p> 
+						                        <input type="hidden" name="listInfo" id="listInfo" value=""></input> 
+						                      </div>
+						                    
+						                    </div>
+
+						                  
+										  
+						                  <hr style="height:4px; border-top:1px solid #555555" />
+						                  
+						        
+
+						                
+						                  	<label for="exampleInputPassword1" class="text-center">新增时间安排</label>
+						                  	<div class="card card-local">
+						                 	    <div class="card-header">
+						                    		<div class="form-group" >
+												        <fieldset class="form-group">
+								                            <label>活动时间</label>
+								                                <div class="input-group">
+								                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								                                    <input name="daterange" class="form-control" type="text" id="newTimeRange">
+								                                </div>
+								                        </fieldset>
+													</div>
+						                    
+
+							                   		<div class="form-group">
+							                     		 <input id="new_TimeListContent" type="text" class="form-control" id="exampleInputPassword1" placeholder="活动内容描述">
+							                    	</div>
+
+								                    <div class="row">
+								                        <div class="col-md-4 col-md-offset-10">
+								                          <div class="input-group">
+								                            <button  id="add_TimeList" class="btn btn-success" type="button" onclick="addTimeList()">
+								                              <span class="fa fa-plus" > 添加</span>
+								                            </button>
+								                          </div> 
+								                        </div>
+								                    </div> 
+							                    </div>
+						                  	</div> 
+						                 </div>
+							            </div>
+							        </div>
+							    </div> 
+
+
+							     <fieldset class="form-group">
+			                         <label>标签选择</label>
+			                            <div class="controls">
+			                            	<input type="hidden" name="tagInfo"id="tagInfo" value=""></input> 
+			                                <select id="select2-1" class="form-control" size="5" multiple>
+			                                    <option>户外</option>
+			                                    <option selected>室内</option>
+			                                    <option>集体</option>
+			                                    <option>个人</option>
+			                                    <option>江苏</option>
+			                                </select>
+			                            </div>
+			                     </fieldset>  
+		                    </div>
+
+		                    <div class="card-footer">
+		                    	<div class="row">
+									<div class="col-md-2 col-md-offset-8"></div>
+										<button type="button" class="btn btn-success"  aria-label="Left Align" onclick="subForm()">
+
+									   	 	<span class="fa fa-check" aria-hidden="true"> Submit </span>
+										</button>
+									</div> 
+								</div> 
+							</div> 
+
+
+	              
+					    </div>
+
+	                 	
+
+					
+					      
+					</form>
+				</div>
+				
+			
+
+			
+			
+				<!-- main content -->
 			</div>
 		</div>
-	</nav>
-	
-	<!-- main -->
-<div class="container-fluid">
-        <div class="row">
-            <!-- sidebar -->
-            <div class="sidebar col-xs-2 col-sm-3 col-md-2">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation"><a href="{{ URL::to('/activity') }}">最新活动</a></li>
-                    <li role="presentation" ><a href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
-                    <li role="presentation" class="active"><a href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
-                </ul>
-            </div>
-            
-    <!-- main content -->
-            
-            <div class="col-md-10">
-              <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">参与活动</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">开展活动</a></li>
-               
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="check" style="height:500px">
-
-                        @if(count($activities_enter)>0) 
-                        @for($i=0; ($i< count($activities_enter)) && ($i< 5);$i++)
-
-                        <div class="col-md-2" id= "<?php $i;?>">
-                            <div class="thumbnail">
-                              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
-                              <div class="caption">
-                                <h3 style="height:100px">
-
-                                  <p ><?php echo $activities_enter[$i]->Theme; ?><br><small><?php echo $activities_enter[$i]->Time; ?></small></p>
-                                </h3>
-                                <p style="height:200px">
-                                    <?php echo $activities_enter[$i]->Description; ?>
-                                </p>
-                                
-                                <div class="form-group" >
-                                  <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailEnterActivity">
-                                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
-                                  </button>
-                                </div> 
-                              </div>
-                            </div>
-                        </div>
-                        @endfor @endif
-
-                         <p ></p>
-                        
-                        
-                
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane " id="gov">
-
-                        @if(count($activities_my)>0) 
-                        @for($i=0;$i < count($activities_my) && $i < 5;$i++)
-
-                        <div class="col-md-2" id= "<?php $i;?>">
-                            <div class="thumbnail">
-                              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
-                              <div class="caption">
-                                <h3 style="height:100px">
-                                  <p ><?php echo $activities_my[$i]->Theme; ?><br><small><?php echo $activities_my[$i]->Time; ?></small></p>
-                                </h3>
-                                <p style="height:200px">
-                                    <?php echo $activities_my[$i]->Description; ?>
-                                </p>
-                                
-                                <div class="form-group" >
-                                  <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailMyActivity">
-                                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
-                                  </button>
-                                </div> 
-                              </div>
-                            </div>
-                        </div>
 
 
-                        @endfor @endif
+	</main>
+<script>
+	var listNumber=0;
+	function subForm(){
+		var content="";
+		var count="";
 
-                        
-                    </div>
-                    
-                  </div>
-            </div>
+
+		for (var i = 1; i <= listNumber; i++) {
+					count="list"+i;
+					if(document.getElementById(count)){
+						content = content+ (document.getElementById(count).innerText+";");
+					}
+
+		};
+
+		var listInfo = document.getElementById("listInfo");
+		listInfo.value =content;
+
+
+		var tagChoose = document.getElementById("select2-1");
+		var tagsInfo = document.getElementById("tagInfo");
+
+		for(var i=0;i<5;i++){     
+                if(tagChoose.options[i].selected){  
+                    tagsInfo.value+=tagChoose.options[i].value+";";  
+                }  
+  		}  
 
 
 
-            <!-- main content -->
-        </div>
-            <nav class="col-md-offset-5">
-          <ul class="pagination" >
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-            </nav>
-        </div>
+		alert(tagsInfo.value);
 
 
-    <!-- detailAllActivityModal -->
-    <div class="modal fade" id="detailEnterActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">活动名称</h4>
-          </div>
-          <div class="modal-body">
-            <div class="modal-body">
+		var description = document.getElementById("description");
+		var descriptionInfo = document.getElementById("descriptionInfo");
+		descriptionInfo.value=description.value;
 
-              <h4>活动主题</h4>
-              <p><?php echo $activities_my[4]->Theme; ?></p>
-
-              <h4>活动时间</h4>
-              <p><?php echo $activities_my[4]->Time; ?></p>
-              
-              <h4>活动地点</h4>
-             <p><?php echo $activities_my[4]->Feild; ?></p>
-
-              <div class="row">
-                <div class="col-md-6 ">
-                            <h4>参与人数</h4>   
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->peopleNumber; ?> </p>
-                            </div>
-                </div>
-
-                <div class="col-md-6">
-                            <h4>保证金</h4>    
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[4]->Money; ?></p>
-                            </div>
-                </div>
-              </div>
-
-              <h4>活动描述</h4>
-              <p><?php echo $activities_my[4]->Description; ?></p>
-              
-              
-              
-
-             <div class="form-group">
-                <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
-                  <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
-                </button>
-
-                <div class="collapse" id="collapseExample" >
-                      <div id="has_TimeList" class="form-group">
-                          <div id="noneTimelist" >
-                            <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
-                            <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[5]->PlanList; ?></p> 
-                          </div>
-                      </div>
-                </div>
-              </div>
-            </div>
-
-       
-          </div>
-          <div class="modal-footer">
-            <div>
-                <h4>提交时间</h4>
-                <p><?php echo $activities_my[0]->created_at; ?></p>
-            </div>
-            <button type="button" class="btn btn-warning">退出</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          </div>
-        </div>
-      </div>
-    </div>
+		var subForm = document.getElementById("newActivity");
+		subForm.submit();
 
 
-    <!-- detailGovActivityModal -->
-    <div class="modal fade" id="detailMyActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">活动名称-<?php echo $activities_my[0]->State; ?></h4>
-          </div>
-          <div class="modal-body">
-            <div class="modal-body">
-
-              <h4>活动主题</h4>
-              <p><?php echo $activities_my[0]->Theme; ?></p>
-
-              <h4>活动时间</h4>
-              <p><?php echo $activities_my[0]->Time; ?></p>
-              
-              <h4>活动地点</h4>
-              <p><?php echo $activities_my[0]->Feild; ?></p>
-
-              <div class="row">
-                <div class="col-md-6 ">
-                            <h4>参与人数</h4>   
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[0]->peopleNumber; ?> </p>
-                            </div>
-                </div>
-
-                <div class="col-md-6">
-                            <h4>保证金</h4>    
-                            <div class="bs-example tooltip-demo">
-                                <p><?php echo $activities_my[0]->Money; ?></p>
-                            </div>
-                </div>
-              </div>
-
-              <h4>活动描述</h4>
-              <p><?php echo $activities_my[0]->Description; ?></p>
-              
-              
-
-              <div class="form-group">
-                <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
-                  <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
-                </button>
-
-                <div class="collapse" id="collapseExample" >
-                      <div id="has_TimeList" class="form-group">
-                          <div id="noneTimelist" >
-                            <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[0]->PlanList; ?></p> 
-                           
-                          </div>
-                      </div>
-                </div>
-              </div>
-            </div>
-
-       
-          </div>
-          <div class="modal-footer">
-            <div>
-                <h4>负责人/单位</h4>
-                <p><?php echo $activities_my[0]->create_at; ?></p>
-            </div>
-            <button type="button" class="btn btn-info">撤销</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          </div>
-        </div>
-      </div>
-    </div>
+	}
 
 
 
+	function addTimeList(){
 
+		listNumber+=1;
+
+        var input_Content = document.getElementById("new_TimeListContent");
+
+
+        var startTime = document.getElementById("newTimeRange").value;
+
+        
+
+        var content =startTime+" : "+input_Content.value;
+        var hasList = document.getElementById("has_TimeList");
+        var noneTimeList = document.getElementById("noneTimelist");
+        
+        noneTimeList.style.display="none";  
+
+        hasList.innerHTML +=  "<div class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-"+"dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><p id=list"+listNumber+">" + content +"</p></div>" ;
+     
+
+	}
+
+</script>
 
 
 </body>

@@ -8,186 +8,241 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link href="css/bootstrap.css" rel="stylesheet" media="screen"> -->
 <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> -->
-<link href="{{ URL::asset('/') }}css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+{{--<link href="{{ URL::asset('/') }}css/bootstrap.css" rel="stylesheet" media="screen">--}}
+  <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet" media="screen">
 <link href="{{ URL::asset('/') }}css/main.css" rel="stylesheet"
-	media="screen">
+  media="screen">
+<link rel="stylesheet" type="text/css" href="http://localhost:8000/sweetalert/dist/sweetalert.css">
 
+<script src="http://localhost:8000/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript"
-	src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
+  src="{{ URL::asset('/') }}js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
-	src="{{ URL::asset('/') }}js/bootstrap.js"></script>
-	
-	<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
+  src="{{ URL::asset('/') }}js/bootstrap.js"></script>
+
+<script type="text/javascript" src="{{ URL::asset('/') }}js/Chart.js"></script>
 
 
 <style>
 body {
-	padding-top: 80px;
+	padding-top: 20px;
 }
 </style>
 
 </head>
 
-<body>
-	<!-- fixed header -->
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button class="navbar-toggle collapsed" type="button"
-					data-toggle="collapse" data-target="#collapse-header">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">RunTime</a>
-			</div>
-			<div class="navbar-collapse collapse" role="navigation"
-				id="collapse-header">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ URL::to('/home') }}">主页</a></li>
-					<li><a href="{{ URL::to('/exercise') }}">运动</a></li>
-					<li><a href="{{ URL::to('/health') }}">健康</a></li>
-					<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-						role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-                            <li>
-                                <a href="/personal">个人设置</a>
-                            </li>
-                            <li role="separator" class="divider">
-                            </li>
-                            <li>
-                                <a href="{{ URL::to('/logout') }}">退出登录</a>
-                            </li>
-                        </ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	
-	<!-- main -->
-<div class="container-fluid">
-        <div class="row">
-            <!-- sidebar -->
-            <div class="sidebar col-xs-2 col-sm-3 col-md-2">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation"><a href="{{ URL::to('/activity') }}">最新活动</a></li>
-                    <li role="presentation" class="active"><a href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>
-                    <li role="presentation" ><a href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>
-                </ul>
+
+<body class="navbar-fixed sidebar-nav fixed-nav">
+  <!-- fixed header -->
+  <header class="navbar">
+    <div class="container-fluid">
+      <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+      <a class="navbar-brand" href="#"></a>
+      <ul class="nav navbar-nav hidden-md-down">
+        <li class="nav-item">
+          <a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
+        </li>
+
+        <li class="nav-item p-x-1">
+          <a class="nav-link" href="{{ URL::to('/exercise') }}">锻炼</a>
+        </li>
+        <li class="nav-item p-x-1">
+          <a class="nav-link" href="{{ URL::to('/activity') }}">活动</a>
+        </li>
+        <li class="nav-item p-x-1">
+          <a class="nav-link" href="{{ URL::to('/weibo') }}">微博</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav pull-right hidden-md-down">
+        <li class="nav-item dropdown">
+          <a style="margin-top:0px" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="hidden-md-down">{{ Auth::user()->nickname }}</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+
+            <div class="dropdown-header text-xs-center">
+              <strong>设置</strong>
             </div>
-            
-    <!-- main content -->
-            
-            <div class="col-md-10">
-              <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">参与活动</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">开展活动</a></li>
-               
-                  </ul>
+            <a class="dropdown-item" href="{{ URL::to('/personal') }}"><i class="fa fa-user"></i> 个人设置</a>
+            <a class="dropdown-item" href="{{ URL::to('/logout') }}"><i class="fa fa-lock"></i> 退出登录</a>
+          </div>
+        </li>
 
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="check" style="height:500px">
+      </ul>
+    </div>
+  </header>
 
-                        @if(count($activities_enter)>0) 
-                        @for($i=0; ($i< count($activities_enter)) && ($i< 5);$i++)
+  {{----}}
+  {{--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">--}}
+    {{--<div class="container-fluid">--}}
+      {{--<div class="navbar-header">--}}
+        {{--<button class="navbar-toggle collapsed" type="button"--}}
+          {{--data-toggle="collapse" data-target="#collapse-header">--}}
+          {{--<span class="sr-only">Toggle navigation</span> <span--}}
+            {{--class="icon-bar"></span> <span class="icon-bar"></span> <span--}}
+            {{--class="icon-bar"></span>--}}
+        {{--</button>--}}
+        {{--<a class="navbar-brand" href="#">RunTime</a>--}}
+      {{--</div>--}}
+      {{--<div class="navbar-collapse collapse" role="navigation"--}}
+        {{--id="collapse-header">--}}
+        {{--<ul class="nav navbar-nav">--}}
+          {{--<li><a href="{{ URL::to('/home') }}">主页</a></li>--}}
+          {{--<li><a href="{{ URL::to('/exercise') }}">运动</a></li>--}}
+          {{--<li><a href="{{ URL::to('/health') }}">健康</a></li>--}}
+          {{--<li class="active"><a href="{{ URL::to('/activity') }}">活动</a></li>--}}
+        {{--</ul>--}}
+        {{--<ul class="nav navbar-nav navbar-right">--}}
+          {{--<li>--}}
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" --}}
+            {{--role="button">{{ Auth::user()->nickname }}<span class="caret"></span></a>--}}
+            {{--<ul class="dropdown-menu">--}}
+                            {{--<li>--}}
+                                {{--<a href="/personal">个人设置</a>--}}
+                            {{--</li>--}}
+                            {{--<li role="separator" class="divider">--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="{{ URL::to('/logout') }}">退出登录</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+          {{--</li>--}}
+        {{--</ul>--}}
+      {{--</div>--}}
+    {{--</div>--}}
+  {{--</nav>--}}
 
-                        <div class="col-md-2" id= "<?php $i;?>">
-                            <div class="thumbnail">
-                              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
-                              <div class="caption">
-                                <h3 style="height:100px">
 
-                                  <p ><?php echo $activities_enter[$i]->Theme; ?><br><small><?php echo $activities_enter[$i]->Time; ?></small></p>
-                                </h3>
-                                <p style="height:200px">
-                                    <?php echo $activities_enter[$i]->Description; ?>
-                                </p>
-                                
-                                <div class="form-group" >
-                                  <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailEnterActivity">
-                                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
-                                  </button>
-                                </div> 
-                              </div>
-                            </div>
+  <!-- sidebar -->
+  <div class="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav">
+        <li class="nav-title">
+          活动
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('/activity') }}"><i class="icon-puzzle"></i> 最新活动</a>
+
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ URL::to('/activity/myactivity') }}"><i class="icon-docs"></i> 我的活动</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('/activity/newactivity') }}"><i class="icon-graph"></i> 发布活动</a>
+
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+
+
+
+  <!-- main -->
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- sidebar -->
+        {{--<div class="sidebar col-xs-2 col-sm-3 col-md-2">--}}
+          {{--<ul class="nav nav-pills nav-stacked">--}}
+            {{--<li role="presentation" ><a--}}
+              {{--href="{{ URL::to('/activity') }}">最新活动</a></li>--}}
+            {{--<li role="presentation" class="active"><a--}}
+              {{--href="{{ URL::to('/activity/myactivity') }}">我的活动</a></li>--}}
+            {{--<li role="presentation"><a--}}
+              {{--href="{{ URL::to('/activity/newactivity') }}">发布活动</a></li>--}}
+          {{--</ul>--}}
+        {{--</div>--}}
+              
+        <div class="col-md-12">
+            <div class="card">
+                        <div class="card-header" >
+                          <i>我的活动</i>
+                          <div class="card-actions">
+                                         <button type="button" class="btn btn-success" >
+                                           参与
+                                         </button>
+                                         <button type="button" class="btn btn-success">
+                                           开展    
+                                         </button>
+                                    </div>
                         </div>
-                        @endfor @endif
 
-                         <p ></p>
-                        
-                        
-                
-                    </div>
+                        <div class="card-block"  color="#FFFF00">
+                          <div class="row" >
 
-                    <div role="tabpanel" class="tab-pane " id="gov">
+                            @if(count($activities_enter)>0) 
+                            @for($i=0; ($i< count($activities_enter)) && ($i< 6);$i++)
 
-                        @if(count($activities_my)>0) 
-                        @for($i=0;$i < count($activities_my) && $i < 5;$i++)
+                            <div class="col-md-2" id= "<?php $i;?>">
+                                <div class="card card-local" id= "<?php $i;?>">
+                                    <div class="card-header" color="000000">
+                                    </div>
+                                    <div class="card-block" style="padding:10px">
+                                      <div ><img  src="{{ URL::asset('/') }}image/grass.jpg" width="140" height="85"  alt="Lodash"></div>
+                                    <h3  style="height:50px">
+                                      <p ><?php echo $activities_enter[$i]->Theme;?></p>
+                                    </h3 >
 
-                        <div class="col-md-2" id= "<?php $i;?>">
-                            <div class="thumbnail">
-                              <a href="http://codeguide.bootcss.com" title="Bootstrap 编码规范" target="_blank" onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'codeguide'])"><img class="lazy" src="http://static.bootcss.com/www/assets/img/codeguide.png" width="300" height="150" data-src="http://static.bootcss.com/www/assets/img/codeguide.png" alt="Headroom.js"></a>
-                              <div class="caption">
-                                <h3 style="height:100px">
-                                  <p ><?php echo $activities_my[$i]->Theme; ?><br><small><?php echo $activities_my[$i]->Time; ?></small></p>
-                                </h3>
-                                <p style="height:200px">
-                                    <?php echo $activities_my[$i]->Description; ?>
-                                </p>
-                                
-                                <div class="form-group" >
-                                  <button type="button" class="btn btn-default"  aria-label="Left Align" data-toggle="modal" data-target="#detailMyActivity">
-                                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> 详情 </span>
-                                  </button>
-                                </div> 
-                              </div>
+                                    <h3 style="height:100px">
+
+                                      <p ><br><small><?php echo $activities_enter[$i]->Time; ?></small></p>
+                                    </h3>
+
+                                    <p style="height:100px">
+                                        <?php echo $activities_enter[$i]->Description; ?>
+                                    </p>
+                                    <p id="sign" style="height:40px" >
+                                      （已开始）
+                                    </p>
+
+                                    <div class="form-group" >
+                                      <button type="button" value="<?php echo $activities_enter[$i]->id;?>" class="btn btn-info"  aria-label="Left Align" data-toggle="modal" onclick="passValue(this.value)" data-target="#detailEnterActivity">
+                                        <span class="fa fa-align-justify" aria-hidden="true"> 详情 </span>
+                                      </button>
+                                    </div> 
+                                  </div>
+                                </div>
                             </div>
+                            @endfor @endif
+
+                           <p ></p>
+
+                          
+
+                          </div>
+                              <nav class="col-md-offset-5">
+                                <ul class="pagination" >
+                                  <li>
+                                    <a href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                  </li>
+                                  <li class="active"><a href="#">1</a></li>
+                                  <li>
+                                    <a href="#" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                          </div>
                         </div>
-
-
-                        @endfor @endif
-
-                        
-                    </div>
-                    
-                  </div>
             </div>
 
-
-
-            <!-- main content -->
         </div>
-            <nav class="col-md-offset-5">
-          <ul class="pagination" >
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-            </nav>
-        </div>
+      </div>
+    </div>
 
+   
+  
+            <!-- main content --> 
+    
 
-    <!-- detailAllActivityModal -->
+    <!-- detailEnterActivity -->
     <div class="modal fade" id="detailEnterActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -230,17 +285,17 @@ body {
               
 
              <div class="form-group">
-                <button id="list_ActivityTime" class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
-                  <span id="list_ActivityTime_span" class="glyphicon glyphicon-menu-down" aria-hidden="true"> 活动时间安排 </span>
+                <button id="list_ActivityTime" class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Left Align">
+                  <span id="list_ActivityTime_span" class="fa fa-angle-double-down" aria-hidden="true"> 活动时间安排 </span>
                 </button>
 
                 <div class="collapse" id="collapseExample" >
                       <div id="has_TimeList" class="form-group">
                           <div id="noneTimelist" >
                             <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
                             <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[5]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
                           </div>
                       </div>
                 </div>
@@ -251,18 +306,23 @@ body {
           </div>
           <div class="modal-footer">
             <div>
-                <h4>提交时间</h4>
-                <p><?php echo $activities_my[4]->created_at; ?></p>
+                <h4>负责人</h4>
+                <p><?php echo $activities_my[4]->UserName; ?></p>
+
             </div>
-            <button type="button" class="btn btn-warning">退出</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <form id="exitActivity" action="/activity/exitActivity" method="POST">
+            {!! csrf_field() !!}
+              <input id="newexit" type="hidden" name="newexit" value=""></input>
+              <button id="exit" value="" type="button" class="btn btn-warning" data-dismiss="modal" onclick="newexit(this.value)">退出</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
 
 
-    <!-- detailGovActivityModal -->
+    <!-- detailMyActivity -->
     <div class="modal fade" id="detailMyActivity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -312,9 +372,9 @@ body {
                       <div id="has_TimeList" class="form-group">
                           <div id="noneTimelist" >
                             <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
                             <p></p>
-                            <p class="alert alert-info alert-dismissible"><?php echo $activities_my[5]->PlanList; ?></p> 
+                            <p class="alert alert-success alert-dismissible"><?php echo $activities_my[4]->PlanList; ?></p> 
                            
                           </div>
                       </div>
@@ -337,10 +397,59 @@ body {
     </div>
 
 
+  </main> 
+
+<script type="text/javascript">
+  function newexit(idvalue){
+  swal({   
+              title: "成功退出！",
+              text: "",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#90EE90",
+              confirmButtonText: "OK",
+              closeOnConfirm: true },
+              function(){
+                var change=document.getElementById("newexit");
+                change.value=idvalue;
+
+                var subForm = document.getElementById("exitActivity");
+                subForm.submit();
+                
+                
+
+                
+              });
+  }
 
 
 
+
+  function passValue(idvalue){
+    var detail=document.getElementById("exit");
+    detail.value=idvalue;
+  }
+
+
+</script>
 
 </body>
+
+<script src="{{ URL::asset('/') }}js/libs/tether.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/pace.min.js"></script>
+<!-- Plugins and scripts required by all views -->
+<script src="{{ URL::asset('/') }}js/views/shared.js"></script>
+<!-- GenesisUI main scripts -->
+<script src="{{ URL::asset('/') }}js/app.js"></script>
+<!-- Plugins and scripts required by this views -->
+{{--<script src="{{ URL::asset('/') }}js/libs/toastr.min.js"></script>--}}
+<script src="{{ URL::asset('/') }}js/libs/jquery.maskedinput.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/Chart.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/moment.min.js"></script>
+<script src="{{ URL::asset('/') }}js/libs/select2.min.js"></script>
+<!-- Custom scripts required by this view -->
+<script src="{{ URL::asset('/') }}js/views/forms.js"></script>
+<script src="{{ URL::asset('/') }}js/app-options.js"></script>
+<script src="{{ URL::asset('/') }}js/views/widgets.js"></script>
 
 </html>
