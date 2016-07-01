@@ -317,7 +317,7 @@ body {
 		    		{!! csrf_field() !!}
 					<input id="newsign" type="hidden" name="newsign" value=""></input>
 			      	<button id="signbutton" value="" type="button" class="btn btn-success" data-dismiss="modal" onclick="sign(this.value)">报名</button>
-			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 			    </form>
 		      </div>
 		    </div>
@@ -391,7 +391,7 @@ body {
 		        	<p><?php echo $activities_all[0]->create_at; ?></p>
 		    	</div>
 		      	<button type="button" class="btn btn-info">报名</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 		      </div>
 		    </div>
 		  </div>
@@ -463,7 +463,7 @@ body {
 		        	<p><?php echo $activities_all[0]->create_at; ?></p>
 		    	</div>
 		      	<button type="button" class="btn btn-info">报名</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 		      </div>
 		    </div>
 		  </div>

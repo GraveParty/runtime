@@ -158,11 +158,11 @@ body {
 				<!-- main content http://static.bootcss.com/www/assets/img/lodash.png-->
 				
 				<div class="col-md-12 " >
-					  <div class="card">
+					  <div class="card card">
 
 							<div class="card-header" >
 								<i>最近活动</i>
-								<a  class="col-md-offset-9" href="{{ URL::to('/activity/activity') }}"><button class="btn btn-secondary">全部</button></a>
+								<a  class="col-md-offset-9" href="{{ URL::to('/activity') }}"><button class="btn btn-secondary">全部</button></a>
                          		<a   href="{{ URL::to('/activity/activitygov') }}"><button class="btn btn-secondary">官方</button> </a>
                          		<a   href="{{ URL::to('/activity/activityper') }}"><button class="btn btn-primary">私人</button> </a>
 							</div>
@@ -174,7 +174,8 @@ body {
 
 							    	<div class="col-md-2" >
 							    	  <div class="card card-local" id= "<?php $i;?>">
-							        	<div class="card-header " color="#000000">
+							        	<div class="card-header" >
+							      
 										</div>
 										<div class="card-block" style="padding:10px">
 							              	<div ><img  src="{{ URL::asset('/') }}image/grass.jpg" width="140" height="85"  alt="Lodash"></div>
@@ -317,7 +318,7 @@ body {
 		    		{!! csrf_field() !!}
 					<input id="newsign" type="hidden" name="newsign" value=""></input>
 			      	<button id="signbutton" value="" type="button" class="btn btn-success" data-dismiss="modal" onclick="sign(this.value)">报名</button>
-			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 			    </form>
 		      </div>
 		    </div>
@@ -391,7 +392,7 @@ body {
 		        	<p><?php echo $activities_all[0]->create_at; ?></p>
 		    	</div>
 		      	<button type="button" class="btn btn-info">报名</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 		      </div>
 		    </div>
 		  </div>
@@ -463,7 +464,7 @@ body {
 		        	<p><?php echo $activities_all[0]->create_at; ?></p>
 		    	</div>
 		      	<button type="button" class="btn btn-info">报名</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 		      </div>
 		    </div>
 		  </div>

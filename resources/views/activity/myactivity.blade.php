@@ -310,7 +310,7 @@ body {
             {!! csrf_field() !!}
               <input id="newexit" type="hidden" name="newexit" value=""></input>
               <button id="exit" value="" type="button" class="btn btn-warning" data-dismiss="modal" onclick="newexit(this.value)">退出</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
             </form>
           </div>
         </div>
