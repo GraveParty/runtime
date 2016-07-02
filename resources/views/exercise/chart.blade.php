@@ -180,33 +180,42 @@
 					class="col-md-12">
 
 				<div class="card card-local">
-					<div class="card-block p-a-1 clearfix row">
+					<div class="card-block p-a-1 clearfix " >
+
 
 						<form name="form" class="form-inline" method="POST"
 							  action="/exercise/chart">
 							{!! csrf_field() !!}
 
-							<div class="form-group col-md-3 col-md-offset-4">
-								<div class="">
+							<div class="form-group " >
 
-									<input name="date" type="text" readonly
-										   class="form-control input-append date form_datetime"
-										   id="inputDate" placeholder="" value="2015" data-date="2015">
-									<script type="text/javascript">
-										$(".form_datetime").datetimepicker({
-											format: 'yyyy',
-											autoclose: true,
-											todayBtn: true,
-											minView: 'year',
-											pickerPosition: "bottom-left"
+								<div class="" >
 
-										});
-									</script>
+									<select id="select" name="select" class="form-control" size="1" style="width:150px">
+										<option value="0">2016</option>
+										<option value="1">2015</option>
+										<option value="2">2014</option>
+										<option value="3">2013</option>
+									</select>
+
+									{{--<input name="date" type="text" readonly--}}
+										   {{--class="form-control input-append date form_datetime"--}}
+										   {{--id="inputDate" placeholder="" value="2015" data-date="2015">--}}
+									{{--<script type="text/javascript">--}}
+										{{--$(".form_datetime").datetimepicker({--}}
+											{{--format: 'yyyy',--}}
+											{{--autoclose: true,--}}
+											{{--todayBtn: true,--}}
+											{{--minView: 'year',--}}
+											{{--pickerPosition: "bottom-left"--}}
+
+										{{--});--}}
+									{{--</script>--}}
 
 								</div>
 
 							</div>
-							<div class="form-group col-md-1">
+							<div class="form-group ">
 								<button type="submit" class="btn btn-default btn-xs btn-success">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提交
 								</button>

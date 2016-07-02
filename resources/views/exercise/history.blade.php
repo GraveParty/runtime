@@ -170,33 +170,44 @@
 			<!-- main content -->
 			<div class="col-md-12">
 				<div class="card card-local">
-					<div class="card-block p-a-1 clearfix row">
+					<div class="card-block p-a-1 clearfix">
 
 						<form name="form" class="form-inline" method="POST" action="/exercise/history">
 							{!! csrf_field() !!}
 
-							<div class="form-group col-md-3 col-md-offset-4">
+							<div class="form-group ">
 								<div class="">
 
-									<input name="date" type="text" readonly class="form-control input-append date form_datetime"
-										   id="inputDate" placeholder="" value="2015-12">
+									<select id="select" name="select" class="form-control" size="1" style="width:150px">
+										<option value="0">2016-06</option>
+										<option value="1">2016-05</option>
+										<option value="2">2016-04</option>
+										<option value="3">2016-03</option>
+										<option value="4">2016-02</option>
+										<option value="5">2016-01</option>
+										<option value="6">2015-12</option>
+										<option value="7">2015-11</option>
+									</select>
 
-									<script type="text/javascript">
-										$(".form_datetime").datetimepicker({
-											format: 'yyyy-mm',
-											autoclose: true,
-											todayBtn: true,
-											minView: 'year',
-											pickerPosition: "bottom-left"
+									{{--<input name="date" type="text" readonly class="form-control input-append date form_datetime"--}}
+										   {{--id="inputDate" placeholder="" value="2015-12">--}}
 
-										});
-									</script>
+									{{--<script type="text/javascript">--}}
+										{{--$(".form_datetime").datetimepicker({--}}
+											{{--format: 'yyyy-mm',--}}
+											{{--autoclose: true,--}}
+											{{--todayBtn: true,--}}
+											{{--minView: 'year',--}}
+											{{--pickerPosition: "bottom-left"--}}
+
+										{{--});--}}
+									{{--</script>--}}
 
 								</div>
 
 							</div>
 
-							<div class="form-group col-md-1">
+							<div class="form-group ">
 								<button type="submit" class="btn btn-default btn-xs btn-success">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择月份</button>
 
